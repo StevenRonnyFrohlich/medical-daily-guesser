@@ -91,3 +91,44 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 - `success` locally. Easy/medium/hard progress will not carry over.
 - The only liver image is ground-glass hepatocytes, so it sits in Abnormal, not Human morphology. Add a normal hepatocyte field later.
 - Abnormal is the smallest pool (14). Worth adding more disease morphologies next.
+
+## 2026-08-13 — Catalog counts and production plan
+
+**User**
+- Quantify how many options each category has. How would we productionalize this with a bought domain, hosting, registration, and a leaderboard?
+
+**Actions**
+- Counted the live catalog: 87 fields — morphology 30, organisms 43, abnormal 14.
+- Wrote a production plan: Cloudflare domain + Pages, Supabase auth/scores, Worker-owned daily key, phased launch.
+- Put the numbers and plan in canvases/catalog-and-production.canvas.tsx.
+
+**Outcome**
+- `success` as analysis. No product code changed.
+- Abnormal repeats ~every 2.3 days; grow it before a public board.
+- Do not ship a leaderboard while answers still live in the client JS.
+
+## 2026-08-13 — Circular loupe on the specimen
+
+**User**
+- Build a CSS microscope tool: hover the image for a circular modal fixed to the mouse, scroll to enlarge the point under the cursor, like a looking glass.
+
+**Actions**
+- Added `js/loupe.js`: circular loupe follows the pointer, maps through `object-fit: cover`, wheel changes power 1.6×–10×.
+- Removed the full-field click overlay. Double-click still opens the lightbox.
+- Loupe uses a 2000px Commons render so zoom stays sharp.
+
+**Outcome**
+- `success` locally. Hover the ocular and scroll.
+- Touch/trackpad pinch is not implemented; wheel/trackpad scroll is.
+- Corners of the square ocular hide the loupe so it only lives inside the circle.
+
+## 2026-08-13 — Loupe can zoom smaller than the base field
+
+**User**
+- Must be able to zoom out so the object in the magnifying glass is smaller than the base image.
+
+**Actions**
+- Lowered loupe minimum power from 1.6× to 0.25× and used a finer scroll step.
+
+**Outcome**
+- `success`. Scroll out until the glass shows a reduced field; 1.0× matches the base image.

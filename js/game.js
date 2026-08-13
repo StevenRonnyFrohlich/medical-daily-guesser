@@ -171,6 +171,9 @@
     field: $("meta-field"),
     image: $("specimen-image"),
     ocular: $("ocular"),
+    loupe: $("loupe"),
+    loupeImage: $("loupe-image"),
+    loupeMag: $("loupe-mag"),
     choices: $("choices"),
     reveal: $("reveal"),
     verdict: $("verdict"),
@@ -298,6 +301,8 @@
     return open === -1 ? DAILY_COUNT - 1 : open;
   }
 
+  const loupe = window.initLoupe(ui.ocular, ui.image, ui.loupe, ui.loupeImage, ui.loupeMag);
+
   function setImage(file) {
     ui.ocular.classList.add("is-loading");
     ui.image.alt = `Microscope field ${index + 1} of ${DAILY_COUNT}`;
@@ -307,6 +312,7 @@
       ui.image.alt = "Image failed to load. Check your network connection.";
     };
     ui.image.src = commonsUrl(file, 1100);
+    loupe.setSource(commonsUrl(file, 2000));
   }
 
   function renderChoices(selected, correctName) {
@@ -488,7 +494,8 @@
     if (event.target.id === "modal") $("modal").classList.remove("is-open");
   });
 
-  $("btn-zoom").addEventListener("click", () => {
+  ui.ocular.addEventListener("dblclick", () => {
+    ui.loupe.hidden = true;
     $("lightbox-image").src = commonsUrl(current().file, 1600);
     $("lightbox").classList.add("is-open");
   });

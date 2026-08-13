@@ -47,7 +47,11 @@
       <div class="ocular" id="ocular">
         <img id="specimen-image" alt="Today's microscope specimen">
         <div class="reticle" aria-hidden="true"></div>
-        <button id="btn-zoom" type="button" aria-label="Enlarge specimen"></button>
+      </div>
+      <div class="loupe" id="loupe" hidden>
+        <img id="loupe-image" alt="">
+        <div class="loupe-glass" aria-hidden="true"></div>
+        <div class="loupe-mag" id="loupe-mag">3.0×</div>
       </div>
     </section>
 
@@ -56,6 +60,7 @@
       <div>Objective <span id="meta-mag">—</span></div>
       <div>Difficulty <span id="meta-diff">—</span></div>
       <div>Field <span id="meta-field">1 / 6</span></div>
+      <div>Loupe <span id="meta-power">hover + scroll</span></div>
     </div>
 
     <div class="choices" id="choices"></div>
@@ -100,7 +105,7 @@
         <li>The boxes track that tray: green is a hit, red is a miss.</li>
         <li>Each mode keeps its own streak. Stored in this browser.</li>
         <li>Practice on a card is unlimited and does not touch the daily streak.</li>
-        <li>Keys 1–4 or A–D select an answer. Click the field to enlarge it.</li>
+        <li>Keys 1–4 or A–D select an answer. Hover the field for a loupe; scroll to change power. Double-click for the full frame.</li>
       </ul>
       <p>Images are public-domain or freely licensed teaching files, mostly CDC and Wikimedia Commons. This is a game, not medical advice.</p>
       <button class="btn" id="btn-close-modal" type="button">Close</button>
@@ -114,6 +119,7 @@
 
   <script src="js/config.js"></script>
   <script src="js/specimens.js"></script>
+  <script src="js/loupe.js"></script>
   <script src="js/game.js"></script>
 </body>
 </html>
