@@ -81,6 +81,100 @@ body {
   padding: 28px 0 64px;
 }
 
+.lobby-lead {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.modes {
+  display: grid;
+  gap: 12px;
+}
+
+.mode {
+  appearance: none;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(28, 34, 44, 0.95), rgba(14, 17, 23, 0.95));
+  color: var(--text);
+  padding: 18px 18px 16px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.mode:hover,
+.mode:focus-visible {
+  border-color: var(--brass);
+  outline: none;
+}
+
+.mode h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 560;
+}
+
+.mode p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.mode-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.mode-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.mode-actions button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.mode-actions button:hover,
+.mode-actions button:focus-visible {
+  border-color: var(--brass);
+  color: var(--brass);
+  outline: none;
+}
+
+.lobby-foot {
+  margin: 22px 0 0;
+}
+
+.lobby-foot button {
+  background: none;
+  border: 0;
+  color: var(--brass);
+  font: inherit;
+  cursor: pointer;
+}
+
+.board[hidden],
+.lobby[hidden] {
+  display: none;
+}
+
 .top {
   display: flex;
   justify-content: space-between;

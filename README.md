@@ -2,7 +2,7 @@
 
 A daily four-option identification game. Medical edition.
 
-Six microscope fields a day, four diagnoses each, one guess per field. The distractors are lookalikes a professional might actually consider: Babesia vs falciparum rings, Histoplasma vs Leishmania, AML vs ALL. Finish the tray and copy a Wordle-style result.
+Three daily trays — human morphology, parasites & organisms, and abnormal morphology — of six fields each. Play any of them, or all three. Finish a tray and copy a Wordle-style result.
 
 ## Play
 
@@ -12,8 +12,9 @@ Open `index.html` in a browser, or from this folder:
 npx --yes serve .
 ```
 
-- Daily tray (six fields): `index.html`
-- Unlimited practice trays: `index.html?mode=lab`
+- Daily lobby: `index.html`
+- Deep link a tray: `index.html?tray=abnormal`
+- Practice a track: `index.html?tray=organisms&mode=lab`
 
 Images load from [Wikimedia Commons](https://commons.wikimedia.org/). You need a network connection.
 

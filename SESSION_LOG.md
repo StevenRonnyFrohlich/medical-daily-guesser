@@ -62,3 +62,32 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 - `success` locally. Streak now means "finished today's six," not a perfect score.
 - GitHub Pages is still not enabled, so the share URL may 404 until Pages is turned on.
 - Recheck a few new generic Commons names (`Lymphocyte.jpg`, `Spleen.jpg`, `Neuron.jpg`) if any look like diagrams in play.
+
+## 2026-08-13 — Easy / Medium / Hard daily modes
+
+**User**
+- Let the person who lands on the page pick Easy, Medium, and Hard. They can do all three each day.
+
+**Actions**
+- Added a lobby with three mode cards. Each mode is its own six-field daily tray with its own streak and progress.
+- Easy = difficulty 1–2, Medium = 3, Hard = 4–5. Practice on a card does not touch that mode's streak.
+- Share text now includes the mode name. Storage key bumped to `wit-microscope-med-v3`.
+
+**Outcome**
+- `success` locally. Old v2 single-tray progress will not carry over.
+- Hard pool is thinner than Easy; if we add more images, bias them to difficulty 4–5.
+
+## 2026-08-13 — Modes are content tracks, not easy/medium/hard
+
+**User**
+- Do not use Easy / Medium / Hard. Use human morphology (liver, skin, muscle, squamous, nerves), parasites and organisms, and abnormal morphologies (sickle cell, leukemia, schistocytes of TTP, etc.).
+
+**Actions**
+- Replaced the three lobby modes with `morphology`, `organisms`, and `abnormal`.
+- Assigned tracks in `js/specimens.js`: normal histology and normal blood cells → morphology; parasites/bacteria/fungi → organisms; disease shapes including CMV and ground-glass hepatocytes → abnormal.
+- Storage key bumped to `wit-microscope-med-v4`.
+
+**Outcome**
+- `success` locally. Easy/medium/hard progress will not carry over.
+- The only liver image is ground-glass hepatocytes, so it sits in Abnormal, not Human morphology. Add a normal hepatocyte field later.
+- Abnormal is the smallest pool (14). Worth adding more disease morphologies next.

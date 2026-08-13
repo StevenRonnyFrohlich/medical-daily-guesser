@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <a class="skip" href="#choices">Skip to answers</a>
+  <a class="skip" href="#modes">Skip to modes</a>
   <a class="coffee" id="coffee" href="https://www.buymeacoffee.com/stevenronnyfrohlich" target="_blank" rel="noreferrer">
     If this slide earned a coffee
   </a>
@@ -22,12 +22,19 @@
         <h1>What is this<span>(microscope)</span></h1>
       </div>
       <div class="stats">
-        <div class="stat">Today <b id="stat-score">0/6</b></div>
+        <div class="stat"><span id="stat-score-label">Trays</span> <b id="stat-score">0/3</b></div>
         <div class="stat">Streak <b id="stat-streak">0</b></div>
         <div class="stat">Best <b id="stat-best">0</b></div>
       </div>
     </header>
 
+    <section class="lobby" id="lobby">
+      <p class="lobby-lead">Three trays a day: normal human tissue, organisms, and disease shapes. Play any of them, or all three.</p>
+      <div class="modes" id="modes"></div>
+      <p class="lobby-foot"><button id="btn-how-lobby" type="button">How to play</button></p>
+    </section>
+
+    <div class="board" id="board" hidden>
     <div class="case">
       <div>Accession <strong id="case-accession">WIT-0000-0000</strong></div>
       <div id="case-date">Today</div>
@@ -74,26 +81,25 @@
 
     <footer class="foot">
       <div>
+        <button id="btn-trays" type="button">All trays</button>
+        ·
         <button id="btn-how" type="button">How to play</button>
-        ·
-        <a href="?mode=lab">Open lab</a>
-        ·
-        <a href="index.html">Daily</a>
       </div>
       <div>87 public-domain fields · not a diagnostic tool</div>
     </footer>
+    </div>
   </div>
 
   <div class="modal" id="modal">
     <div class="sheet">
-      <h2>Six fields. Four calls each.</h2>
-      <p>Each calendar day you get six microscope images. Each one has four diagnoses. Guess once per field, then copy a Wordle-style tray.</p>
+      <h2>Three trays. Six fields each.</h2>
+      <p>Each day you can play Human morphology, Parasites & organisms, and Abnormal morphology. They are separate. Finish one, go back, and take another.</p>
       <ul>
-        <li>The six boxes track the day: green is a hit, red is a miss.</li>
-        <li>Stain and magnification are on the requisition. Use them.</li>
-        <li>Wrong answers are lookalikes, not random noise.</li>
-        <li>Finish all six to keep a streak. Stored in this browser.</li>
-        <li>Open lab is another six-field tray and does not touch your streak.</li>
+        <li>Human morphology is normal tissue and cells. Organisms are parasites, bacteria, and fungi. Abnormal is disease shapes: sickle cells, leukemia, schistocytes, and the like.</li>
+        <li>Each tray is six fields, four diagnoses, one guess per field.</li>
+        <li>The boxes track that tray: green is a hit, red is a miss.</li>
+        <li>Each mode keeps its own streak. Stored in this browser.</li>
+        <li>Practice on a card is unlimited and does not touch the daily streak.</li>
         <li>Keys 1–4 or A–D select an answer. Click the field to enlarge it.</li>
       </ul>
       <p>Images are public-domain or freely licensed teaching files, mostly CDC and Wikimedia Commons. This is a game, not medical advice.</p>

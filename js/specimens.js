@@ -1044,3 +1044,27 @@ window.SPECIMENS = [
     blurb: "Stratified transitional epithelium with umbrella cells on top. No granular layer, no true keratin in the normal state. Thickness and atypia are how you leave 'normal bladder'."
   }
 ];
+
+(function assignTracks(list) {
+  const abnormal = new Set([
+    "sickle",
+    "aml",
+    "cll",
+    "cml",
+    "all",
+    "spherocytes",
+    "target-cells",
+    "auer-rod",
+    "reed-sternberg",
+    "hepatocytes",
+    "hyperseg",
+    "rouleaux",
+    "schistocytes",
+    "cmv"
+  ]);
+  list.forEach((item) => {
+    if (abnormal.has(item.id)) item.track = "abnormal";
+    else if (item.category === "parasitology" || item.category === "microbiology") item.track = "organisms";
+    else item.track = "morphology";
+  });
+})(window.SPECIMENS);

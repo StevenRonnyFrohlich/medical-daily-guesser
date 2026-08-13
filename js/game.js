@@ -1,8 +1,25 @@
 (function () {
   const EPOCH = Date.UTC(2026, 7, 13);
-  const STORAGE_KEY = "wit-microscope-med-v2";
+  const STORAGE_KEY = "wit-microscope-med-v4";
   const DAILY_COUNT = (window.GAME_CONFIG && window.GAME_CONFIG.dailyCount) || 6;
   const SHARE_URL = (window.GAME_CONFIG && window.GAME_CONFIG.shareUrl) || "";
+  const MODES = {
+    morphology: {
+      id: "morphology",
+      label: "Human morphology",
+      blurb: "Liver, skin, muscle, nerves, squamous sheets, and normal blood cells."
+    },
+    organisms: {
+      id: "organisms",
+      label: "Parasites & organisms",
+      blurb: "Malaria, worms, bacteria, fungi, and the rest of the menagerie."
+    },
+    abnormal: {
+      id: "abnormal",
+      label: "Abnormal morphology",
+      blurb: "Sickle cells, leukemias, schistocytes of TTP, and other disease shapes."
+    }
+  };
 
   const $ = (id) => document.getElementById(id);
 
@@ -68,10 +85,17 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }
 
-  function pickSet(seed, count) {
+  function modeRecord(state, modeId) {
+    state.modes = state.modes || {};
+    if (!state.modes[modeId]) state.modes[modeId] = { streak: 0, best: 0 };
+    return state.modes[modeId];
+  }
+
+  function pickSet(seed, count, selected) {
     const rng = mulberry32(hash32(seed));
+    const pool = window.SPECIMENS.filter((item) => item.track === selected.id);
     const byCat = {};
-    window.SPECIMENS.forEach((item) => {
+    pool.forEach((item) => {
       (byCat[item.category] || (byCat[item.category] = [])).push(item);
     });
     Object.keys(byCat).forEach((cat) => {
@@ -122,11 +146,11 @@
     return results.filter((item) => item && item.correct).length;
   }
 
-  function shareText(results, number) {
+  function shareText(results, number, mode) {
     const marks = results.map((item) => (item && item.correct ? "🟩" : "🟥")).join("");
     const lines = [
       `What is this (microscope) #${number}`,
-      `${scoreOf(results)}/${DAILY_COUNT}`,
+      `${mode.label} ${scoreOf(results)}/${DAILY_COUNT}`,
       "",
       marks
     ];
@@ -135,6 +159,9 @@
   }
 
   const ui = {
+    lobby: $("lobby"),
+    board: $("board"),
+    modes: $("modes"),
     date: $("case-date"),
     accession: $("case-accession"),
     puzzle: $("case-puzzle"),
@@ -152,20 +179,24 @@
     streak: $("stat-streak"),
     best: $("stat-best"),
     score: $("stat-score"),
+    scoreLabel: $("stat-score-label"),
     share: $("btn-share"),
     next: $("btn-next"),
     toast: $("toast"),
     tray: $("tray"),
     summary: $("summary"),
     summaryScore: $("summary-score"),
-    shareGrid: $("share-grid")
+    shareGrid: $("share-grid"),
+    edition: document.querySelector(".mark em")
   };
 
-  const isLab = new URLSearchParams(location.search).get("mode") === "lab";
   const today = new Date();
   const todayKey = localDate(today);
   const puzzleNo = puzzleNumber(today);
+  const params = new URLSearchParams(location.search);
   let state = loadState();
+  let mode = null;
+  let isLab = false;
   let set = [];
   let results = Array(DAILY_COUNT).fill(null);
   let index = 0;
@@ -186,10 +217,62 @@
     return results.every(Boolean);
   }
 
-  function renderStats() {
-    ui.streak.textContent = state.streak || 0;
-    ui.best.textContent = state.best || 0;
+  function traysDoneToday() {
+    return Object.keys(MODES).filter((id) => {
+      const record = modeRecord(state, id);
+      return record.dayKey === todayKey && Array.isArray(record.progress) && record.progress.every(Boolean);
+    }).length;
+  }
+
+  function renderLobbyStats() {
+    ui.scoreLabel.textContent = "Trays";
+    ui.score.textContent = `${traysDoneToday()}/3`;
+    ui.streak.textContent = "—";
+    ui.best.textContent = "—";
+    ui.edition.textContent = "Medical edition";
+  }
+
+  function renderPlayStats() {
+    const record = modeRecord(state, mode.id);
+    ui.scoreLabel.textContent = "Today";
+    ui.streak.textContent = record.streak || 0;
+    ui.best.textContent = record.best || 0;
     ui.score.textContent = `${scoreOf(results)}/${DAILY_COUNT}`;
+    ui.edition.textContent = `${mode.label} · Medical edition`;
+  }
+
+  function trayStatus(modeId) {
+    const record = modeRecord(state, modeId);
+    if (record.dayKey !== todayKey || !Array.isArray(record.progress)) return "Not started";
+    const done = record.progress.filter(Boolean).length;
+    if (done === DAILY_COUNT) return `${scoreOf(record.progress)}/${DAILY_COUNT} done`;
+    return `${done}/${DAILY_COUNT} in progress`;
+  }
+
+  function renderLobby() {
+    ui.lobby.hidden = false;
+    ui.board.hidden = true;
+    mode = null;
+    isLab = false;
+    renderLobbyStats();
+    ui.modes.innerHTML = "";
+    Object.values(MODES).forEach((item) => {
+      const record = modeRecord(state, item.id);
+      const card = document.createElement("article");
+      card.className = "mode";
+      card.innerHTML = `
+        <h2>${item.label}</h2>
+        <p>${item.blurb}</p>
+        <div class="mode-meta">
+          <span>${trayStatus(item.id)}</span>
+          <span>Streak ${record.streak || 0}</span>
+        </div>
+        <div class="mode-actions">
+          <button type="button" data-play="${item.id}">Play today</button>
+          <button type="button" data-lab="${item.id}">Practice</button>
+        </div>`;
+      ui.modes.appendChild(card);
+    });
   }
 
   function renderTray() {
@@ -267,24 +350,25 @@
 
   function openSummary() {
     ui.summary.classList.add("is-open");
-    ui.summaryScore.textContent = `${scoreOf(results)} / ${DAILY_COUNT}`;
+    ui.summaryScore.textContent = `${mode.label} · ${scoreOf(results)} / ${DAILY_COUNT}`;
     ui.shareGrid.textContent = results.map((item) => (item.correct ? "🟩" : "🟥")).join(" ");
     ui.share.hidden = isLab;
     $("btn-share-summary").hidden = isLab;
   }
 
   function persistDaily() {
-    if (isLab) return;
-    const justFinished = finished() && state.lastDate !== todayKey;
+    if (isLab || !mode) return;
+    const record = modeRecord(state, mode.id);
+    const justFinished = finished() && record.lastDate !== todayKey;
     if (justFinished) {
-      state.streak = state.lastDate && isYesterday(state.lastDate, todayKey) ? (state.streak || 0) + 1 : 1;
-      state.best = Math.max(state.best || 0, state.streak);
-      state.lastDate = todayKey;
+      record.streak = record.lastDate && isYesterday(record.lastDate, todayKey) ? (record.streak || 0) + 1 : 1;
+      record.best = Math.max(record.best || 0, record.streak);
+      record.lastDate = todayKey;
     }
-    state.dayKey = todayKey;
-    state.progress = results;
+    record.dayKey = todayKey;
+    record.progress = results;
     saveState(state);
-    renderStats();
+    renderPlayStats();
   }
 
   function guess(label) {
@@ -304,14 +388,14 @@
     const specimen = current();
     const answered = results[index];
     locked = Boolean(answered);
-    choices = buildChoices(specimen, isLab ? `lab-${specimen.id}` : `${todayKey}|${specimen.id}`);
+    choices = buildChoices(specimen, isLab ? `lab-${mode.id}-${specimen.id}` : `${todayKey}|${mode.id}|${specimen.id}`);
     ui.stain.textContent = specimen.stain;
     ui.mag.textContent = specimen.mag;
     ui.difficulty.textContent = "●".repeat(specimen.difficulty) + "○".repeat(5 - specimen.difficulty);
     ui.field.textContent = `${index + 1} / ${DAILY_COUNT}`;
     setImage(specimen.file);
     renderTray();
-    renderStats();
+    renderPlayStats();
     if (answered) {
       renderChoices(answered.guess, specimen.name);
       openReveal(answered.correct);
@@ -325,7 +409,7 @@
   }
 
   function startSet(seed, label) {
-    set = pickSet(seed, DAILY_COUNT);
+    set = pickSet(seed, DAILY_COUNT, mode);
     results = Array(DAILY_COUNT).fill(null);
     ui.date.textContent = label.date;
     ui.accession.textContent = label.accession;
@@ -333,31 +417,42 @@
     showField(0);
   }
 
-  function startDaily() {
-    const seed = `${todayKey}|wit-micro-med-six-v2`;
+  function openBoard() {
+    ui.lobby.hidden = true;
+    ui.board.hidden = false;
+  }
+
+  function startDaily(modeId) {
+    mode = MODES[modeId];
+    isLab = false;
+    openBoard();
+    const seed = `${todayKey}|wit-micro-med-${mode.id}-v4`;
     startSet(seed, {
       date: formatHumanDate(today),
-      accession: `WIT-${today.getFullYear()}-${pad(today.getMonth() + 1)}${pad(today.getDate())}`,
+      accession: `WIT-${mode.id.slice(0, 1).toUpperCase()}${today.getFullYear()}-${pad(today.getMonth() + 1)}${pad(today.getDate())}`,
       puzzle: `#${puzzleNo}`
     });
-
-    if (state.dayKey === todayKey && Array.isArray(state.progress)) {
-      results = state.progress.slice(0, DAILY_COUNT);
+    const record = modeRecord(state, mode.id);
+    if (record.dayKey === todayKey && Array.isArray(record.progress)) {
+      results = record.progress.slice(0, DAILY_COUNT);
       while (results.length < DAILY_COUNT) results.push(null);
       showField(firstOpen());
     }
   }
 
-  function startLab() {
-    startSet(`lab-${Date.now()}`, {
-      date: "Open lab",
-      accession: `WIT-LAB-${pad(Math.floor(Math.random() * 99) + 1)}`,
+  function startLab(modeId) {
+    mode = MODES[modeId];
+    isLab = true;
+    openBoard();
+    startSet(`lab-${mode.id}-${Date.now()}`, {
+      date: `${mode.label} lab`,
+      accession: `WIT-LAB-${mode.id.slice(0, 1).toUpperCase()}-${pad(Math.floor(Math.random() * 99) + 1)}`,
       puzzle: "practice"
     });
   }
 
   async function share() {
-    const text = shareText(results, puzzleNo);
+    const text = shareText(results, puzzleNo, mode);
     if (navigator.share) {
       try {
         await navigator.share({ text });
@@ -374,7 +469,20 @@
     }
   }
 
-  $("btn-how").addEventListener("click", () => $("modal").classList.add("is-open"));
+  function openHow() {
+    $("modal").classList.add("is-open");
+  }
+
+  ui.modes.addEventListener("click", (event) => {
+    const play = event.target.closest("[data-play]");
+    const lab = event.target.closest("[data-lab]");
+    if (play) startDaily(play.getAttribute("data-play"));
+    if (lab) startLab(lab.getAttribute("data-lab"));
+  });
+
+  $("btn-trays").addEventListener("click", renderLobby);
+  $("btn-how").addEventListener("click", openHow);
+  $("btn-how-lobby").addEventListener("click", openHow);
   $("btn-close-modal").addEventListener("click", () => $("modal").classList.remove("is-open"));
   $("modal").addEventListener("click", (event) => {
     if (event.target.id === "modal") $("modal").classList.remove("is-open");
@@ -390,7 +498,7 @@
   $("btn-share-summary").addEventListener("click", share);
   ui.next.addEventListener("click", () => {
     if (isLab && finished()) {
-      startLab();
+      startLab(mode.id);
       return;
     }
     showField(firstOpen());
@@ -401,6 +509,7 @@
       $("modal").classList.remove("is-open");
       $("lightbox").classList.remove("is-open");
     }
+    if (ui.board.hidden) return;
     const map = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
     const choiceIndex = map[event.key];
     if (choiceIndex == null || locked) return;
@@ -415,6 +524,11 @@
     else coffee.hidden = true;
   }
 
-  if (isLab) startLab();
-  else startDaily();
+  const requested = params.get("tray");
+  if (requested && MODES[requested]) {
+    if (params.get("mode") === "lab") startLab(requested);
+    else startDaily(requested);
+  } else {
+    renderLobby();
+  }
 })();
