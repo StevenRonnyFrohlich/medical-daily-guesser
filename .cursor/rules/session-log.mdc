@@ -1,0 +1,33 @@
+---
+description: Keep a session log of user requests and agent actions in this repo
+alwaysApply: true
+---
+
+# Session log
+
+At the end of every session in this repo, append an entry to `SESSION_LOG.md`.
+
+Do this even if the user does not ask. Do not wait until they remind you.
+
+## Entry format
+
+```markdown
+## YYYY-MM-DD — short title
+
+**User**
+- What they asked, in their words or a close paraphrase.
+
+**Actions**
+- What you did, in order.
+
+**Outcome**
+- `success` | `semi-success` | `blocked`
+- Notes for a future session: leftovers, account/hosting gotchas, image/API limits, decisions.
+```
+
+## Rules
+
+- One entry per conversation turn-set (a user request and the work that followed). If the same chat continues later, add a new dated entry rather than rewriting history.
+- Be factual. Record failures and partial work. That is the point.
+- Do not log secrets, tokens, or `.env` values.
+- Keep each entry short enough to scan. Link files instead of pasting diffs.

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What is this (microscope) — Medical edition</title>
+  <meta name="description" content="A daily four-option microscope identification game. Medical edition.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;1,9..144,360&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#choices">Skip to answers</a>
+  <a class="coffee" id="coffee" href="https://www.buymeacoffee.com/stevenronnyfrohlich" target="_blank" rel="noreferrer">
+    If this slide earned a coffee
+  </a>
+  <div class="app">
+    <header class="top">
+      <div class="mark">
+        <em>Medical edition</em>
+        <h1>What is this<span>(microscope)</span></h1>
+      </div>
+      <div class="stats">
+        <div class="stat">Streak <b id="stat-streak">0</b></div>
+        <div class="stat">Best <b id="stat-best">0</b></div>
+      </div>
+    </header>
+
+    <div class="case">
+      <div>Accession <strong id="case-accession">WIT-0000-0000</strong></div>
+      <div id="case-date">Today</div>
+      <div>Puzzle <strong id="case-puzzle">#1</strong></div>
+    </div>
+
+    <section class="stage" aria-label="Microscope field">
+      <div class="ocular" id="ocular">
+        <img id="specimen-image" alt="Today's microscope specimen">
+        <div class="reticle" aria-hidden="true"></div>
+        <button id="btn-zoom" type="button" aria-label="Enlarge specimen"></button>
+      </div>
+    </section>
+
+    <div class="meta">
+      <div>Stain <span id="meta-stain">—</span></div>
+      <div>Objective <span id="meta-mag">—</span></div>
+      <div>Difficulty <span id="meta-diff">—</span></div>
+    </div>
+
+    <div class="choices" id="choices"></div>
+
+    <section class="reveal" id="reveal" aria-live="polite">
+      <h2 class="verdict" id="verdict"></h2>
+      <p id="blurb"></p>
+      <p class="credit" id="credit"></p>
+      <div class="actions">
+        <button class="btn" id="btn-share" type="button">Share result</button>
+        <button class="btn" id="btn-next" type="button" hidden>Next specimen</button>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div>
+        <button id="btn-how" type="button">How to play</button>
+        ·
+        <a href="?mode=lab">Open lab</a>
+        ·
+        <a href="index.html">Daily</a>
+      </div>
+      <div>62 public-domain fields · not a diagnostic tool</div>
+    </footer>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="sheet">
+      <h2>One field. Four calls.</h2>
+      <p>Each calendar day you get one microscope image and four diagnoses. Guess once. Come back tomorrow.</p>
+      <ul>
+        <li>Stain and magnification are on the requisition. Use them.</li>
+        <li>Wrong answers are lookalikes, not random noise.</li>
+        <li>Streaks count only on the daily case, stored in this browser.</li>
+        <li>Open lab is unlimited practice and does not touch your streak.</li>
+        <li>Keys 1–4 or A–D select an answer. Click the field to enlarge it.</li>
+      </ul>
+      <p>Images are public-domain or freely licensed teaching files, mostly CDC and Wikimedia Commons. This is a game, not medical advice.</p>
+      <button class="btn" id="btn-close-modal" type="button">Close</button>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-image" alt="Enlarged specimen">
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/specimens.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
