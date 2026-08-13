@@ -34,3 +34,31 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 - `semi-success` / in progress at time of writing.
 - Repo create and push are blocked until `gh` is `StevenRonnyFrohlich`. Do not create the repo under `StevenFrohlich` or `VitruvianMD`.
 - Coffee slug is a guess (`stevenronnyfrohlich`). Confirm or replace after the BMC page exists.
+
+## 2026-08-13 — GitHub login and first push
+
+**User**
+- Finish switching to StevenRonnyFrohlich, then push `cursor/medical-daily-guesser`.
+
+**Actions**
+- Device login completed as `StevenRonnyFrohlich`.
+- Created public repo `StevenRonnyFrohlich/medical-daily-guesser` and pushed the existing branch.
+
+**Outcome**
+- `success`. Repo: https://github.com/StevenRonnyFrohlich/medical-daily-guesser
+- Local git author is still `SteveFrohlich <steve.frohlich@vitruvianmd.com>`. Change that later if the personal account should own commits.
+
+## 2026-08-13 — Six-field daily tray, more images, Wordle share
+
+**User**
+- Each day the user must guess 6 things, with Wordle-like boxes for hits and misses. Add more pictures and a copy/share result.
+
+**Actions**
+- Reworked daily play in `js/game.js` / `index.html` / `css/styles.css`: six seeded fields, tray boxes, resume mid-day, share text `🟩🟥` plus score.
+- Added 25 Commons-verified specimens (87 total). Share URL lives in `js/config.js`.
+- Lab mode is now a practice tray of six and does not affect streak.
+
+**Outcome**
+- `success` locally. Streak now means "finished today's six," not a perfect score.
+- GitHub Pages is still not enabled, so the share URL may 404 until Pages is turned on.
+- Recheck a few new generic Commons names (`Lymphocyte.jpg`, `Spleen.jpg`, `Neuron.jpg`) if any look like diagrams in play.

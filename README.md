@@ -2,7 +2,7 @@
 
 A daily four-option identification game. Medical edition.
 
-One microscope field a day, four diagnoses, one guess. The distractors are lookalikes a professional might actually consider: Babesia vs falciparum rings, Histoplasma vs Leishmania, AML vs ALL.
+Six microscope fields a day, four diagnoses each, one guess per field. The distractors are lookalikes a professional might actually consider: Babesia vs falciparum rings, Histoplasma vs Leishmania, AML vs ALL. Finish the tray and copy a Wordle-style result.
 
 ## Play
 
@@ -12,8 +12,8 @@ Open `index.html` in a browser, or from this folder:
 npx --yes serve .
 ```
 
-- Daily case: `index.html`
-- Unlimited practice: `index.html?mode=lab`
+- Daily tray (six fields): `index.html`
+- Unlimited practice trays: `index.html?mode=lab`
 
 Images load from [Wikimedia Commons](https://commons.wikimedia.org/). You need a network connection.
 
@@ -43,6 +43,6 @@ Create that page at [buymeacoffee.com](https://www.buymeacoffee.com/) if it does
 
 ## Catalog
 
-62 specimens across parasitology, microbiology, hematology, and histology. Sources are public-domain or freely licensed teaching files (CDC PHIL / DPDx and Commons contributors). Each case links back to its Commons file.
+87 specimens across parasitology, microbiology, hematology, and histology. Sources are public-domain or freely licensed teaching files (CDC PHIL / DPDx and Commons contributors). Each case links back to its Commons file.
 
 This is a teaching game, not a diagnostic tool.

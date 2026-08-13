@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What is this (microscope) — Medical edition</title>
-  <meta name="description" content="A daily four-option microscope identification game. Medical edition.">
+  <meta name="description" content="A daily six-field microscope identification game. Medical edition.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;1,9..144,360&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
         <h1>What is this<span>(microscope)</span></h1>
       </div>
       <div class="stats">
+        <div class="stat">Today <b id="stat-score">0/6</b></div>
         <div class="stat">Streak <b id="stat-streak">0</b></div>
         <div class="stat">Best <b id="stat-best">0</b></div>
       </div>
@@ -32,6 +33,8 @@
       <div id="case-date">Today</div>
       <div>Puzzle <strong id="case-puzzle">#1</strong></div>
     </div>
+
+    <ol class="tray" id="tray" aria-label="Today's six fields"></ol>
 
     <section class="stage" aria-label="Microscope field">
       <div class="ocular" id="ocular">
@@ -45,6 +48,7 @@
       <div>Stain <span id="meta-stain">—</span></div>
       <div>Objective <span id="meta-mag">—</span></div>
       <div>Difficulty <span id="meta-diff">—</span></div>
+      <div>Field <span id="meta-field">1 / 6</span></div>
     </div>
 
     <div class="choices" id="choices"></div>
@@ -54,8 +58,17 @@
       <p id="blurb"></p>
       <p class="credit" id="credit"></p>
       <div class="actions">
-        <button class="btn" id="btn-share" type="button">Share result</button>
-        <button class="btn" id="btn-next" type="button" hidden>Next specimen</button>
+        <button class="btn" id="btn-next" type="button" hidden>Next field</button>
+        <button class="btn" id="btn-share" type="button" hidden>Copy result</button>
+      </div>
+    </section>
+
+    <section class="summary" id="summary">
+      <h2>Today's tray</h2>
+      <p class="share-grid" id="share-grid" aria-hidden="true"></p>
+      <p class="summary-score" id="summary-score">0 / 6</p>
+      <div class="actions">
+        <button class="btn" id="btn-share-summary" type="button">Copy result</button>
       </div>
     </section>
 
@@ -67,19 +80,20 @@
         ·
         <a href="index.html">Daily</a>
       </div>
-      <div>62 public-domain fields · not a diagnostic tool</div>
+      <div>87 public-domain fields · not a diagnostic tool</div>
     </footer>
   </div>
 
   <div class="modal" id="modal">
     <div class="sheet">
-      <h2>One field. Four calls.</h2>
-      <p>Each calendar day you get one microscope image and four diagnoses. Guess once. Come back tomorrow.</p>
+      <h2>Six fields. Four calls each.</h2>
+      <p>Each calendar day you get six microscope images. Each one has four diagnoses. Guess once per field, then copy a Wordle-style tray.</p>
       <ul>
+        <li>The six boxes track the day: green is a hit, red is a miss.</li>
         <li>Stain and magnification are on the requisition. Use them.</li>
         <li>Wrong answers are lookalikes, not random noise.</li>
-        <li>Streaks count only on the daily case, stored in this browser.</li>
-        <li>Open lab is unlimited practice and does not touch your streak.</li>
+        <li>Finish all six to keep a streak. Stored in this browser.</li>
+        <li>Open lab is another six-field tray and does not touch your streak.</li>
         <li>Keys 1–4 or A–D select an answer. Click the field to enlarge it.</li>
       </ul>
       <p>Images are public-domain or freely licensed teaching files, mostly CDC and Wikimedia Commons. This is a game, not medical advice.</p>

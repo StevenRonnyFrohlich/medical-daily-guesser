@@ -169,6 +169,70 @@ body {
   font-weight: 500;
 }
 
+.tray {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.box {
+  width: 38px;
+  height: 38px;
+  border: 2px solid var(--line);
+  background: #0c0f14;
+  padding: 0;
+  cursor: pointer;
+}
+
+.box.is-right {
+  background: #2a6b5c;
+  border-color: var(--phosphor);
+}
+
+.box.is-wrong {
+  background: #7a3036;
+  border-color: var(--blood);
+}
+
+.box.is-current {
+  box-shadow: 0 0 0 2px var(--brass);
+}
+
+.summary {
+  display: none;
+  margin-top: 22px;
+  padding: 22px 20px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.summary.is-open {
+  display: block;
+}
+
+.summary h2 {
+  font-family: var(--font-display);
+  margin: 0 0 8px;
+}
+
+.share-grid {
+  margin: 8px 0 4px;
+  font-size: 1.7rem;
+  letter-spacing: 0.18em;
+}
+
+.summary-score {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6d685c;
+}
+
 .stage {
   position: relative;
   display: grid;
