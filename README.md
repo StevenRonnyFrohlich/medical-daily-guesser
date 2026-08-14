@@ -18,7 +18,6 @@ npx --yes serve .
 
 - Daily lobby: `index.html`
 - Deep link a tray: `index.html?tray=abnormal`
-- Practice a track: `index.html?tray=organisms&mode=lab`
 
 Images load from [Wikimedia Commons](https://commons.wikimedia.org/). You need a network connection.
 

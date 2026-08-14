@@ -285,7 +285,6 @@
         </div>
         <div class="mode-actions">
           <button type="button" data-play="${item.id}">Play today</button>
-          <button type="button" data-lab="${item.id}">Practice</button>
         </div>`;
       ui.modes.appendChild(card);
     });
@@ -494,9 +493,7 @@
 
   ui.modes.addEventListener("click", (event) => {
     const play = event.target.closest("[data-play]");
-    const lab = event.target.closest("[data-lab]");
     if (play) startDaily(play.getAttribute("data-play"));
-    if (lab) startLab(lab.getAttribute("data-lab"));
   });
 
   $("btn-trays").addEventListener("click", renderLobby);
@@ -539,8 +536,7 @@
 
   const requested = params.get("tray");
   if (requested && MODES[requested]) {
-    if (params.get("mode") === "lab") startLab(requested);
-    else startDaily(requested);
+    startDaily(requested);
   } else {
     renderLobby();
   }

@@ -310,6 +310,42 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success` locally. Not pushed.
 
+## 2026-08-14 — Remove live practice; accounts later
+
+**User**
+- Live site should not offer practice. Remove that button. Add signup/login later so practice is for accounts. Auth can live on a development branch, not all in one go.
+
+**Actions**
+- Removed the Practice button, the lab deep link, and the How-to practice line. Left `startLab` in `js/game.js` for an accounts branch.
+
+**Outcome**
+- `success` locally for hiding practice. Signup/login not started. Not pushed.
+
+## 2026-08-14 — Fuller about page from LinkedIn
+
+**User**
+- Read LinkedIn and gather data for a nicer about page. Core line: engineer medical solutions that actually help people; this is a space where we can improve the world.
+
+**Actions**
+- Pulled public LinkedIn/Wits/Rwanda workshop facts. Rewrote `about.html` with education, scope skills, unnamed startup pivot, Rwanda malaria training, The Call, and that aim. No company name.
+
+**Outcome**
+- `success` locally. LinkedIn itself would not load; used public snippets. Not pushed.
+
+## 2026-08-14 — About: drop Rwanda, widen to Africa and the world
+
+**User**
+- Remove Rwanda specifically. The work should span Africa and the world, where a lack of medical skill costs time in saving lives.
+
+**Actions**
+- Rewrote that paragraph in `about.html`. Dropped Rwanda, CMU Africa, and RBC.
+
+**Outcome**
+- `success` locally. Not pushed.
+
+
+
+
 
 
 
