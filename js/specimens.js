@@ -7,6 +7,7 @@ window.SPECIMENS = [
     stain: "Giemsa / hematoxylin",
     mag: "1000× oil",
     file: "Plasmodium falciparum (malaria) parasite in blood.jpg",
+    files: ["Plasmodium falciparum (malaria) parasite in blood.jpg", "P. falciparum thin smear with ring forms.jpg", "Ring Forms of Plasmodium falciparum.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Babesia microti", "Howell–Jolly bodies", "Platelets overlying RBCs"],
     blurb: "Delicate ring trophozoites inside erythrocytes, often with double chromatin dots and multiply infected cells. No Schüffner stippling. The professional trap is Babesia, which can also make small rings but may show tetrads."
@@ -19,6 +20,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "Plasmodium falciparum gametocyte.jpg",
+    files: ["Plasmodium falciparum gametocyte.jpg", "Macrogametocyte of the parasite Plasmodium falciparum PHIL 2701 lores.jpg", "P. falciparum thick smear with gametocytes.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Microfilaria fragment", "Trypanosoma cruzi", "Plasmodium vivax gametocyte"],
     blurb: "The crescent or banana-shaped gametocyte is pathognomonic for P. falciparum. Other malaria species make round gametocytes. Do not confuse a folded crescent with a trypanosome kinetoplast."
@@ -31,6 +33,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "Plasmodium vivax 01.png",
+    files: ["Plasmodium vivax 01.png", "Immature and mature trophozoites of the Plasmodium vivax parasite PHIL 2720 lores.jpg", "Microphotographs of Plasmodium vivax in Giemsa-stained thin blood films.jpg"],
     credit: "CDC / Wikimedia Commons, public domain",
     lookalikes: ["Plasmodium ovale", "Plasmodium falciparum rings", "Babesia microti"],
     blurb: "Large ameboid trophozoites in enlarged, pale RBCs with Schüffner dots. Ovale can look similar but typically infects oval, fimbriated cells and stays more compact."
@@ -43,6 +46,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "Plasmodium malariae 01.png",
+    files: ["Plasmodium malariae 01.png", "Mature Plasmodium malariae schizont PHIL 2715 lores.jpg", "Birds-eye trophozoite of P. malariae in a thin blood smear.jpg"],
     credit: "CDC / Wikimedia Commons, public domain",
     lookalikes: ["Plasmodium falciparum", "Plasmodium knowlesi", "Babesia microti"],
     blurb: "Band-form trophozoites in normal-sized RBCs, with coarse pigment. Knowlesi is the modern lookalike in Southeast Asia and can be indistinguishable without PCR."
@@ -55,6 +59,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "Blood smear of Babesia microti, original.png",
+    files: ["Blood smear of Babesia microti, original.png", "Babesia microti CDC.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Plasmodium falciparum rings", "Howell–Jolly bodies", "Bartonella bacilliformis"],
     blurb: "Small intraerythrocytic rings, sometimes tetrads (Maltese cross), no hemozoin pigment, and no travel-to-tropics story required. The Maltese cross is diagnostic when present; most fields only show rings."
@@ -67,6 +72,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "Trypanosoma cruzi in a blood smear.jpg",
+    files: ["Trypanosoma cruzi in a blood smear.jpg", "Trypanosoma cruzi (14401029152).jpg", "Trypanosoma cruzi B.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Trypanosoma brucei", "Borrelia recurrentis", "Microfilaria"],
     blurb: "C-shaped trypomastigotes with a large subterminal kinetoplast. T. brucei is usually more slender with a smaller kinetoplast. Spirochetes lack a nucleus-kinetoplast pair."
@@ -79,6 +85,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "11820 lores.jpg",
+    files: ["11820 lores.jpg", "Tb brucei.jpg", "Trypanosoma brucei gambiense - trypomastigote.jpg", "Afric tryp 1a DPDxi.jpg"],
     credit: "CDC / Wikimedia Commons, public domain",
     lookalikes: ["Trypanosoma cruzi", "Borrelia spp.", "Microfilaria"],
     blurb: "African trypanosomes in blood: elongated trypomastigotes with a small kinetoplast and undulating membrane. Geography and a chancre or Winterbottom sign help, but the kinetoplast size separates it from T. cruzi."
@@ -91,6 +98,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "Extracellular Amastigotes of Leishmania donovani in Giemsa stained smear.jpg",
+    files: ["Extracellular Amastigotes of Leishmania donovani in Giemsa stained smear.jpg", "Leishmania donovani amastigotes in Giemsa stained smear of FNAC.jpg", "Amastigotes of Leishmania donovani.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Histoplasma capsulatum", "Toxoplasma gondii", "Trypanosoma cruzi amastigotes"],
     blurb: "2–4 µm amastigotes with a nucleus and rod-shaped kinetoplast. Histoplasma is similar size but GMS-positive, lacks a kinetoplast, and often shows a narrow-based bud. This is a classic boards-level distinction."
@@ -103,6 +111,7 @@ window.SPECIMENS = [
     stain: "Bright-field / trichrome",
     mag: "400–1000×",
     file: "Giardia.jpg",
+    files: ["Giardia.jpg", "Giardia intestinalis - trophozoite.jpg", "Giardia lamblia Trophont 1000x oil fecal sample 1.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Trichomonas vaginalis", "Chilomastix mesnili", "Dientamoeba fragilis"],
     blurb: "Owl-face trophozoites with two nuclei, median bodies, and flagella, or oval cysts with four nuclei. Trichomonas has one nucleus and no cyst stage. Chilomastix has a single nucleus and a spiral groove."
@@ -115,6 +124,7 @@ window.SPECIMENS = [
     stain: "Trichrome / iodine",
     mag: "1000× oil",
     file: "Entamoeba histolytica trophozoite.png",
+    files: ["Entamoeba histolytica trophozoite.png", "Micrograph of Entamoeba histolytica.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Entamoeba coli", "Macrophage in stool", "Iodamoeba bütschlii"],
     blurb: "Ameba with ingested RBCs and a small central karyosome. E. coli has a larger, eccentric karyosome and coarser chromatin. Macrophages can swallow RBCs but lack a true karyosome."
@@ -127,6 +137,7 @@ window.SPECIMENS = [
     stain: "Modified acid-fast",
     mag: "1000× oil",
     file: "Cryptosporidium DPDxCrypto oo AF.JPG",
+    files: ["Cryptosporidium DPDxCrypto oo AF.JPG", "7829 lores.jpg", "Oocists de Cryptosporidium parvum 2.jpg"],
     credit: "CDC DPDx / Wikimedia Commons, public domain",
     lookalikes: ["Cyclospora cayetanensis", "Cystoisospora belli", "Yeast in stool"],
     blurb: "4–6 µm acid-fast spheres. Cyclospora is larger (8–10 µm) and stains variably. Cystoisospora is much larger and often oval. Size plus acid-fastness is the whole game."
@@ -139,6 +150,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "Toxoplasma gondii tachy.jpg",
+    files: ["Toxoplasma gondii tachy.jpg", "T. gondii tachyzoites.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Leishmania amastigotes", "Histoplasma capsulatum", "Trypanosoma cruzi amastigotes"],
     blurb: "Crescentic tachyzoites with a central nucleus, no kinetoplast. In tissue they form cysts with bradyzoites. Leishmania always carries a kinetoplast; Histoplasma buds and stains with GMS."
@@ -151,6 +163,7 @@ window.SPECIMENS = [
     stain: "Unstained wet mount",
     mag: "100–400×",
     file: "Schistosoma haematobium egg.jpg",
+    files: ["Schistosoma haematobium egg.jpg", "Schistosoma haematobium egg 4843 lores.jpg", "Schistosoma haematobium egg 2.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Schistosoma mansoni egg", "Schistosoma japonicum egg", "Hookworm egg"],
     blurb: "Large oval egg with a terminal spine, classically in urine. Mansoni has a lateral spine; japonicum is smaller and more rounded with a tiny knob. Hookworm eggs have a thin shell and no spine."
@@ -163,6 +176,7 @@ window.SPECIMENS = [
     stain: "Unstained wet mount",
     mag: "400×",
     file: "Ascaris lumbricoides egg.jpg",
+    files: ["Ascaris lumbricoides egg.jpg", "Fertilized egg of Ascaris lumbricoides PHIL 410 lores.jpg", "Egg of Ascaris lumbricoides.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Hookworm egg", "Trichuris trichiura egg", "Taenia egg"],
     blurb: "Fertile eggs are thick-shelled and mammillated, 55–75 µm, with a round-oval contour. Decorticated eggs lose the albuminous coat and can fool people into calling them hookworm."
@@ -175,6 +189,7 @@ window.SPECIMENS = [
     stain: "Unstained wet mount",
     mag: "400×",
     file: "Trichuris egg.jpg",
+    files: ["Trichuris egg.jpg", "Trichuris trichiura eggs.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Enterobius vermicularis egg", "Hookworm egg", "Capillaria philippinensis egg"],
     blurb: "Barrel-shaped egg with bipolar plugs. Pinworm is flattened on one side. Capillaria is a genuine lookalike but smaller, with striated shells and less prominent plugs."
@@ -187,6 +202,7 @@ window.SPECIMENS = [
     stain: "Unstained wet mount",
     mag: "400×",
     file: "Hookworm egg.jpg",
+    files: ["Hookworm egg.jpg", "Eggs of Hookworm.jpg", "Hookworm egg 1.JPG"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Strongyloides egg", "Ascaris (decorticated)", "Trichostrongylus egg"],
     blurb: "Thin-shelled oval egg with a 4–8 cell morula in fresh stool. Species (Necator vs Ancylostoma) cannot be told from the egg. Strongyloides usually hatches in the gut, so eggs in stool are uncommon."
@@ -199,6 +215,7 @@ window.SPECIMENS = [
     stain: "Scotch tape prep",
     mag: "400×",
     file: "Enterobius vermicularis egg.jpg",
+    files: ["Enterobius vermicularis egg.jpg", "Egg of Enterobius vermicularis.jpg", "Evermicularis egg wtmt.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Trichuris trichiura egg", "Hookworm egg", "Pollen grain"],
     blurb: "Colorless, planoconvex egg: flattened on one side, D-shaped. Found on perianal tape, not reliably in stool. Pollen and tape artifacts are the usual false positives."
@@ -211,6 +228,7 @@ window.SPECIMENS = [
     stain: "Wet mount / iodine",
     mag: "100–400×",
     file: "Strongyloides stercoralis.jpg",
+    files: ["Strongyloides stercoralis.jpg", "Strongyloides stercoralis larva.jpg", "Larva of Strongyloides in Saline wet mount of stool microscopy.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Hookworm rhabditiform larva", "Enterobius adult fragment", "Free-living nematode"],
     blurb: "Rhabditiform larvae in stool with a short buccal canal and prominent genital primordium. Hookworm rhabditiform larvae have a long buccal canal. This distinction matters in hyperinfection."
@@ -223,6 +241,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–400×",
     file: "Trichinella spiralis.jpg",
+    files: ["Trichinella spiralis.jpg", "Trichinella spiralis in muscle tissue (265 16) In skeletal (striated) muscle tissue.jpg", "Trichinella spiralis muscle.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Sarcocystis in muscle", "Toxoplasma tissue cyst", "Artifact / folded fiber"],
     blurb: "Coiled larva inside a nurse-cell cyst in skeletal muscle. Sarcocystis cysts are larger, septate, and lined by a thicker wall. Clinical cue: myalgias after undercooked pork or game."
@@ -235,6 +254,7 @@ window.SPECIMENS = [
     stain: "Unstained wet mount",
     mag: "400×",
     file: "Taenia egg.jpg",
+    files: ["Taenia egg.jpg", "An egg of Taenia in Ziehl-Neelsen stained smear of faeces jpg.jpg", "Egg of tapeworm in feces microscopy.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Hymenolepis nana egg", "Ascaris lumbricoides egg", "Pollen grain"],
     blurb: "Spherical, brown, radially striated embryophore with a hexacanth embryo. T. solium and T. saginata eggs are indistinguishable. Hymenolepis is smaller and has polar filaments."
@@ -247,6 +267,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "100–400×",
     file: "Microfilaria.jpg",
+    files: ["Microfilaria.jpg", "Microfilaria under microscope.jpg", "Microfilaria Loa Loa.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Trypanosoma brucei", "Borrelia spp.", "Cotton fiber artifact"],
     blurb: "Sheathed or unsheathed nematode larvae in blood. Speciation uses sheath, nuclei to the tail tip, and periodicity. Fibers lack nuclei; trypanosomes are much smaller and have a kinetoplast."
@@ -259,6 +280,7 @@ window.SPECIMENS = [
     stain: "Ziehl–Neelsen",
     mag: "1000× oil",
     file: "Mycobacterium tuberculosis Ziehl-Neelsen stain.jpg",
+    files: ["Mycobacterium tuberculosis Ziehl-Neelsen stain.jpg", "Mycobacterium tuberculosis in Ziehl-Neelsen stained smear of sputum.jpg"],
     credit: "Wikimedia Commons, public domain",
     lookalikes: ["Nocardia (partially acid-fast)", "Mycobacterium avium complex", "Artifact / stain precipitate"],
     blurb: "Beaded red rods against a blue background. Species cannot be told from morphology. Nocardia is branching and only partially acid-fast with a weaker decolorizer."
@@ -271,6 +293,7 @@ window.SPECIMENS = [
     stain: "Gram stain",
     mag: "1000× oil",
     file: "Streptococcus pneumoniae.jpg",
+    files: ["Streptococcus pneumoniae.jpg", "Pneumococcus CDC PHIL ID1003.jpg", "Gram stain of Streptococcus pneumoniae.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Viridans streptococci", "Enterococcus", "Listeria monocytogenes"],
     blurb: "Gram-positive lancet-shaped diplococci, often with a clear capsule. Viridans strep are in chains and lack the lancet pair. Clinical context (lobar pneumonia, rusty sputum) still helps."
@@ -283,6 +306,7 @@ window.SPECIMENS = [
     stain: "Gram stain",
     mag: "1000× oil",
     file: "Staphylococcus aureus Gram.jpg",
+    files: ["Staphylococcus aureus Gram.jpg", "Staphylococcus aureus Gram stain.jpg", "Gram stain of sample containing S. Aureus from an infected wound.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Coagulase-negative staphylococci", "Micrococcus", "Peptostreptococcus"],
     blurb: "Gram-positive cocci in grape-like clusters. You cannot speciate from the smear; clusters vs chains is the useful split. Micrococcus is usually tetrads and a contaminant story."
@@ -295,6 +319,7 @@ window.SPECIMENS = [
     stain: "Gram stain",
     mag: "1000× oil",
     file: "Neisseria gonorrhoeae.jpg",
+    files: ["Neisseria gonorrhoeae.jpg", "Neisseria gonorrhoeae PHIL 3693 lores.jpg", "Neisseria gonorrhoeae diplococci inside a neutrophil.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Neisseria meningitidis", "Moraxella catarrhalis", "Acinetobacter"],
     blurb: "Kidney-bean Gram-negative diplococci, many inside neutrophils. In a urethral smear from a symptomatic man this is highly predictive. Meningococcus and Moraxella look the same on Gram."
@@ -307,6 +332,7 @@ window.SPECIMENS = [
     stain: "Gram stain",
     mag: "1000× oil",
     file: "Clostridium tetani.jpg",
+    files: ["Clostridium tetani.jpg", "C tetani gram stain.jpg", "12056 lores.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Clostridium botulinum", "Clostridioides difficile", "Bacillus spp."],
     blurb: "Slender Gram-positive rods with terminal spores — the drumstick or tennis-racket form. Other clostridia spore, but the strictly terminal swollen spore is the classic tetani look."
@@ -319,6 +345,7 @@ window.SPECIMENS = [
     stain: "Giemsa / H&E / silver",
     mag: "400–1000×",
     file: "Helicobacter pylori.jpg",
+    files: ["Helicobacter pylori.jpg", "Helicobacter pylori, Gastric Mucosa, Giemsa stain.jpg", "Helicobacter pylori, Gastric Mucosa, H&E (390307642).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Campylobacter", "Contaminating oral flora", "Mucus strands"],
     blurb: "Curved Gram-negative rods in the gastric mucus layer, often in pairs or gull-wing forms. IHC or Giemsa makes them pop. Do not overcall debris in the mucus."
@@ -331,6 +358,7 @@ window.SPECIMENS = [
     stain: "Gram / KOH / PAS",
     mag: "400–1000×",
     file: "Candida albicans.jpg",
+    files: ["Candida albicans.jpg", "Microscope view of Candida albicans 20200228 134207 04.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Aspergillus hyphae", "Trichosporon", "Artifact / fiber"],
     blurb: "Budding yeasts with pseudohyphae; true hyphae can appear in tissue. Aspergillus has septate hyphae with 45° branching and no yeast forms. Species needs culture or MALDI."
@@ -343,6 +371,7 @@ window.SPECIMENS = [
     stain: "GMS / PAS / lactophenol",
     mag: "400×",
     file: "Aspergillus fumigatus.jpg",
+    files: ["Aspergillus fumigatus.jpg", "Aspergillus fumigatus from microscope.jpg", "Aspergillus fumigatus microscope view.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Fusarium", "Mucorales", "Candida hyphae"],
     blurb: "Septate hyphae branching at acute angles; fruiting heads if a cavity communicates with air. Mucorales are broader, ribbon-like, and pauci-septate. Fusarium is the histologic twin."
@@ -355,6 +384,7 @@ window.SPECIMENS = [
     stain: "India ink / mucicarmine / GMS",
     mag: "400–1000×",
     file: "Cryptococcus neoformans.jpg",
+    files: ["Cryptococcus neoformans.jpg", "Cryptococcus neoformans using a light India ink staining preparation PHIL 3771 lores.jpg", "Cryptococcus neoformans under microscope.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Candida in CSF", "Artifact in India ink", "Blastomyces dermatitidis"],
     blurb: "Narrow-based budding yeast with a thick capsule that clears on India ink and stains red with mucicarmine. Blastomyces is larger with broad-based budding and no true capsule."
@@ -367,6 +397,7 @@ window.SPECIMENS = [
     stain: "GMS / PAS / KOH",
     mag: "400–1000×",
     file: "Blastomyces dermatitidis.jpg",
+    files: ["Blastomyces dermatitidis.jpg", "North American blastomycosis - PAS stain (13430997544).jpg", "Blastomyces dermatitidis yeast form.jpeg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Cryptococcus neoformans", "Coccidioides endospores", "Paracoccidioides brasiliensis"],
     blurb: "8–15 µm thick-walled yeast with broad-based budding. The 'double contour' wall is the giveaway. Paracoccidioides makes a pilot-wheel of multiple narrow buds."
@@ -379,6 +410,7 @@ window.SPECIMENS = [
     stain: "H&E / GMS",
     mag: "200–400×",
     file: "Coccidioides immitis.jpg",
+    files: ["Coccidioides immitis.jpg", "Mature spherule with endospores of Coccidioides immitis PHIL 480 lores.jpg", "Coccidioides immitis microscopy.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Rhinosporidium seeberi", "Empty spherule artifact", "Blastomyces dermatitidis"],
     blurb: "Large spherules packed with endospores. No budding. Rhinosporidium spherules are bigger and sit in mucosa of a different epidemiology. Empty spherules get overcalled constantly."
@@ -391,6 +423,7 @@ window.SPECIMENS = [
     stain: "GMS / toluidine blue",
     mag: "400–1000×",
     file: "Pneumocystis.jpg",
+    files: ["Pneumocystis.jpg", "Pneumocystis carinii in smear from BAL 01ee046 lores.jpg", "Pneumocystis carinii PHIL 2998 lores.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Histoplasma capsulatum", "Candida glabrata", "Stain precipitate"],
     blurb: "Cup-shaped or crushed-ping-pong-ball cysts in alveolar casts. Does not bud. Histoplasma is intracellular and buds. GMS of a foamy alveolar exudate is the classic scene."
@@ -403,6 +436,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "400×",
     file: "Cytomegalovirus infection.jpg",
+    files: ["Cytomegalovirus infection.jpg", "Cytomegalovirus infection (3785988653).jpg", "Cytomegalovirus infection (3786798300).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["HSV / VZV inclusions", "Reactive pneumocyte atypia", "Adenovirus smudge cells"],
     blurb: "Owl-eye nuclear inclusions and granular cytoplasmic inclusions in enlarged cells. HSV has molding, margination, and multinucleation without the huge cytoplasm. IHC settles close calls."
@@ -415,6 +449,7 @@ window.SPECIMENS = [
     stain: "GMS",
     mag: "400–1000×",
     file: "Histopathology of Histoplasma capsulatum, GMS stain.jpg",
+    files: ["Histopathology of Histoplasma capsulatum, GMS stain.jpg", "Histopathology of histoplasma, HE stain.png", "Histoplasmosis - GMS stain Case 159 (5441201037).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Leishmania amastigotes", "Cryptococcus (capsule-deficient)", "Candida glabrata"],
     blurb: "Tiny 2–4 µm intracellular yeasts with narrow-based budding, GMS-positive. No kinetoplast — that is how you beat Leishmania. Capsule-deficient crypto is larger and mucicarmine may still help."
@@ -427,6 +462,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "400–1000×",
     file: "Sickle cell anemia smear.jpg",
+    files: ["Sickle cell anemia smear.jpg", "Sickle-cell.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Hemoglobin SC disease", "Bite cells / oxidant injury", "Artifact from old smear"],
     blurb: "Elongated, pointed drepanocytes plus targets and polychromasia. SC disease shows fatter boats and many targets. True sickles should be irrevocably pointed, not just elongated."
@@ -439,6 +475,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "AML-M2.jpg",
+    files: ["AML-M2.jpg", "Acute myeloid leukemia microscopy.jpg", "AML M6 erythroid (Overview of peripheral blood stain, May-Grünwald Giemsa).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Acute lymphoblastic leukemia", "Reactive left shift", "CML blast crisis"],
     blurb: "Circulating myeloblasts with open chromatin, nucleoli, and often granules or Auer rods. ALL blasts are usually smaller with coarser chromatin and no Auer rods. Flow and genetics are required."
@@ -451,6 +488,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Chronic lymphocytic leukemia.jpg",
+    files: ["Chronic lymphocytic leukemia.jpg", "Chronic lymphocytic leukemia (Wright-Giemsa, 50x)..jpg", "Chronic Lymphocytic Leukaemia (lymphocytosis and smear cells).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Mantle cell leukemia", "Follicular lymphoma in blood", "Reactive lymphocytosis"],
     blurb: "Small mature-looking lymphocytes with clumped chromatin and smudge cells. Mantle cell can mimic this exactly — cyclin D1 / SOX11 save you. Reactive lymphs are more pleomorphic."
@@ -463,6 +501,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "400–1000×",
     file: "Chronic Myeloid Leukemia smear 2009-04-09.JPG",
+    files: ["Chronic Myeloid Leukemia smear 2009-04-09.JPG", "LMC-1.JPG", "CML Accelerated Phase.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Leukemoid reaction", "CMML", "Polycythemia vera with left shift"],
     blurb: "Left-shifted granulocytes from blasts to segs, basophilia, and few dysplastic monocytes. A leukemoid reaction lacks basophilia and has a high LAP score. Always think BCR::ABL1."
@@ -475,6 +514,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Neutrophil.jpg",
+    files: ["Neutrophil.jpg", "Neutrophil2.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Band neutrophil", "Monocyte", "Pelger–Huët cell"],
     blurb: "Multilobed nucleus and pale granules. Bands have an unsegmented C-shaped nucleus. Pelger–Huët cells are hyposegmented and can be inherited or acquired in myeloid neoplasms."
@@ -487,6 +527,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Eosinophil.jpg",
+    files: ["Eosinophil.jpg", "Eosinophil 2.jpg", "Eosinophil blood smear.JPG"],
     credit: "Wikimedia Commons",
     lookalikes: ["Neutrophil with toxic granules", "Basophil", "Mast cell"],
     blurb: "Bilobed nucleus buried in large orange-red granules. Toxic neutrophils have finer, darker granules and a different nucleus. Mast cells are tissue cells with denser metachromatic granules."
@@ -499,6 +540,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Basophil.jpg",
+    files: ["Basophil.jpg", "Basophil (30439199890).jpg", "A type of white cell (Basophil).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Mast cell", "Dirty neutrophil", "Overstained lymphocyte"],
     blurb: "Dark purple granules that often obscure a lobated nucleus. Increased in CML and hypersensitivity. Mast cells are larger, tissue-based, and CD117/tryptase positive."
@@ -511,6 +553,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "400×",
     file: "Megakaryocyte.jpg",
+    files: ["Megakaryocyte.jpg", "Megakaryocyte under microscope.jpg", "Megakaryocyte in bone marrow.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Osteoclast", "Reed–Sternberg cell", "Multinucleated histiocyte"],
     blurb: "Huge marrow cell with a single multilobated nucleus and platelet-shedding cytoplasm. Osteoclasts have separate nuclei. RS cells live in lymph node, not as marrow giants with granular cytoplasm."
@@ -523,6 +566,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Spherocytes.jpg",
+    files: ["Spherocytes.jpg", "Hereditary Spherocytosis smear 2010-03-17.JPG", "Peripheral blood smear stained with MGG from a patient with hereditary spherocytosis.png"],
     credit: "Wikimedia Commons",
     lookalikes: ["Microspherocytes of burns", "Overstained normal RBCs", "Liver-disease cells"],
     blurb: "Dense, round RBCs without central pallor. Hereditary spherocytosis vs immune hemolysis is a clinical call; both make spherocytes. Do not call them on a thick, dark smear."
@@ -535,6 +579,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Target cells.jpg",
+    files: ["Target cells.jpg", "Micrograph of a target cell.jpg", "Target cells and spherocytes.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Sickle cell disease", "Artifact from slow drying", "Hemoglobin C crystals"],
     blurb: "Central bull's-eye of hemoglobin. Think hemoglobinopathy, liver disease, or asplenia. Slow-drying smears manufacture fake targets — look at a well-made area."
@@ -547,6 +592,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Myeloblast with Auer rod.jpg",
+    files: ["Myeloblast with Auer rod.jpg", "Myeloblast with Auer Rod smear 2009-11-23 cropped.jpg", "Myeloblast with Auer rod smear 2010-01-27.JPG"],
     credit: "Wikimedia Commons",
     lookalikes: ["ALL blast", "Reactive myelocyte", "Stain crystal"],
     blurb: "A needle-shaped azurophilic rod in a blast is myeloid, period — AML or high-grade MDS. Faggot cells (bundles of rods) scream APL. Do not wait on cytochemistry if you see one."
@@ -559,6 +605,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "400×",
     file: "Hodgkin's lymphoma with RS cell 10x.jpg",
+    files: ["Hodgkin's lymphoma with RS cell 10x.jpg", "Hodgkin Lymphoma Reed-Sternberg Cell on FNA (45240026874).jpg", "Reed-Sternberg lymphocyte nci-vol-7172-300.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Megakaryocyte", "Viral immunoblast", "Anaplastic large-cell lymphoma"],
     blurb: "Giant binucleate cell with inclusion-like nucleoli — the owl-eye of Hodgkin lymphoma. CD15/CD30 positive, CD45/CD20 usually negative. ALCL and viral immunoblasts are the tissue lookalikes."
@@ -571,6 +618,7 @@ window.SPECIMENS = [
     stain: "Unstained / Pap / H&E",
     mag: "400–1000×",
     file: "Spermatozoa.jpg",
+    files: ["Spermatozoa.jpg", "Spermatozoa in Semen Microscopy.jpg", "Spermatozoa-human-1000x.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Trichomonas vaginalis", "Ciliated tuft (ciliocytophthoria)", "Fiber artifact"],
     blurb: "Head, midpiece, flagellum. In a Pap smear they are an unexpected guest. Trichomonas is pear-shaped with an undulating membrane, not a distinct head-tail sperm morphology."
@@ -583,6 +631,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "400×",
     file: "Ground glass hepatocytes high mag.jpg",
+    files: ["Ground glass hepatocytes high mag.jpg", "Hepatits B ground glass H&E.jpg", "Ground-Glass Hepatocytes, Liver (6032096639).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Lafora bodies", "Oncocytic change", "Glycogenated nuclei only"],
     blurb: "Finely granular pale-eosinophilic cytoplasm from HBsAg overload in chronic hepatitis B. Orcein or HBsAg IHC confirms. Lafora and oncocytes are the adult liver lookalikes."
@@ -595,6 +644,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–200×",
     file: "Adipose tissue.jpg",
+    files: ["Adipose tissue.jpg", "Adipose2.jpg", "Connective Tissue Adipose (41066512834).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Sebaceous gland", "Xanthoma", "Liposarcoma / atypical lipoma"],
     blurb: "Unilocular fat cells with peripheral nuclei. Sebaceous glands have bubbly cytoplasm and central nuclei. Architecture and atypia decide whether this is just fat or a lipomatous tumor."
@@ -607,6 +657,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–200×",
     file: "Alveoli.jpg",
+    files: ["Alveoli.jpg", "Normal lung Alveoli (3678762542).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Emphysema", "Thyroid follicles", "Adipose tissue"],
     blurb: "Thin septa lined by pneumocytes, with capillaries in the wall. Thyroid follicles have colloid. Emphysema is the same architecture with broken, enlarged spaces and lost surface area."
@@ -619,6 +670,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "200–400×",
     file: "Cardiac muscle.jpg",
+    files: ["Cardiac muscle.jpg", "Cardiac muscle histology 400x.jpg", "Cardiac muscle histology.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Skeletal muscle", "Smooth muscle", "Nerve"],
     blurb: "Striated fibers with central nuclei and intercalated discs. Skeletal muscle nuclei are peripheral and there are no discs. Smooth muscle has no striations."
@@ -631,6 +683,7 @@ window.SPECIMENS = [
     stain: "H&E / ground bone",
     mag: "100–200×",
     file: "Compact bone.jpg",
+    files: ["Compact bone.jpg", "Compact bone histology 2014.jpg", "Is it a planet? Or is it an osteonic compact bone as seen under a microscope...? (13617752203).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Cementum", "Dentin", "Pagetoid bone"],
     blurb: "Haversian canals wrapped in concentric lamellae, osteocytes in lacunae. Paget disease breaks the mosaic of those lamellae. Teeth tissues can mimic lamellae if the site is unknown."
@@ -643,6 +696,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–200×",
     file: "Epidermis.jpg",
+    files: ["Epidermis.jpg", "Pele de humano – HE – 100x.jpg", "Pele de humano – HE – 400x.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Squamous mucosa", "Urothelium", "Stratified squamous papilloma"],
     blurb: "Keratinizing stratified squamous epithelium with a granular layer and rete ridges. Mucosa usually lacks a granular layer and orthokeratin. Site and adnexa tell you it is skin."
@@ -655,6 +709,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "200–400×",
     file: "Glomerulus.jpg",
+    files: ["Glomerulus.jpg", "Renal corpuscle.jpg", "Corpuscule-malpighi.JPG"],
     credit: "Wikimedia Commons",
     lookalikes: ["Islet of Langerhans", "Nerve fascicle", "Capillary hemangioma"],
     blurb: "A capillary tuft inside Bowman space, with surrounding tubules. Islets lack a capsule space and sit in pancreas. Once you see the urinary space, you are in kidney."
@@ -667,6 +722,7 @@ window.SPECIMENS = [
     stain: "H&E / PAS",
     mag: "200–400×",
     file: "Goblet cells.jpg",
+    files: ["Goblet cells.jpg", "Normal epithelium with goblet cells - 3 -- very high mag (cropped).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Signet-ring carcinoma", "Paneth cells", "Mast cells"],
     blurb: "Mucin-filled epithelial cells with a compressed basal nucleus, PAS-positive. Signet-ring carcinoma infiltrates stroma and is atypical. Paneth cells have eosinophilic apical granules, not mucin."
@@ -679,6 +735,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–200×",
     file: "Hyaline cartilage.jpg",
+    files: ["Hyaline cartilage.jpg", "Cartilagine Ialina al Microscopio Ottico - Ingrandimento 4X.jpg", "Connective Tissue Developing Hyaline Cartilage (41815120462).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Elastic cartilage", "Fibrocartilage", "Chondrosarcoma"],
     blurb: "Glassy matrix with chondrocytes in lacunae, often in isogenous groups. Elastic cartilage needs an elastin stain. Atypia, permeation, and site decide neoplasia."
@@ -691,6 +748,7 @@ window.SPECIMENS = [
     stain: "H&E / Nissl",
     mag: "200–400×",
     file: "Purkinje cell.jpg",
+    files: ["Purkinje cell.jpg", "Mouse cerebellar cortex H&E 40x.jpg", "Cerebellum PurkinjeCells.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Betz cell (motor cortex)", "Anterior horn neuron", "Reactive astrocyte"],
     blurb: "A single row of huge flask-shaped neurons between molecular and granular layers of cerebellum. The dendritic tree fans into the molecular layer. Context is everything."
@@ -703,6 +761,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "200–400×",
     file: "Skeletal muscle.jpg",
+    files: ["Skeletal muscle.jpg", "Musc est long 400.JPG", "Muskel ( 1).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Cardiac muscle", "Smooth muscle", "Nerve"],
     blurb: "Long striated fibers with peripheral nuclei. Cross-section shows polygonal fibers and a checkerboard of types on enzyme stains. Cardiac muscle keeps central nuclei and intercalated discs."
@@ -715,6 +774,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–200×",
     file: "Thyroid follicle.jpg",
+    files: ["Thyroid follicle.jpg", "Thyroid gland microscope.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Alveoli", "Colloid goiter vs normal", "Parathyroid"],
     blurb: "Follicles lined by cuboidal epithelium and filled with colloid, often with resorption scallops. Alveoli have no colloid. Parathyroid is sheeted chief cells without follicles."
@@ -727,6 +787,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "200–400×",
     file: "Human pancreatic islet.jpg",
+    files: ["Human pancreatic islet.jpg", "Islet of Langerhans in Human Pancreas by Phase Contrast (47674614782).jpg", "Beta-cells of islets of Langerhans.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Glomerulus", "Islet-cell tumor", "Lymphoid aggregate"],
     blurb: "Pale rounded cluster of endocrine cells dropped into exocrine acini. No Bowman space. A mass-forming, amyloid-rich, or infiltrative version is a neuroendocrine tumor."
@@ -739,6 +800,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "200–400×",
     file: "Histology of pseudo stratified ciliates columnar epithelium.jpg",
+    files: ["Histology of pseudo stratified ciliates columnar epithelium.jpg", "Trachea (mammal) histology cross-section.png", "Respiratory epithelium in a mature cystic teratoma.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Fallopian tube epithelium", "Vas deferens", "Intestinal epithelium"],
     blurb: "Pseudostratified columnar epithelium with cilia and goblet cells. Tube epithelium is also ciliated but lacks goblets and sits on plicae. Gut has a brush border, not motile cilia."
@@ -751,6 +813,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "1000× oil",
     file: "Plasmodium ovale 01.png",
+    files: ["Plasmodium ovale 01.png", "Microphotographs of Plasmodium ovale in Giemsa-stained thin blood films.jpg"],
     credit: "CDC / Wikimedia Commons, public domain",
     lookalikes: ["Plasmodium vivax", "Plasmodium malariae", "Babesia microti"],
     blurb: "Compact trophozoites in oval, often fimbriated RBCs with Schüffner dots. Vivax is the usual twin but tends to be more ameboid in larger cells. PCR is the honest tie-breaker."
@@ -763,6 +826,7 @@ window.SPECIMENS = [
     stain: "Wet mount / Giemsa",
     mag: "400–1000×",
     file: "Trichomonas vaginalis.jpg",
+    files: ["Trichomonas vaginalis.jpg", "Trichomonas vaginalis phase contrast microscopy.jpg", "Trichomonas Gram stain.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Giardia lamblia", "Spermatozoa", "Ciliocytophthoria"],
     blurb: "Pear-shaped flagellate with one nucleus and an undulating membrane. No cyst stage. Giardia has two nuclei and a face-like trophozoite. Motility on a warm wet mount is the clinical giveaway."
@@ -775,6 +839,7 @@ window.SPECIMENS = [
     stain: "Modified acid-fast",
     mag: "1000× oil",
     file: "Cyclospora cayetanensis.jpg",
+    files: ["Cyclospora cayetanensis.jpg", "Cyclospora cayetanensis stained.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Cryptosporidium oocysts", "Cystoisospora belli", "Yeast in stool"],
     blurb: "8–10 µm acid-fast oocysts, often variable in staining. Crypto is smaller (4–6 µm). Cystoisospora is much larger and oval. Measure before you call it."
@@ -787,6 +852,7 @@ window.SPECIMENS = [
     stain: "Giemsa",
     mag: "100–400×",
     file: "Loa loa.jpg",
+    files: ["Loa loa.jpg", "Loa loa in blood Giemsa stain.jpg", "L loa whole HBa.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Wuchereria bancrofti", "Mansonella perstans", "Trypanosoma brucei"],
     blurb: "Sheathed microfilaria with nuclei to the tip of the tail, diurnal periodicity. Wuchereria is nocturnal and does not take nuclei to the tip. Geography (rainforest Africa, Calabar swellings) helps."
@@ -799,6 +865,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–400×",
     file: "Sarcocystis.jpg",
+    files: ["Sarcocystis.jpg", "Sarcocystis in pig muscle.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Trichinella spiralis", "Toxoplasma tissue cyst", "Artifact / folded fiber"],
     blurb: "Large, often septate intramuscular cysts with a thick wall. Trichinella is a coiled larva in a nurse cell, not a chambered cyst. Usually incidental in skeletal muscle."
@@ -811,6 +878,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Lymphocyte.jpg",
+    files: ["Lymphocyte.jpg", "Lymphocytes.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Nucleated RBC", "CLL cell", "Monocyte"],
     blurb: "Round dense nucleus and a thin rim of blue cytoplasm. CLL cells look similar but come with smudge cells and a count. nRBCs have hemoglobinized cytoplasm."
@@ -823,6 +891,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Monocyte.jpg",
+    files: ["Monocyte.jpg", "Monocytes, a type of white blood cell (Giemsa stained).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Reactive lymphocyte", "Promyelocyte", "Hairy cell"],
     blurb: "Largest circulating WBC, folded nucleus, ground-glass gray cytoplasm, often vacuoles. Reactive lymphs have more basophilic cytoplasm and a different clinical story."
@@ -835,6 +904,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Acute lymphoblastic leukemia.jpg",
+    files: ["Acute lymphoblastic leukemia.jpg", "Acute lymphoblastic leukaemia smear.jpg", "Blood smear showing acute lymphatic leukaemia. Wellcome M0011465.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Acute myeloid leukemia", "Reactive lymphocytosis", "CLL / SLL"],
     blurb: "Lymphoblasts with high N/C ratio, coarse chromatin, and no Auer rods. AML is the smear twin until flow and genetics. Do not call it from morphology alone."
@@ -847,6 +917,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Hypersegmented neutrophil.jpg",
+    files: ["Hypersegmented neutrophil.jpg", "Hypersegmented Neutrophils (36831145373).jpg", "Hyperlobated Neutrophil (8612790151).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Normal neutrophil", "Pelger–Huët cell", "Steroid-induced granulocytosis"],
     blurb: "Five or more nuclear lobes. Think B12/folate deficiency, MDS, or drugs. One cell is a hint; several plus macro-ovalocytes is a diagnosis waiting for a B12."
@@ -859,6 +930,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "400×",
     file: "Rouleaux.jpg",
+    files: ["Rouleaux.jpg", "Rouleaux formation side view.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Agglutination", "Normal stacked smear edge", "Cold agglutinin disease"],
     blurb: "RBCs in coin stacks from high protein, classically myeloma or inflammation. Agglutination is irregular clumps, not linear stacks, and is antibody-mediated."
@@ -871,6 +943,7 @@ window.SPECIMENS = [
     stain: "Wright–Giemsa",
     mag: "1000× oil",
     file: "Schistocytes.jpg",
+    files: ["Schistocytes.jpg", "Schizocyte smear 2009-12-22.JPG"],
     credit: "Wikimedia Commons",
     lookalikes: ["Bite cells", "Fragmented smear artifact", "Sickle cells"],
     blurb: "Helmet and triangular RBC fragments. In the right count they mean microangiopathic hemolysis — TTP, HUS, DIC, valve. Do not call them on a battered tail of the smear."
@@ -883,6 +956,7 @@ window.SPECIMENS = [
     stain: "Gram stain",
     mag: "1000× oil",
     file: "Listeria monocytogenes.jpg",
+    files: ["Listeria monocytogenes.jpg", "Listeria monocytogenes PHIL 2287 lores.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Streptococcus pneumoniae", "Corynebacterium", "Enterococcus"],
     blurb: "Short Gram-positive rods, sometimes in pairs that mimic diplococci. Diphtheroids are the usual overcall. Motility and the clinical setting (pregnancy, meningitis) matter."
@@ -895,6 +969,7 @@ window.SPECIMENS = [
     stain: "Gram stain",
     mag: "1000× oil",
     file: "Haemophilus influenzae.jpg",
+    files: ["Haemophilus influenzae.jpg", "Haemophilus influenzae 01.jpg", "Haemophilus influenzae meningitis 5003 lores.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Bordetella", "Pasteurella", "Acinetobacter"],
     blurb: "Tiny pleomorphic Gram-negative coccobacilli. Easy to under-decolorize or miss entirely. In CSF they can look like debris until you know the story."
@@ -907,6 +982,7 @@ window.SPECIMENS = [
     stain: "Giemsa / Wright",
     mag: "1000× oil",
     file: "Borrelia.jpg",
+    files: ["Borrelia.jpg", "Borrelia recurrentis CDC.png"],
     credit: "Wikimedia Commons",
     lookalikes: ["Trypanosoma brucei", "Microfilaria", "Spiral artifact"],
     blurb: "Long, loose spirochetes in a blood film of relapsing fever. Lyme is not seen on peripheral smear. Trypanosomes have a nucleus and kinetoplast; these do not."
@@ -919,6 +995,7 @@ window.SPECIMENS = [
     stain: "H&E / GMS",
     mag: "200–400×",
     file: "Mucor.jpg",
+    files: ["Mucor.jpg", "Histopathology of pulmonary mucormycosis.jpg", "Cunningnamelia bertholletiae infection (52310007496).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Aspergillus", "Fusarium", "Artifact / empty vessel"],
     blurb: "Broad, ribbon-like, pauci-septate hyphae with right-angle branching. Aspergillus is thinner, regularly septate, and acute-angle. This is a surgical emergency when it is real."
@@ -931,6 +1008,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "200–400×",
     file: "Smooth muscle.jpg",
+    files: ["Smooth muscle.jpg", "Smooth muscle - histology.jpg", "Smooth muscle (histology slide).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Skeletal muscle", "Nerve", "Dense fibroconnective tissue"],
     blurb: "Spindle cells with cigar nuclei and no striations. Skeletal muscle is striated with peripheral nuclei. A nerve has axons and myelin, not a sheet of contractile cytoplasm."
@@ -943,6 +1021,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "40–100×",
     file: "Lymph node.jpg",
+    files: ["Lymph node.jpg", "Normal Lymph Node.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Spleen", "Tonsil", "Thymus"],
     blurb: "Cortex with follicles, paracortex, and a medullary cord/sinus architecture. Spleen has red and white pulp. Tonsil has crypts and surface squamous mucosa."
@@ -955,6 +1034,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–200×",
     file: "Bone marrow.jpg",
+    files: ["Bone marrow.jpg", "Bone marrow core biopsy microscopy (trephine) H&E panorama by gabriel caponetti.jpg", "Trilineage hematopoiesis (original).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Spleen", "Lymph node", "Fat necrosis"],
     blurb: "Trilineage hematopoiesis among fat and bony trabeculae. Megakaryocytes are the landmark giants. Lymph node has no fat-and-bone scaffold."
@@ -967,6 +1047,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "40–100×",
     file: "Cerebellum.jpg",
+    files: ["Cerebellum.jpg", "Human cerebellum under a microscope.jpg", "Cerebellar cortex - intermed mag.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Cerebral cortex", "Retina", "Adrenal cortex"],
     blurb: "Molecular layer, a Purkinje row, and a dense granular layer. Once you see that sandwich you are in cerebellum, not neocortex."
@@ -979,6 +1060,7 @@ window.SPECIMENS = [
     stain: "H&E / Nissl",
     mag: "200–400×",
     file: "Neuron.jpg",
+    files: ["Neuron.jpg", "Neuron in tissue culture.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Astrocyte", "Ganglion cell in other sites", "Reactive histiocyte"],
     blurb: "Large cell with a prominent nucleolus and Nissl substance. Astrocytes are smaller and lack Nissl. Site tells you CNS vs a peripheral ganglion."
@@ -991,6 +1073,7 @@ window.SPECIMENS = [
     stain: "H&E / GFAP",
     mag: "400×",
     file: "Astrocyte.jpg",
+    files: ["Astrocyte.jpg", "Astrocyte - rat spinal cord - GFAP.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Oligodendrocyte", "Neuron", "Reactive fibroblast"],
     blurb: "Star-shaped glial cell, often with a clear halo on routine stain. Oligodendrocytes have a fried-egg halo and sit in rows in white matter. GFAP is the crutch."
@@ -1003,6 +1086,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "400×",
     file: "Osteoclast.jpg",
+    files: ["Osteoclast.jpg", "Osteoclasts obtained from monocyte.jpg", "Osteoclasti maturi.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Megakaryocyte", "Multinucleated giant cell", "Tumor giant cell"],
     blurb: "Multinucleated bone-resorbing cell sitting in a Howship lacuna. Separate nuclei, not one multilobed megakaryocyte nucleus. Context is bone surface, not marrow space alone."
@@ -1015,6 +1099,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "100–200×",
     file: "Prostate histology.jpg",
+    files: ["Prostate histology.jpg", "Histology of normal prostate.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Seminal vesicle", "Breast glands", "Hyperplastic prostate vs carcinoma"],
     blurb: "Simple glands in fibromuscular stroma, often with corpora amylacea. Seminal vesicle has golden lipofuscin and a more complex epithelium. Architecture decides benign vs cancer."
@@ -1027,6 +1112,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "40–100×",
     file: "Spleen.jpg",
+    files: ["Spleen.jpg", "Histology of Spleen.jpg", "Spleen sample.jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Lymph node", "Thymus", "Hemorrhagic lymph node"],
     blurb: "Red pulp and white-pulp follicles with central arterioles. Lymph node has sinuses and a capsule hilum, not that much blood. The arteriole in the follicle is the tell."
@@ -1039,6 +1125,7 @@ window.SPECIMENS = [
     stain: "H&E",
     mag: "200–400×",
     file: "Urothelium.jpg",
+    files: ["Urothelium.jpg", "Epithelial Tissues Transitional (27025224337).jpg", "Epithelial Tissues Transitional (27025226037).jpg"],
     credit: "Wikimedia Commons",
     lookalikes: ["Squamous epithelium", "Endometrium", "Urothelial carcinoma in situ"],
     blurb: "Stratified transitional epithelium with umbrella cells on top. No granular layer, no true keratin in the normal state. Thickness and atypia are how you leave 'normal bladder'."

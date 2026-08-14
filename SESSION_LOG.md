@@ -200,3 +200,16 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 
 **Outcome**
 - `success` locally. Live Pages URL updates on next push. A custom domain can wait.
+
+## 2026-08-14 — Alternate fields per diagnosis
+
+**User**
+- Find multiple pictures of each guessable entry so that if the same item comes up a day or so later, the picture can be different.
+
+**Actions**
+- Searched Wikimedia Commons and kept only light-microscope photos (dropped diagrams, EM, maps, life cycles).
+- Added a `files` array on every specimen in `js/specimens.js` (238 Commons fields total).
+- `js/game.js` now picks one field from that array using the daily/practice seed, so the same diagnosis can show a different photo.
+
+**Outcome**
+- `success` locally. All 87 entries have at least 2 fields; 63 have 3 or 4. Thin leftovers: some histology (neuron, astrocyte, glomerulus, alveoli) and a few smears still only have one extra. Not pushed.

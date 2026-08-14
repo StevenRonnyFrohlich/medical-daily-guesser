@@ -91,6 +91,19 @@
     return state.modes[modeId];
   }
 
+  function specimenFiles(specimen) {
+    if (Array.isArray(specimen.files) && specimen.files.length) return specimen.files;
+    return specimen.file ? [specimen.file] : [];
+  }
+
+  function withField(specimen, seed) {
+    const files = specimenFiles(specimen);
+    const file = files.length
+      ? files[hash32(`${seed}|${specimen.id}|field`) % files.length]
+      : specimen.file;
+    return Object.assign({}, specimen, { file });
+  }
+
   function pickSet(seed, count, selected) {
     const rng = mulberry32(hash32(seed));
     const pool = window.SPECIMENS.filter((item) => item.track === selected.id);
@@ -110,7 +123,7 @@
         if (picked.length >= count) return;
         const next = byCat[cat].find((item) => !used.has(item.id));
         if (next) {
-          picked.push(next);
+          picked.push(withField(next, seed));
           used.add(next.id);
           added = true;
         }
