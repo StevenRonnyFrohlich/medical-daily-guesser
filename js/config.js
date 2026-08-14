@@ -1,5 +1,5 @@
 window.GAME_CONFIG = {
   buyMeACoffee: "stevenronnyfrohlich",
-  shareUrl: "https://stevenronnyfrohlich.github.io/medical-daily-guesser/",
+  shareUrl: "https://scopethecall.com/",
   dailyCount: 6
 };

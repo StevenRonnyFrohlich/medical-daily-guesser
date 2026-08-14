@@ -25,12 +25,12 @@ Images load from [Wikimedia Commons](https://commons.wikimedia.org/). You need a
 This is a static site. **GitHub Pages is free** for a public repo and is the right first host.
 
 1. Push this repo to `StevenRonnyFrohlich/medical-daily-guesser`.
-2. Settings → Pages → Deploy from branch → `master` or `main` → `/ (root)`.
-3. The game will be at `https://stevenronnyfrohlich.github.io/medical-daily-guesser/`.
+2. Settings → Pages → Deploy from branch → `cursor/medical-daily-guesser` → `/ (root)`.
+3. Live site: [scopethecall.com](https://scopethecall.com/). GitHub Pages fallback: `https://stevenronnyfrohlich.github.io/medical-daily-guesser/`.
+
+DNS is on Cloudflare. Apex and `www` are CNAME (flattened) to `stevenronnyfrohlich.github.io`, **DNS only** (grey cloud) so GitHub can issue HTTPS. Do not orange-cloud the records until GitHub shows the certificate as working, then use SSL mode **Full (strict)**.
 
 No server, no database, no build step. Streaks stay in each player's browser via `localStorage`.
-
-If you later want a custom domain, point a CNAME at GitHub Pages. Still free.
 
 Skip paid hosts (Vercel/Netlify/Render) until you need forms, accounts, or a real API. Cloudflare Pages is the free fallback if GitHub Pages ever gets in the way.
 

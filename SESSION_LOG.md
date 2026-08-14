@@ -213,3 +213,28 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 
 **Outcome**
 - `success` locally. All 87 entries have at least 2 fields; 63 have 3 or 4. Thin leftovers: some histology (neuron, astrocyte, glomerulus, alveoli) and a few smears still only have one extra. Not pushed.
+
+## 2026-08-14 — Domain for The Call
+
+**User**
+- What domain should I purchase for this website?
+
+**Actions**
+- Checked branding vs live collisions: thecall.com is a prayer movement; makethecall.com is a Pfizer leftover; atthescope.com is a consultancy; .game is ~$300/year.
+- Recommended scopethecall.com at Cloudflare (~$10/year .com), with onthescope.com as fallback.
+
+**Outcome**
+- `success` as advice. Confirm availability at the registrar before paying; no DNS is not a guarantee.
+
+## 2026-08-14 — Set up scopethecall.com
+
+**User**
+- Bought scopethecall.com on Cloudflare; help set it up properly.
+
+**Actions**
+- Added a `CNAME` file, pointed share URL and canonical at `https://scopethecall.com/`.
+- Set GitHub Pages custom domain on `StevenRonnyFrohlich/medical-daily-guesser`.
+- Cloudflare DNS: apex + `www` CNAME to `stevenronnyfrohlich.github.io`, DNS only (grey cloud).
+
+**Outcome**
+- `semi-success` until DNS and GitHub HTTPS both show live. Keep proxy off until the Pages certificate exists.
