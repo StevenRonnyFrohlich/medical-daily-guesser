@@ -343,6 +343,31 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success` locally. Not pushed.
 
+## 2026-08-14 — Get scopethecall.com on Google
+
+**User**
+- How do I get scopethecall to appear on Google so people can start playing or seeing it?
+
+**Actions**
+- Checked the live site: DNS to GitHub Pages is live; no robots.txt or sitemap yet.
+- Advised Search Console domain verify via Cloudflare TXT, sitemap, Enforce HTTPS, and a few real links.
+
+**Outcome**
+- `success` as advice. Indexing is not instant; Search Console is the lever.
+
+## 2026-08-14 — Add robots.txt and sitemap.xml
+
+**User**
+- Please add a robots.txt and sitemap.xml, commit and push them.
+
+**Actions**
+- Added `robots.txt` (allow all, sitemap URL) and `sitemap.xml` for `/` and `/about.html`.
+
+**Outcome**
+- `success`. Pushed with this commit.
+
+
+
 
 
 
