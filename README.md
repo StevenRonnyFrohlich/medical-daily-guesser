@@ -35,6 +35,16 @@ No server, no database, no build step. Streaks stay in each player's browser via
 
 Skip paid hosts (Vercel/Netlify/Render) until you need forms, accounts, or a real API. Cloudflare Pages is the free fallback if GitHub Pages ever gets in the way.
 
+## Feedback
+
+GitHub Pages cannot send mail. The site posts to [Formspree](https://formspree.io), which forwards the message to your inbox. Your address never appears on the page.
+
+1. Create a free form at formspree.io and point it at the inbox you want.
+2. Paste the endpoint into `js/config.js` as `feedbackForm` (looks like `https://formspree.io/f/xxxxabcd`).
+3. Confirm the first real submission when Formspree emails you.
+
+Until that URL is set, the Feedback button still opens, but send will say it is not connected yet. Do not put an email address in the HTML.
+
 ## About
 
 `about.html` is a short developer page with a [LinkedIn](https://www.linkedin.com/in/steven-frohlich-80150746) link. The URL also lives in `js/config.js`.

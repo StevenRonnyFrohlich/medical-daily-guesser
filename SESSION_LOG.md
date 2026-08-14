@@ -366,6 +366,43 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success`. Pushed with this commit.
 
+## 2026-08-14 — Neutrophil favicon
+
+**User**
+- Use a normal neutrophil as the browser tab icon.
+
+**Actions**
+- Made a Wright–Giemsa neutrophil icon and added `favicon.ico`, `favicon-32.png`, `favicon-192.png`, and `apple-touch-icon.png` on the lobby and about pages.
+
+**Outcome**
+- `success` locally. Not pushed. Hard-refresh the tab to see it.
+
+## 2026-08-14 — Optional feedback without exposing email
+
+**User**
+- Add a feedback system so people can write feedback if they want. Do not expose the email address; deliver messages to that inbox.
+
+**Actions**
+- Wired a Feedback modal on the lobby, board footer, and about page (`js/feedback.js`).
+- Posts to Formspree via `GAME_CONFIG.feedbackForm` in `js/config.js` so the inbox never appears in HTML.
+- Left `feedbackForm` empty until a Formspree endpoint is pasted. Documented setup in `README.md`.
+
+**Outcome**
+- `semi-success`. UI is in place locally, not committed. Delivery starts after Formspree signup and the form URL is set in `js/config.js`.
+
+## 2026-08-14 — Wire Formspree and ship feedback
+
+**User**
+- Gave the Formspree endpoint and said to do what I will.
+
+**Actions**
+- Set `feedbackForm` in `js/config.js` to that endpoint.
+- Committed the feedback UI plus the neutrophil favicon (HTML already linked it) and pushed to `cursor/medical-daily-guesser`.
+
+**Outcome**
+- `success` if Pages deploys. Confirm the first live submission in Formspree email. Did not commit `.cursor/mcp.json`.
+
+
 
 
 

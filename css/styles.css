@@ -111,8 +111,17 @@ body {
   margin: 0 0 22px;
 }
 
-.about a {
+.about a,
+.about button[data-feedback] {
   color: var(--brass);
+}
+
+.about button[data-feedback] {
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
 }
 
 .modes {
@@ -646,6 +655,11 @@ body {
   outline: none;
 }
 
+.btn:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
 .foot {
   display: flex;
   justify-content: space-between;
@@ -696,6 +710,63 @@ body {
 .sheet p,
 .sheet li {
   line-height: 1.5;
+}
+
+.feedback-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.feedback-form label {
+  display: grid;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.feedback-form label span {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-ui);
+}
+
+.feedback-form textarea,
+.feedback-form input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #c9c0aa;
+  background: transparent;
+  color: var(--paper-ink);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.feedback-form textarea:focus,
+.feedback-form input[type="text"]:focus {
+  outline: 1px solid var(--brass);
+}
+
+.feedback-status {
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .lightbox img {
