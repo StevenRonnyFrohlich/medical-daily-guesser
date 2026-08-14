@@ -4,6 +4,8 @@ You're at the scope. Make the call.
 
 Three daily trays — human morphology, parasites & organisms, and abnormal morphology — of six fields each. Play any of them, or all three. Finish a tray and copy a Wordle-style result.
 
+These are the kinds of fields technologists, pathologists, and other medical professionals look at every day to save lives. Try your hand. See if you have what it takes.
+
 This is practice, not a diagnostic tool. In the lab, the call can change a life. Here you look, then name what you see.
 
 ## Play
@@ -34,15 +36,9 @@ No server, no database, no build step. Streaks stay in each player's browser via
 
 Skip paid hosts (Vercel/Netlify/Render) until you need forms, accounts, or a real API. Cloudflare Pages is the free fallback if GitHub Pages ever gets in the way.
 
-## Buy Me a Coffee
+## About
 
-The top banner reads the slug in `js/config.js`:
-
-```js
-buyMeACoffee: "stevenronnyfrohlich"
-```
-
-Create that page at [buymeacoffee.com](https://www.buymeacoffee.com/) if it does not exist yet, or change the slug. Leave it as `""` to hide the banner.
+`about.html` is a short developer page with a [LinkedIn](https://www.linkedin.com/in/steven-frohlich-80150746) link. The URL also lives in `js/config.js`.
 
 ## Catalog
 

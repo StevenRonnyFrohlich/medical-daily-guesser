@@ -537,13 +537,6 @@
     if (buttons[choiceIndex]) buttons[choiceIndex].click();
   });
 
-  const coffee = $("coffee");
-  const bmc = window.GAME_CONFIG && window.GAME_CONFIG.buyMeACoffee;
-  if (coffee) {
-    if (bmc) coffee.href = `https://www.buymeacoffee.com/${bmc}`;
-    else coffee.hidden = true;
-  }
-
   const requested = params.get("tray");
   if (requested && MODES[requested]) {
     if (params.get("mode") === "lab") startLab(requested);

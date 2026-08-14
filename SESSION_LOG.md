@@ -238,3 +238,78 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 
 **Outcome**
 - `semi-success` until DNS and GitHub HTTPS both show live. Keep proxy off until the Pages certificate exists.
+
+## 2026-08-14 — Mission copy and DNS check
+
+**User**
+- Added the CNAMEs. Wants a tagline: these differences take rare skill, there are not enough of those people, at least teach AI normal vs abnormal so a trained human sees the rest.
+
+**Actions**
+- Confirmed apex and www resolve to GitHub Pages.
+- Added a lobby mission line, the same idea in How to play, and a README sentence.
+
+**Outcome**
+- `success` for copy (local). DNS is live; GitHub still shows `http://scopethecall.com/` until Enforce HTTPS is ticked.
+
+## 2026-08-14 — Reframe mission; about page instead of coffee
+
+**User**
+- Rephrase the model/normal-vs-abnormal line: tools exist now to make life easier for those professionals and get more people help despite limited resources.
+- Remove Buy Me a Coffee; replace with an about-the-developer page and a LinkedIn link.
+
+**Actions**
+- Rewrote lobby, How to play, and README copy.
+- Removed the coffee banner and `buyMeACoffee` config.
+- Added `about.html` for Steven Frohlich with LinkedIn `steven-frohlich-80150746`.
+
+**Outcome**
+- `success` locally. Not pushed.
+
+## 2026-08-14 — Reframe tools copy toward hard diagnoses
+
+**User**
+- The “easier / more people help” line does not make sense. Say the tools make the work more engaging, strip out most of the normal work, and leave the truly difficult diagnoses that save lives.
+
+**Actions**
+- Updated lobby, How to play, about page, README, and meta description.
+
+**Outcome**
+- `success` locally. Not pushed.
+
+## 2026-08-14 — Landing copy: try your hand
+
+**User**
+- Take the long specialist/tools paragraph off the landing page. Landing should say these are the things technologists, pathologists, and other medical professionals look at every day to save lives; try your hand and see if you have what it takes.
+
+**Actions**
+- Replaced the lobby line and meta description. Left the longer tools copy on How to play and the about page.
+
+**Outcome**
+- `success` locally. Not pushed.
+
+## 2026-08-14 — About: VitruvianMD skills and who this is for
+
+**User**
+- Add skills from VitruvianMD: histo/cyto (gross morphology, cancer resections, LBC/Pap), hematology and rare smear-diagnosable blood disorders.
+- Main aim: help people without first-world medical access; improve life worldwide, starting at the bottom.
+
+**Actions**
+- Rewrote `about.html` with those skills and that aim, still as a biomedical engineer, not as a licensed pathologist.
+
+**Outcome**
+- `success` locally. Not pushed.
+
+## 2026-08-14 — About: unnamed startup, no VitruvianMD
+
+**User**
+- Do not mention VitruvianMD. Say he worked at a startup that began focused on the third world and had to pivot because most people will not invest in problems that affect the poor.
+
+**Actions**
+- Rewrote the opening of `about.html`. Skills stay; the company name is gone.
+
+**Outcome**
+- `success` locally. Not pushed.
+
+
+
+

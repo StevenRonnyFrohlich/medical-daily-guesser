@@ -54,7 +54,7 @@ body {
   padding: 8px 12px;
 }
 
-.coffee {
+.banner {
   display: block;
   text-align: center;
   padding: 10px 16px;
@@ -68,8 +68,8 @@ body {
   border-bottom: 1px solid var(--line);
 }
 
-.coffee:hover,
-.coffee:focus-visible {
+.banner:hover,
+.banner:focus-visible {
   color: var(--paper);
   background: #2a2318;
   outline: none;
@@ -82,9 +82,28 @@ body {
 }
 
 .lobby-lead {
-  margin: 0 0 18px;
+  margin: 0 0 12px;
   color: var(--muted);
   font-size: 1.05rem;
+}
+
+.lobby-why {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.about {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  max-width: 42rem;
+}
+
+.about a {
+  color: var(--brass);
 }
 
 .modes {
@@ -162,12 +181,14 @@ body {
   margin: 22px 0 0;
 }
 
-.lobby-foot button {
+.lobby-foot button,
+.lobby-foot a {
   background: none;
   border: 0;
   color: var(--brass);
   font: inherit;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .board[hidden],
