@@ -149,7 +149,7 @@
   function shareText(results, number, mode) {
     const marks = results.map((item) => (item && item.correct ? "🟩" : "🟥")).join("");
     const lines = [
-      `What is this (microscope) #${number}`,
+      `The Call #${number}`,
       `${mode.label} ${scoreOf(results)}/${DAILY_COUNT}`,
       "",
       marks
@@ -232,7 +232,7 @@
     ui.score.textContent = `${traysDoneToday()}/3`;
     ui.streak.textContent = "—";
     ui.best.textContent = "—";
-    ui.edition.textContent = "Medical edition";
+    ui.edition.textContent = "At the scope";
   }
 
   function renderPlayStats() {
@@ -241,7 +241,7 @@
     ui.streak.textContent = record.streak || 0;
     ui.best.textContent = record.best || 0;
     ui.score.textContent = `${scoreOf(results)}/${DAILY_COUNT}`;
-    ui.edition.textContent = `${mode.label} · Medical edition`;
+    ui.edition.textContent = `${mode.label} · At the scope`;
   }
 
   function trayStatus(modeId) {
@@ -435,7 +435,7 @@
     const seed = `${todayKey}|wit-micro-med-${mode.id}-v4`;
     startSet(seed, {
       date: formatHumanDate(today),
-      accession: `WIT-${mode.id.slice(0, 1).toUpperCase()}${today.getFullYear()}-${pad(today.getMonth() + 1)}${pad(today.getDate())}`,
+      accession: `CALL-${mode.id.slice(0, 1).toUpperCase()}${today.getFullYear()}-${pad(today.getMonth() + 1)}${pad(today.getDate())}`,
       puzzle: `#${puzzleNo}`
     });
     const record = modeRecord(state, mode.id);
@@ -452,7 +452,7 @@
     openBoard();
     startSet(`lab-${mode.id}-${Date.now()}`, {
       date: `${mode.label} lab`,
-      accession: `WIT-LAB-${mode.id.slice(0, 1).toUpperCase()}-${pad(Math.floor(Math.random() * 99) + 1)}`,
+      accession: `CALL-LAB-${mode.id.slice(0, 1).toUpperCase()}-${pad(Math.floor(Math.random() * 99) + 1)}`,
       puzzle: "practice"
     });
   }

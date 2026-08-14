@@ -1,8 +1,10 @@
-# What is this (microscope)
+# The Call
 
-A daily four-option identification game. Medical edition.
+You're at the scope. Make the call.
 
 Three daily trays — human morphology, parasites & organisms, and abnormal morphology — of six fields each. Play any of them, or all three. Finish a tray and copy a Wordle-style result.
+
+This is practice, not a diagnostic tool. In the lab, the call can change a life. Here you look, then name what you see.
 
 ## Play
 

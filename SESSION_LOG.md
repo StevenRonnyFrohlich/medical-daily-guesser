@@ -132,3 +132,71 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 
 **Outcome**
 - `success`. Scroll out until the glass shows a reduced field; 1.0× matches the base image.
+
+## 2026-08-13 — Can a shared link be played?
+
+**User**
+- If I share the link to the game, can other people play right now?
+
+**Actions**
+- Checked the repo and the Pages URL. Repo is public. Pages is not enabled. `github.io` returns 404.
+
+**Outcome**
+- `success` as an answer: no public playable link yet. Clone works; localhost does not. Pages is the next step.
+
+## 2026-08-13 — Enable GitHub Pages
+
+**User**
+- Continue after asking whether a shared link works.
+
+**Actions**
+- Enabled GitHub Pages from `cursor/medical-daily-guesser` `/`. Public URL: https://stevenronnyfrohlich.github.io/medical-daily-guesser/
+
+**Outcome**
+- `semi-success`. Pages is on; first build can take a minute. Confirm the URL loads before treating share as live.
+
+## 2026-08-13 — BMC alternatives for South Africa
+
+**User**
+- What alternatives to Buy Me a Coffee can take small / variable amounts, from South Africa?
+
+**Actions**
+- Compared local rails (PayFast, iKofi, Yoco, Paystack) vs global tip jars (Ko-fi, BMC, PayPal). Stripe is still a poor fit for an SA merchant account.
+
+**Outcome**
+- `success` as advice. Recommended PayFast or iKofi for ZAR/EFT, plus PayPal or Ko-fi for overseas players. No code change.
+
+## 2026-08-13 — Does Ko-fi work in South Africa?
+
+**User**
+- Would Ko-fi work even in South Africa?
+
+**Actions**
+- Checked Ko-fi’s payout rule: PayPal or Stripe only. Stripe Connect is not a normal SA merchant option; PayPal is.
+
+**Outcome**
+- `success` as advice. Yes via PayPal. Not a clean ZAR/EFT path. Confirm PayPal withdrawal (often FNB) before relying on it.
+
+## 2026-08-14 — Similar games and a better name
+
+**User**
+- Are there similar games already? What would be a good name?
+
+**Actions**
+- Looked up daily medical guessers. Closest is Pathordle (pathology Wordle). Also Radiordle, iatroX Rounds, ScienceAlert Microscope Mystery, study quizzes.
+
+**Outcome**
+- `success` as advice. The format exists; the three trays plus loupe plus 4-option lookalikes are the differentiator. Avoid another -ordle name.
+
+## 2026-08-14 — Brand: The Call
+
+**User**
+- Liked The Call: you are at the scope, you make the call, it could save lives. Want something in that thread.
+
+**Actions**
+- Renamed the game to The Call. Line: At the scope. Make the call.
+- How-to keeps the stakes of the lab, then says this is practice, not a diagnostic tool.
+- Share line is now `The Call #n`.
+
+**Outcome**
+- `success` locally. Live Pages URL updates on next push. A custom domain can wait.
