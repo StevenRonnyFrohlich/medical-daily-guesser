@@ -129,6 +129,12 @@ body {
   gap: 12px;
 }
 
+@media (min-width: 720px) {
+  .modes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .mode {
   appearance: none;
   width: 100%;

@@ -451,6 +451,113 @@
       name: "Bladder lining (umbrella cells)",
       scientific: "Urothelium (transitional epithelium)",
       about: "Built to stretch. Several layers, with large umbrella cells on top that can be binucleate. No granular layer, no keratin in the normal state. Older name 'transitional' meant it looked halfway between squamous and columnar. Thickness and atypia are how you leave normal bladder."
+    },
+    "cyto-nilm": {
+      name: "NILM (normal squamous cells)",
+      scientific: "Negative for intraepithelial lesion or malignancy",
+      chart: "bethesda",
+      about: "George Papanicolaou's smear (1940s) is still a screen, not a biopsy. NILM means you saw a healthy or only reactive squamous population — no SIL, no cancer. Superficial cells are flat and orangeophilic; intermediates are cyanophilic with vesicular nuclei. The transformation zone is where the real work happens; these mature cells are the quiet majority of a good smear."
+    },
+    "cyto-endocx": {
+      name: "Endocervical cells (transformation-zone sample)",
+      scientific: "Endocervical columnar cells",
+      chart: "glandular",
+      about: "Mucus-secreting columnar cells from the endocervical canal. A honeycomb or picket-fence strip means the brush reached the transformation zone — the place HPV actually causes trouble. Bethesda no longer fails a smear for missing them, but they still reassure you the sample was not just vaginal wall."
+    },
+    "cyto-em": {
+      name: "Endometrial cells (shed lining)",
+      scientific: "Exfoliated endometrial cells",
+      chart: "glandular",
+      about: "The lining of the uterus sheds into the smear, especially in the first 12 days of the cycle. After 45, or out of cycle, they can be the first hint of an endometrial lesion and Bethesda wants them mentioned. They are smaller and darker than endocervical cells. Most are still benign."
+    },
+    "cyto-parabasal": {
+      name: "Parabasal cells (deep squamous)",
+      scientific: "Parabasal squamous cells",
+      about: "The least mature squamous cells that normally stay in the deep epithelium. They come off in atrophy, after childbirth, or when the scrape is vigorous. Dense cytoplasm, a round nucleus, no coarse chromatin. The name is anatomic: next to the basal layer. HSIL is the overcall if you only count N/C and ignore nuclear quality."
+    },
+    "cyto-atrophy": {
+      name: "Atrophy (estrogen-poor smear)",
+      scientific: "Atrophic cervicovaginal pattern",
+      about: "Without estrogen the epithelium thins to parabasal cells. Postmenopause, lactation, and anti-estrogen drugs all do this. The smear looks cellular and 'angry' and fools people into HSIL. A short course of topical estrogen and a repeat smear is the old clinical move when the nuclei are not frankly malignant."
+    },
+    "cyto-metaplasia": {
+      name: "Squamous metaplasia (healing transformation zone)",
+      scientific: "Immature squamous metaplasia",
+      about: "The transformation zone is where columnar epithelium becomes squamous — that is metaplasia, and it is how the cervix lives with the vaginal environment. Immature metaplastic cells are the most overcalled benign cells on a Pap. They have dense cytoplasm and a decent N/C, but the nucleus is calm. This is repair of a normal process, not a lesion."
+    },
+    "cyto-lacto": {
+      name: "Lactobacilli (normal vaginal rods)",
+      scientific: "Lactobacillus (Döderlein bacilli)",
+      about: "Albert Döderlein described these rods in 1892. They ferment glycogen to lactic acid and keep the vagina hostile to most pathogens. Seeing them is a health sign, not an infection. When they vanish and coccobacilli take the cell surface, you have left NILM-flora and entered bacterial vaginosis."
+    },
+    "cyto-cytolysis": {
+      name: "Cytolysis (lactobacillus melt)",
+      scientific: "Lactobacillus-associated cytolysis",
+      about: "A luteal-phase or pregnancy picture: so many lactobacilli that intermediate-cell cytoplasm dissolves and bare nuclei litter the field. It can look necrotic if you do not notice the rods. It is not BV, not a missed period of atrophy, and not a reason to treat. Report it as flora, then move on."
+    },
+    "cyto-lsil": {
+      name: "LSIL (koilocytes)",
+      scientific: "Low-grade squamous intraepithelial lesion",
+      chart: "bethesda",
+      about: "Bethesda lumped HPV effect and CIN 1 because they behave the same: usually transient, driven by productive HPV infection. The koilocyte (from Greek koilos, hollow) is the viral factory — a cavity around an enlarged, irregular nucleus. Most LSIL in young people clears. The job of the smear is to find it; the job of the clinic is not to overtreat it."
+    },
+    "cyto-hsil": {
+      name: "HSIL (high-grade squamous lesion)",
+      scientific: "High-grade squamous intraepithelial lesion",
+      chart: "bethesda",
+      about: "CIN 2 and CIN 3 live here. This is a transforming HPV infection: the cell stays immature and the nucleus goes wrong. Untreated, a share become invasive cancer over years. That is why HSIL is a colposcopy, not a 'see you next year.' The smear can look sparse — a few dark cells — and still be the most important field on the tray."
+    },
+    "cyto-scc": {
+      name: "SCC (invasive squamous cancer)",
+      scientific: "Squamous cell carcinoma",
+      chart: "bethesda",
+      about: "The disease the Pap smear was built to prevent. Most cervical cancers are squamous and HPV-driven. By the time cells are frankly malignant with a tumor diathesis, this is no longer a screening surprise you watch — it is a referral. Keratinizing tumors shed tadpoles and fiber cells; nonkeratinizing ones mimic a very loud HSIL."
+    },
+    "cyto-adeno": {
+      name: "Adenocarcinoma (glandular cancer)",
+      scientific: "Adenocarcinoma on Pap test",
+      chart: "glandular",
+      about: "Glandular cervical cancer has been the rising share as squamous screening got better. It starts in endocervical or endometrial glands and is easier to miss than HSIL — the cells can hide in a strip that still looks 'glandular.' AIS is the in-situ warning. HPV 18 has a particular taste for this pathway. A normal honeycomb does not have nucleoli and chaos."
+    },
+    "cyto-candida": {
+      name: "Candidiasis (yeast on a Pap)",
+      scientific: "Candida species on Pap test",
+      about: "The same yeast as thrush and vaginitis, caught here as a passenger on a cancer screen. Pseudohyphae spearing cells are the classic Pap picture. It does not cause SIL. Treat if she is symptomatic; do not let the yeast distract you from a koilocyte in the next field."
+    },
+    "cyto-trich": {
+      name: "Trichomoniasis (flagellate on a Pap)",
+      scientific: "Trichomonas vaginalis on Pap test",
+      about: "A treatable STI that the Pap can diagnose when the organism is crisp. Sensitivity is imperfect — a molecular test is better if you only suspect it — but a definite trich is a definite trich. Partners need treatment or she will be back. The dirty, reactive background is the company it keeps, not a SIL by itself."
+    },
+    "cyto-bv": {
+      name: "BV (clue cells)",
+      scientific: "Bacterial vaginosis / clue cells",
+      about: "Not one bug: a shift from Lactobacillus to Gardnerella and friends. Gardner and Dukes described clue cells in 1955. The cell is so covered in coccobacilli that its edge disappears. It causes discharge and raises the risk of preterm birth and other infections; it is not a cervical cancer precursor. Few neutrophils — this is not pus."
+    },
+    "cyto-actinomyces": {
+      name: "Actinomyces (cotton-ball filaments)",
+      scientific: "Actinomyces-like organisms",
+      about: "Filamentous bacteria that colonize a subset of IUD users. The cotton-ball colony is the smear call. True pelvic actinomycosis is rare; most reports are 'organisms consistent with Actinomyces' and a conversation about the IUD, not an automatic trip to theatre. Do not confuse mucus fluff or Candida with this."
+    },
+    "cyto-hsv": {
+      name: "Herpes (3 Ms)",
+      scientific: "Herpes simplex cytopathic effect",
+      about: "HSV in the cervix or vagina: painful ulcers, and a smear that can make the call before the swab comes back. Multinucleation, molding, margination — the 3 Ms — plus ground-glass nuclei. It is not a SIL and it is not cancer, but it is infectious and it matters in pregnancy. Repair has nucleoli and no molding."
+    },
+    "cyto-leptothrix": {
+      name: "Leptothrix (long filaments)",
+      scientific: "Leptothrix",
+      about: "A long, thin, segmented filament that likes to travel with Trichomonas. The name means 'fine hair.' It is not treated as a pathogen on its own. The useful move is to look harder for trich once you see it, and not to call it Candida just because something is long and pink."
+    },
+    "cyto-cornflake": {
+      name: "Cornflake artifact (air-drying)",
+      scientific: "Cornflake artifact",
+      about: "A coverslipping classic: air trapped or the mountant dried on a superficial cell, leaving a brown crunchy plaque. Generations of cytotechs have been warned not to call it pigment, fungus, or keratin. It is a prep problem. The cell under it is usually innocent."
+    },
+    "cyto-pollen": {
+      name: "Pollen (airborne contaminant)",
+      scientific: "Pollen grain",
+      about: "Spring in the lab. Pollen has a thick geometric wall and no nucleus, which is how you refuse Trichomonas and koilocytes. Starch from glove powder is the other plant-like guest. Neither belongs to the patient. Note it if you must; do not put it in the interpretation line."
     }
   };
 

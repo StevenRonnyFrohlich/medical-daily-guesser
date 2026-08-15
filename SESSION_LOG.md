@@ -427,6 +427,30 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success`. Pushed as its own commit.
 
+## 2026-08-15 — Add a Cytology tray
+
+**User**
+- Add Cytology as a new tray.
+
+**Actions**
+- Added a fourth lobby mode and 20 Pap/LBC cases in `js/specimens.js` (NILM, SIL, glandular, infections, artifacts). Commons filenames checked via the API.
+- Wired diagnosis labels, teaching notes, and Bethesda / glandular charts in `js/labels.js`.
+- Lobby, how-to, footer count (107), and README now say four trays.
+
+**Outcome**
+- `success`. Pushed as its own commit. Deep link: `index.html?tray=cytology`.
+
+## 2026-08-15 — Split feature commits and pushes
+
+**User**
+- Commit and push, different features, different push.
+
+**Actions**
+- Pushed diagnosis names (`04a56a6`), then abnormal/organism teaching notes (`05c18de`), then the cytology tray as separate commits.
+
+**Outcome**
+- `success`.
+
 
 
 

@@ -2,7 +2,7 @@
 
 You're at the scope. Make the call.
 
-Three daily trays — human morphology, parasites & organisms, and abnormal morphology — of six fields each. Play any of them, or all three. Finish a tray and copy a Wordle-style result.
+Four daily trays — human morphology, parasites & organisms, abnormal morphology, and cytology — of six fields each. Play any of them, or all four. Finish a tray and copy a Wordle-style result.
 
 These are the kinds of fields technologists, pathologists, and other medical professionals look at every day to save lives. Try your hand. See if you have what it takes.
 
@@ -17,7 +17,7 @@ npx --yes serve .
 ```
 
 - Daily lobby: `index.html`
-- Deep link a tray: `index.html?tray=abnormal`
+- Deep link a tray: `index.html?tray=cytology` (also `morphology`, `organisms`, `abnormal`)
 
 Images load from [Wikimedia Commons](https://commons.wikimedia.org/). You need a network connection.
 
@@ -51,6 +51,6 @@ Until that URL is set, the Feedback button still opens, but send will say it is 
 
 ## Catalog
 
-87 specimens across parasitology, microbiology, hematology, and histology. Sources are public-domain or freely licensed teaching files (CDC PHIL / DPDx and Commons contributors). Each case links back to its Commons file.
+107 specimens across parasitology, microbiology, hematology, histology, and cervical cytology. Sources are public-domain or freely licensed teaching files (CDC PHIL / DPDx and Commons contributors). Each case links back to its Commons file.
 
 This is a teaching game, not a diagnostic tool.

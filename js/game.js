@@ -18,6 +18,11 @@
       id: "abnormal",
       label: "Abnormal morphology",
       blurb: "Sickle cells, leukemias, schistocytes of TTP, and other disease shapes."
+    },
+    cytology: {
+      id: "cytology",
+      label: "Cytology",
+      blurb: "Pap smears: koilocytes, HSIL, clue cells, herpes, and the rest of the tray."
     }
   };
 
@@ -223,11 +228,40 @@
     );
   }
 
+  function bethesdaChart(activeId) {
+    return infoTable(
+      "Bethesda: the squamous ladder",
+      ["Call", "What you are seeing"],
+      [
+        { id: "cyto-nilm", cells: ["NILM", "Normal or only reactive squamous"] },
+        { id: "cyto-lsil", cells: ["LSIL", "Koilocytes, still-mature cytoplasm"] },
+        { id: "cyto-hsil", cells: ["HSIL", "Immature cells, ugly nuclei"] },
+        { id: "cyto-scc", cells: ["SCC", "Invasion, often a dirty background"] }
+      ],
+      activeId
+    );
+  }
+
+  function glandularChart(activeId) {
+    return infoTable(
+      "Glandular cells on a Pap",
+      ["Call", "Typical look"],
+      [
+        { id: "cyto-endocx", cells: ["Endocervical", "Honeycomb or picket-fence strip"] },
+        { id: "cyto-em", cells: ["Endometrial", "Tight dark three-dimensional balls"] },
+        { id: "cyto-adeno", cells: ["Adenocarcinoma", "Nucleoli, feathering, lost order"] }
+      ],
+      activeId
+    );
+  }
+
   function specimenChart(specimen) {
     if (specimen.chart === "wbc") return wbcChart(specimen.id);
     if (specimen.chart === "malaria") return malariaChart(specimen.id);
     if (specimen.chart === "leukemia") return leukemiaChart(specimen.id);
     if (specimen.chart === "maha") return mahaChart();
+    if (specimen.chart === "bethesda") return bethesdaChart(specimen.id);
+    if (specimen.chart === "glandular") return glandularChart(specimen.id);
     return "";
   }
 
@@ -343,7 +377,7 @@
 
   function renderLobbyStats() {
     ui.scoreLabel.textContent = "Trays";
-    ui.score.textContent = `${traysDoneToday()}/3`;
+    ui.score.textContent = `${traysDoneToday()}/${Object.keys(MODES).length}`;
     ui.streak.textContent = "—";
     ui.best.textContent = "—";
     ui.edition.textContent = "At the scope";
