@@ -167,8 +167,67 @@
     return `<div class="wbc-chart"><p class="wbc-caption">Typical adult white-cell differential</p>${bars}</div>`;
   }
 
+  function infoTable(caption, headers, rows, activeId) {
+    const head = headers.map((cell) => `<th>${escapeHtml(cell)}</th>`).join("");
+    const body = rows
+      .map((row) => {
+        const on = row.id === activeId ? " class=\"is-on\"" : "";
+        const cells = row.cells.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("");
+        return `<tr${on}>${cells}</tr>`;
+      })
+      .join("");
+    return `<div class="wbc-chart"><p class="wbc-caption">${escapeHtml(caption)}</p><table class="info-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+  }
+
+  function malariaChart(activeId) {
+    return infoTable(
+      "Human malaria on a thin film",
+      ["Species", "Red cell", "Signature"],
+      [
+        { id: "pf-rings", cells: ["P. falciparum", "Normal size", "Rings, crescents"] },
+        { id: "pf-gam", cells: ["P. falciparum", "Normal size", "Banana gametocyte"] },
+        { id: "p-vivax", cells: ["P. vivax", "Enlarged, Schüffner", "Ameboid trophozoite"] },
+        { id: "p-ovale", cells: ["P. ovale", "Oval, fimbriated", "Compact, Schüffner"] },
+        { id: "p-malariae", cells: ["P. malariae", "Normal / small", "Band form"] }
+      ],
+      activeId
+    );
+  }
+
+  function leukemiaChart(activeId) {
+    const myeloid = new Set(["aml", "auer-rod", "cml"]);
+    const lymphoid = new Set(["all", "cll"]);
+    return infoTable(
+      "The four common leukemias",
+      ["", "Acute (blasts)", "Chronic (mature)"],
+      [
+        { id: myeloid.has(activeId) ? activeId : "myeloid", cells: ["Myeloid", "AML — Auer rods", "CML — left shift, basophils"] },
+        { id: lymphoid.has(activeId) ? activeId : "lymphoid", cells: ["Lymphoid", "ALL — lymphoblasts", "CLL — smudge cells"] }
+      ],
+      activeId
+    );
+  }
+
+  function mahaChart() {
+    return infoTable(
+      "Broken red cells: the usual plots",
+      ["Call", "What is shearing them"],
+      [
+        { id: "schistocytes", cells: ["TTP", "Platelet microthrombi (ADAMTS13)"] },
+        { id: "hus", cells: ["HUS", "Endothelial injury, often Shiga toxin"] },
+        { id: "dic", cells: ["DIC", "Fibrin mesh throughout the tree"] },
+        { id: "valve", cells: ["Valve / device", "Mechanical shear"] },
+        { id: "htn", cells: ["Malignant hypertension", "Torn arterioles"] }
+      ],
+      "schistocytes"
+    );
+  }
+
   function specimenChart(specimen) {
     if (specimen.chart === "wbc") return wbcChart(specimen.id);
+    if (specimen.chart === "malaria") return malariaChart(specimen.id);
+    if (specimen.chart === "leukemia") return leukemiaChart(specimen.id);
+    if (specimen.chart === "maha") return mahaChart();
     return "";
   }
 

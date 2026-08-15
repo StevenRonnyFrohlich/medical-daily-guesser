@@ -691,6 +691,33 @@ body {
   background: #1d5c4d;
 }
 
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.info-table th,
+.info-table td {
+  text-align: left;
+  padding: 5px 6px 5px 0;
+  vertical-align: top;
+}
+
+.info-table th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6d685c;
+  font-weight: 500;
+}
+
+.info-table tr.is-on td {
+  color: var(--paper-ink);
+  font-weight: 500;
+}
+
 .reveal .credit {
   font-family: var(--font-mono);
   font-size: 0.72rem;

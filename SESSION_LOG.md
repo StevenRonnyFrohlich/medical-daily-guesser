@@ -415,6 +415,18 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success`. Pushed as its own commit. Streaks reset once because of the storage key bump.
 
+## 2026-08-15 — Teaching notes for abnormal and organisms
+
+**User**
+- Give abnormal morphology and parasites/bugs the same richer information box as normal morphology. Also propose other trays to add.
+
+**Actions**
+- Added `about` text for every abnormal and organism case in `js/labels.js`.
+- Added comparison charts: malaria species, the four leukemias, and MAHA causes for TTP/schistocytes.
+
+**Outcome**
+- `success`. Pushed as its own commit.
+
 
 
 

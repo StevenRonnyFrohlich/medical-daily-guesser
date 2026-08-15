@@ -2,231 +2,300 @@
   const CALLS = {
     "pf-rings": {
       name: "Malaria (falciparum rings)",
-      scientific: "Plasmodium falciparum ring trophozoites",
+      scientific: "Plasmodium falciparum ring trophozoites",
+      chart: "malaria",
+      about: "Falciparum is the species that kills. It sequesters in deep vessels, so you may see only rings and a few crescents on the smear while the real load sits in brain and viscera. Laveran saw these parasites in 1880; Ross later proved the mosquito. Multiple rings in one cell and appliqué forms are the smear's warning that this is not vivax."
     },
     "pf-gam": {
       name: "Malaria (falciparum crescents)",
-      scientific: "Plasmodium falciparum gametocytes",
+      scientific: "Plasmodium falciparum gametocytes",
+      chart: "malaria",
+      about: "The banana gametocyte is the sexual stage that a mosquito must swallow to continue the cycle. It appears late, often after rings have been treated, and it does not itself make people as sick as the asexual load. No other human malaria makes this shape. If you see crescents, the species call is over."
     },
     "p-vivax": {
       name: "Malaria (vivax)",
-      scientific: "Plasmodium vivax",
+      scientific: "Plasmodium vivax",
+      chart: "malaria",
+      about: "The 'benign tertian' malaria of older books — except it is not always benign. Hypnozoites sleep in the liver and relapse months later; that is why primaquine exists. It prefers young red cells, so the infected cell swells and dots (Schüffner). Geography used to be temperate as well as tropical; Duffy-negative red cells in much of West Africa resist it."
     },
     "p-malariae": {
       name: "Malaria (malariae / band forms)",
-      scientific: "Plasmodium malariae",
+      scientific: "Plasmodium malariae",
+      chart: "malaria",
+      about: "Quartan malaria: fever every 72 hours, a low-grade chronic infection that can smolder for decades. It likes older red cells, so the host cell stays small. The band trophozoite is the textbook picture. In Southeast Asia, P. knowlesi can look identical and is the one that can surge and kill — PCR is the honest split."
     },
     "p-ovale": {
       name: "Malaria (ovale)",
-      scientific: "Plasmodium ovale",
+      scientific: "Plasmodium ovale",
+      chart: "malaria",
+      about: "The West and Central African cousin of vivax: also tertian, also able to relapse from liver hypnozoites, also Schüffner-dotted. The oval, fringed red cell is the smear hint. It is uncommon, easy to under-call as vivax, and still needs radical cure if you want the patient to stay well."
     },
     babesia: {
       name: "Babesiosis (Maltese-cross rings)",
-      scientific: "Babesia microti",
+      scientific: "Babesia microti",
+      about: "A tick-borne cousin of malaria, named for Victor Babeș. In the northeast United States it rides Ixodes with Lyme. No pigment, no travel-to-tropics story, and a Maltese-cross tetrad when you are lucky. Asplenic, elderly, and immunocompromised people can die of it; the rest often have a flu-like illness that looks like 'malaria at home.'"
     },
     "t-cruzi": {
       name: "Chagas disease (kissing-bug parasite)",
-      scientific: "Trypanosoma cruzi",
+      scientific: "Trypanosoma cruzi",
+      about: "Carlos Chagas described this in Brazil in 1909: a reduviid bug defecates trypanosomes that enter a bite or mucosa. Acute disease can be mild; decades later the same parasite destroys heart muscle and gut. The large kinetoplast is the smear tell. It is the trypanosome of the Americas."
     },
     "t-brucei": {
       name: "Sleeping sickness (African trypanosome)",
-      scientific: "Trypanosoma brucei",
+      scientific: "Trypanosoma brucei",
+      about: "Tsetse-fly disease of sub-Saharan Africa. T. b. gambiense is the slow West and Central African form; rhodesiense is the East African one that can kill in weeks. The name is the late CNS stage — somnolence, then death if untreated. Winterbottom's cervical nodes and a chancre are clinical clues; the small kinetoplast is the smear one."
     },
     leishmania: {
       name: "Leishmaniasis (amastigotes)",
-      scientific: "Leishmania donovani amastigotes",
+      scientific: "Leishmania donovani amastigotes",
+      about: "Sand-fly disease. Cutaneous ulcers, mucocutaneous destruction, or visceral kala-azar (fever, huge spleen, pancytopenia) depending on species and host. The amastigote lives inside macrophages. William Leishman and Charles Donovan both saw these bodies around 1903. The kinetoplast is how you refuse to call it Histoplasma."
     },
     giardia: {
       name: "Giardiasis (owl-face parasite)",
-      scientific: "Giardia lamblia (G. intestinalis / G. duodenalis)",
+      scientific: "Giardia lamblia (G. intestinalis / G. duodenalis)",
+      about: "Antonie van Leeuwenhoek probably saw this in his own stool in 1681. It sits on the small-bowel brush border and steals surface area, so the illness is greasy diarrhea, bloating, and malabsorption — classically after camping or daycare. The two nuclei make the 'face.' There is no tissue invasion; the damage is mechanical and inflammatory."
     },
     "e-histolytica": {
       name: "Amebiasis (ameba eating red cells)",
-      scientific: "Entamoeba histolytica trophozoite",
+      scientific: "Entamoeba histolytica trophozoite",
+      about: "The ameba that earns its name: histo-lytic, tissue-dissolving. It flasks the colon and can seed the liver. Ingested red cells in a trophozoite are the old-school proof you are not looking at harmless E. coli. Most Entamoeba in stool worldwide are E. dispar, which looks the same and does nothing — antigen or PCR decides when the smear is not enough."
     },
     cryptosporidium: {
       name: "Cryptosporidiosis (tiny acid-fast eggs)",
-      scientific: "Cryptosporidium oocysts",
+      scientific: "Cryptosporidium oocysts",
+      about: "A chlorine-resistant waterborne coccidian. Healthy people get a miserable week of watery diarrhea; people with low CD4 counts can waste and die. The 1993 Milwaukee outbreak taught cities that filters matter. Modified acid-fast is how the lab sees 4–6 µm spheres that ordinary stains miss. Nitazoxanide helps some; immune reconstitution helps more."
     },
     toxoplasma: {
       name: "Toxoplasmosis (crescent parasites)",
-      scientific: "Toxoplasma gondii tachyzoites",
+      scientific: "Toxoplasma gondii tachyzoites",
+      about: "A cat-gut coccidian that infects almost any warm animal. Most healthy adults never notice. The danger is the fetus (congenital disease) and the brain of someone with AIDS or a transplant, where bradyzoite cysts wake up. The tachyzoite is a crescent with no kinetoplast. Nicolle and Manceaux found it in a gundi in 1908; the name is from toxon, bow."
     },
     "s-haematobium": {
       name: "Schistosomiasis (egg with a terminal spine)",
-      scientific: "Schistosoma haematobium egg",
+      scientific: "Schistosoma haematobium egg",
+      about: "The bladder fluke of Africa and the Middle East. Cercariae from freshwater snails pierce skin; adults live in pelvic veins and dump eggs through the bladder wall. Hematuria, fibrosis, and squamous-cell carcinoma of the bladder are the long game. Theodor Bilharz saw it in Cairo in 1851. The terminal spine is the species stamp; urine is the specimen."
     },
     ascaris: {
       name: "Roundworm (thick-shelled egg)",
-      scientific: "Ascaris lumbricoides egg",
+      scientific: "Ascaris lumbricoides egg",
+      about: "The large human roundworm: 15–35 cm adults in the small bowel, one of the world's commonest infections. Eggs leave in stool, mature in soil, and are swallowed; larvae tour the lungs (Loeffler) before returning to the gut. A heavy load can obstruct or migrate into ducts. The mammillated egg is built to wait in dirt for years."
     },
     trichuris: {
       name: "Whipworm (barrel-shaped egg)",
-      scientific: "Trichuris trichiura egg",
+      scientific: "Trichuris trichiura egg",
+      about: "Named for the whip-shaped adult: a thin head threaded into the colonic mucosa and a thick free tail. Heavy infections, especially in children, cause diarrhea, anemia, and a rectal prolapse that looks like a nightmare. The barrel egg with two plugs is unmistakable once you have seen one. Soil-transmitted, like Ascaris and hookworm."
     },
     hookworm: {
       name: "Hookworm (thin-shelled egg)",
-      scientific: "Necator americanus / Ancylostoma duodenale egg",
+      scientific: "Necator americanus / Ancylostoma duodenale egg",
+      about: "Larvae in warm soil pierce bare feet. Adults latch onto jejunal mucosa and drink blood — the quiet cause of iron-deficiency anemia in much of the tropics. Necator and Ancylostoma eggs look the same; you cannot speciate from the smear. The thin shell and morula are the call. Shoes and sanitation end the cycle."
     },
     pinworm: {
       name: "Pinworm (D-shaped egg)",
-      scientific: "Enterobius vermicularis egg",
+      scientific: "Enterobius vermicularis egg",
+      about: "The childhood itch. Gravid females crawl out at night and glue eggs to the perianal skin; the child scratches and reseeds the family. Stool examination misses most cases — that is why the tape test exists. The egg is flattened on one side, built to stick. It is cosmopolitan, not a tropical-only worm."
     },
     strongyloides: {
       name: "Threadworm (gut larva)",
-      scientific: "Strongyloides stercoralis rhabditiform larva",
+      scientific: "Strongyloides stercoralis rhabditiform larva",
+      about: "The worm that can complete its life cycle inside one person. Autoinfection lets it persist for decades, then explode when steroids or HTLV-1 knock down control — hyperinfection, gram-negative sepsis, larvae in sputum. Eggs usually hatch in the gut, so you look for larvae, not eggs. The short buccal canal is how you refuse to call it hookworm."
     },
     trichinella: {
       name: "Trichinellosis (coiled worm in muscle)",
-      scientific: "Trichinella spiralis",
+      scientific: "Trichinella spiralis",
+      about: "Undercooked pork or game. Adults in the gut shed larvae that encyst in striated muscle — extraocular, tongue, diaphragm. Fever, myalgia, eosinophilia, and periorbital edema are the clinical cluster. The nurse-cell cyst is the histologic one. Cooking and freezing break the cycle; tasting raw sausage does not."
     },
     taenia: {
       name: "Tapeworm (striated egg)",
-      scientific: "Taenia species egg",
+      scientific: "Taenia species egg",
+      about: "Beef tapeworm (T. saginata) is mostly a nuisance. Pork tapeworm (T. solium) is the one that cysts the brain — cysticercosis — if humans swallow the egg instead of the cyst. The eggs look identical: a brown striated ball with six hooks inside. Speciation needs the scolex or gravid proglottid, not this field."
     },
     microfilaria: {
       name: "Filariasis (worm in blood)",
-      scientific: "Microfilaria",
+      scientific: "Microfilaria",
+      about: "Larval nematodes in blood, headed for a mosquito or fly. Wuchereria and Brugia cause lymphatic filariasis (elephantiasis); Loa loa crosses the eye; Onchocerca is in skin, not usually blood. Speciation is sheath, tail nuclei, and what time you drew the blood. Manson discovered mosquito transmission here before Ross did it for malaria."
     },
     trichomonas: {
       name: "Trichomoniasis (flagellate)",
-      scientific: "Trichomonas vaginalis",
+      scientific: "Trichomonas vaginalis",
+      about: "The commonest curable STI in many clinics. It inflames vagina and urethra; men are often quiet carriers. There is no cyst — it dies as the smear dries — so a warm wet mount or a molecular test beats a cold slide. Donné described it in 1836. Pear shape, one nucleus, undulating membrane: not a sperm, not Giardia."
     },
     cyclospora: {
       name: "Cyclosporiasis (larger acid-fast egg)",
-      scientific: "Cyclospora cayetanensis",
+      scientific: "Cyclospora cayetanensis",
+      about: "A food-borne coccidian of raspberries, herbs, and travel. Watery diarrhea that can last weeks in an immunocompetent host; the oocyst needs time in the environment before it infects, so person-to-person spread is uncommon. It is bigger than Cryptosporidium and pickier about taking up acid-fast stain. Measure, then call."
     },
     "loa-loa": {
       name: "Loiasis (eye worm in blood)",
-      scientific: "Loa loa",
+      scientific: "Loa loa",
+      about: "The African eyeworm: a deer-fly (Chrysops) disease of rainforest West and Central Africa. Calabar swellings and a worm crossing the conjunctiva are the stories people remember. Microfilariae are diurnal and sheathed, with nuclei to the tail tip. The practical fear is treating onchocerciasis with ivermectin when the Loa load is high — encephalopathy."
     },
     sarcocystis: {
       name: "Sarcocystosis (cyst in muscle)",
-      scientific: "Sarcocystis",
+      scientific: "Sarcocystis",
+      about: "A coccidian with a two-host life: predator gut, prey muscle. Humans can be either, depending on the species and the meal. Muscle cysts are large, septate, and thick-walled compared with Trichinella's coiled nurse cell. Most incidental cysts in human muscle are silent; the gut form is a food-borne diarrhea after undercooked meat."
     },
     tb: {
       name: "Tuberculosis (acid-fast rods)",
-      scientific: "Mycobacterium tuberculosis",
+      scientific: "Mycobacterium tuberculosis",
+      about: "Koch's bacillus (1882). Mycolic acids in the wall shrug off Gram stain and hold carbol fuchsin through acid-alcohol — that is all 'acid-fast' means. Morphology cannot speciate; MAC and others look the same. One smear can start isolation and treatment, but culture or NAAT still owns the name. Nocardia is the branching, weakly acid-fast trap."
     },
     "s-pneumoniae": {
       name: "Pneumonia (lancet-shaped diplococci)",
-      scientific: "Streptococcus pneumoniae",
+      scientific: "Streptococcus pneumoniae",
+      about: "Still a leading cause of community pneumonia, meningitis, and otitis. The capsule is the virulence trick and the vaccine target; on Gram stain it is the clear halo around a lancet pair. Pasteur and Sternberg saw it in the 1880s. Rusty sputum is folklore; the smear plus a sick lobe is still a fair bedside call."
     },
     "s-aureus": {
       name: "Staph infection (grape-cluster cocci)",
-      scientific: "Staphylococcus aureus",
+      scientific: "Staphylococcus aureus",
+      about: "Ogston named it for grape clusters (staphyle). It lives in noses and on skin, then invades wounds, bone, heart valves, and blood. You cannot tell aureus from coagulase-negative staph on Gram stain — clusters vs chains is the useful split, not species. MRSA is a resistance story, not a different shape."
     },
     "n-gonorrhoeae": {
       name: "Gonorrhea (kidney-bean diplococci)",
-      scientific: "Neisseria gonorrhoeae",
+      scientific: "Neisseria gonorrhoeae",
+      about: "Neisser's diplococcus (1879). In a symptomatic man's urethra, intracellular kidney-bean Gram-negatives are highly predictive. Women, extragenital sites, and children need culture or NAAT — lookalikes and legal stakes. Meningococcus and Moraxella wear the same coat on Gram. Untreated, it can seed joints and, in the newborn, eyes."
     },
     "c-tetani": {
       name: "Tetanus (drumstick rods)",
-      scientific: "Clostridium tetani",
+      scientific: "Clostridium tetani",
+      about: "A soil anaerobe whose toxin, not the bug load, does the killing — lockjaw, spasms, broken bones. The terminal spore swells the rod into a drumstick. You almost never diagnose tetanus from a smear of a wound; you diagnose it from the patient. The picture exists so you remember what you are vaccinating against."
     },
     "h-pylori": {
       name: "Stomach ulcer bug (corkscrew rods)",
-      scientific: "Helicobacter pylori",
+      scientific: "Helicobacter pylori",
+      about: "Marshall and Warren turned 'stress ulcers' into an infection and won a Nobel. The spiral lives in gastric mucus, makes urease to survive acid, and drives gastritis, peptic ulcers, and a share of gastric cancer and MALT lymphoma. Giemsa, silver, or IHC on a biopsy is how histology sees it. Treat the organism, not only the hole."
     },
     candida: {
       name: "Candidiasis (yeast with pseudohyphae)",
-      scientific: "Candida albicans",
+      scientific: "Candida albicans",
+      about: "A normal mouth-and-gut yeast that becomes disease when barriers or immunity fail — thrush, vaginitis, catheter line, deep viscera. Pseudohyphae are the tissue-invasion hint. Species (albicans vs glabrata vs auris) is culture or MALDI, not this field. The name is from the Latin for shining white."
     },
     aspergillus: {
       name: "Aspergillosis (45-degree mold)",
-      scientific: "Aspergillus fumigatus",
+      scientific: "Aspergillus fumigatus",
+      about: "A ubiquitous mold. In a cavity it can sit as a fungus ball; in a neutropenic or transplant lung it invades vessels and infarcts tissue. Micheli named the fruiting head for a holy-water sprinkler (aspergillum) in 1729. Acute-angle septate hyphae are the histologic call; Fusarium will not let you be sure without culture."
     },
     "c-neoformans": {
       name: "Cryptococcosis (capsule yeast)",
-      scientific: "Cryptococcus neoformans",
+      scientific: "Cryptococcus neoformans",
+      about: "A pigeon-guano yeast that likes lungs and, especially, meninges. The capsule hides it from phagocytes and clears on India ink; mucicarmine paints it red. C. gattii is the tree-associated cousin that can floor the immunocompetent. AIDS made this a daily CSF call. Narrow-based budding, no true hyphae."
     },
     blastomyces: {
       name: "Blastomycosis (broad-based budding)",
-      scientific: "Blastomyces dermatitidis",
+      scientific: "Blastomyces dermatitidis",
+      about: "A dimorphic of moist North American soil (and a few other pockets). You breathe mycelium; in tissue it becomes a thick-walled yeast that buds with a broad neck. Lung disease plus skin and bone lesions is the classic trek. Gilchrist described it in 1894. The double-contour wall is the smear's gift."
     },
     coccidioides: {
       name: "Valley fever (spherules)",
-      scientific: "Coccidioides immitis / C. posadasii",
+      scientific: "Coccidioides immitis / C. posadasii",
+      about: "Dust of the American Southwest and parts of Latin America. Most infections are a flu; a few disseminate to skin, bone, and meninges, especially in Filipino, African, and pregnant patients. In tissue there is no yeast bud — only spherules packed with endospores. 'Coccidioides' was a mistaken guess that it was a protozoan."
     },
     pneumocystis: {
       name: "PCP (cup-shaped cysts)",
-      scientific: "Pneumocystis jirovecii",
+      scientific: "Pneumocystis jirovecii",
+      about: "Once filed as a parasite, now a fungus that will not culture on ordinary media. It fills alveoli with a foamy exudate in AIDS, transplants, and high-dose steroids. Otto Jírovec's name replaced carinii for the human species. GMS shows crushed ping-pong-ball cysts; they do not bud. Prophylaxis with TMP-SMX changed the epidemic."
     },
     cmv: {
       name: "CMV (owl-eye cell)",
-      scientific: "Cytomegalovirus inclusions",
+      scientific: "Cytomegalovirus inclusions",
+      about: "A herpesvirus most adults already carry. Disease is the immunocompromised: retinitis, colitis, pneumonitis, and the transplanted organ. The cell swells (cyto-megalo) around a nuclear inclusion with a halo — Goodpasture's owl eye — plus granular cytoplasmic inclusions. IHC is faster than arguing with HSV on H&E."
     },
     histoplasma: {
       name: "Histoplasmosis (tiny intracellular yeast)",
-      scientific: "Histoplasma capsulatum",
+      scientific: "Histoplasma capsulatum",
+      about: "Darling found this in Panama in 1906 and thought it was a protozoan in tissue (histo-plasma). It is a dimorphic of bird- and bat-rich soil, especially the Ohio and Mississippi valleys and much of Latin America and Africa. You breathe it; macrophages swallow 2–4 µm yeasts. No kinetoplast, GMS-positive, narrow bud — that is the fight with Leishmania."
     },
     listeria: {
       name: "Listeriosis (rods in pairs)",
-      scientific: "Listeria monocytogenes",
+      scientific: "Listeria monocytogenes",
+      about: "A cold-tolerant food-borne rod: soft cheese, deli meat, unwashed vegetables. Healthy people may see nothing; pregnant people, neonates, and the elderly get bacteremia and meningitis. It tumbles on a wet mount and can look like a diphtheroid or a pneumococcus on a careless Gram. The name honors Joseph Lister; the danger is the host, not a unique shape."
     },
     "h-influenzae": {
       name: "Haemophilus (tiny Gram-negative rods)",
-      scientific: "Haemophilus influenzae",
+      scientific: "Haemophilus influenzae",
+      about: "Pfeiffer's bacillus, wrongly blamed for the 1918 influenza. It is a fastidious coccobacillus of otitis, sinusitis, and — before Hib vaccine — childhood meningitis and epiglottitis. 'Haemophilus' means blood-loving: it wants X and V factors. On Gram stain it is a faint small rod you can miss if the safranin is weak."
     },
     borrelia: {
       name: "Relapsing fever (spirochetes)",
-      scientific: "Borrelia",
+      scientific: "Borrelia",
+      about: "Spirochetes loose in the blood, not hidden in tissue like T. pallidum. Louse-borne B. recurrentis and tick-borne species cause waves of fever as the surface proteins change. The smear between fevers can be empty. They are longer and coarser than a leptospire, and they have no kinetoplast — that is how you refuse a trypanosome."
     },
     mucor: {
       name: "Mucormycosis (ribbon mold)",
-      scientific: "Mucorales",
+      scientific: "Mucorales",
+      about: "The emergency mold of diabetic ketoacidosis, iron overload, and profound neutropenia: rhino-orbital-cerebral disease that ignores tissue planes and invades arteries. Hyphae are broad, pale, and almost septate-free, branching at right angles. Amphotericin and surgery, not 'watch the culture.' Fusarium and Aspergillus are the histologic arguments."
     },
     sickle: {
       name: "Sickle cell disease (pointed red cells)",
-      scientific: "Drepanocytes",
+      scientific: "Drepanocytes",
+      about: "A single amino-acid change in beta globin (Glu→Val) lets deoxygenated hemoglobin polymerize and warp the cell. Herrick published the smear in 1910; Pauling called it a molecular disease in 1949. The pointed drepanocyte is irreversible. Pain crises, chest syndrome, stroke, and hyposplenism are the clinical bill. Trait is mostly silent; SC and S-beta-thal make fatter boats and more targets."
     },
     aml: {
       name: "Leukemia (AML)",
-      scientific: "Acute myeloid leukemia",
+      scientific: "Acute myeloid leukemia",
+      chart: "leukemia",
+      about: "A marrow taken over by myeloid blasts — days to weeks of fatigue, infection, and bleeding. Auer rods, if present, end the AML-vs-ALL argument on the smear. WHO now splits it by genetics (PML::RARA, NPM1, and the rest), because the karyotype is the prognosis. It is a disease of older adults more than children, the reverse of ALL."
     },
     cll: {
       name: "Leukemia (CLL)",
-      scientific: "Chronic lymphocytic leukemia",
+      scientific: "Chronic lymphocytic leukemia",
+      chart: "leukemia",
+      about: "The commonest adult leukemia in the West: a long-lived B-cell clone that accumulates rather than explodes. Many people are found on a routine blood count. Smudge cells are the smear's gossip; flow (CD5, CD23, dim sIg) is the proof. Mantle cell wears a similar coat and a worse temper — cyclin D1 before you reassure anyone."
     },
     cml: {
       name: "Leukemia (CML)",
-      scientific: "Chronic myeloid leukemia",
+      scientific: "Chronic myeloid leukemia",
+      chart: "leukemia",
+      about: "Nowell and Hungerford's Philadelphia chromosome (1960), later BCR::ABL1: a tyrosine-kinase fusion that floods the blood with every stage of granulocyte, plus basophils. Chronic-phase disease can look like a 'high white count' for months. Imatinib turned a fatal grind into a pill. Leukemoid reactions copy the left shift and fail the basophil-and-PCR test."
     },
     all: {
       name: "Leukemia (ALL)",
-      scientific: "Acute lymphoblastic leukemia",
+      scientific: "Acute lymphoblastic leukemia",
+      chart: "leukemia",
+      about: "The childhood leukemia that chemotherapy learned to cure, and a worse disease in adults. Lymphoblasts crowd marrow and often meninges; they have no Auer rods. Lineage (B vs T) and genetics (ETV6::RUNX1, BCR::ABL1, hypodiploidy) decide the protocol. A reactive lymphocytosis is pleomorphic and belongs to a viral story, not a monotone blast field."
     },
     spherocytes: {
       name: "Spherocytosis (sphere-shaped red cells)",
-      scientific: "Spherocytes",
+      scientific: "Spherocytes",
+      about: "Lose membrane, keep volume, become a dense ball with no central pallor. Hereditary spherocytosis is a cytoskeleton defect (ankyrin, spectrin, band 3) that the spleen then pits; immune hemolysis (warm IgG) can look identical on the smear. The lab call is 'spherocytes present.' The clinical call is family, DAT, and how sick the patient is. Thick smears fake them."
     },
     "target-cells": {
       name: "Target cells (bull's-eye red cells)",
-      scientific: "Codocytes",
+      scientific: "Codocytes",
+      about: "Extra membrane relative to hemoglobin, so a blob of pigment sits in the middle of the pallor. Think thalassemia, hemoglobin C, liver disease (too much membrane), or no spleen (too little remodeling). The name codocyte is from Greek kodon, bell. A slowly dried smear manufactures a tray of false targets — always read a well-made zone."
     },
     "auer-rod": {
       name: "Leukemia (AML with Auer rod)",
-      scientific: "Myeloblast with Auer rod",
+      scientific: "Myeloblast with Auer rod",
+      chart: "leukemia",
+      about: "John Auer described these needles in 1906. They are crystallized myeloid primary granules. One rod in a blast is AML (or high-grade MDS) until proven otherwise. Bundles — faggot cells — scream acute promyelocytic leukemia, the subtype that clots and bleeds and needs all-trans retinoic acid now, not after the karyotype comes back."
     },
     "reed-sternberg": {
       name: "Hodgkin lymphoma (Reed–Sternberg cell)",
-      scientific: "Reed–Sternberg cell",
+      scientific: "Reed–Sternberg cell",
+      about: "Dorothy Reed (1902) and Carl Sternberg described the owl-eyed giant that defines classical Hodgkin. It is a crippled B cell that has lost much of its B-ness (CD15/CD30, usually CD20/CD45 negative) and lives in a crowd of reactive inflammatory cells. The patient feels that inflammation: nodes, fever, night sweats. One cell does not make the diagnosis; the architecture does."
     },
     hepatocytes: {
       name: "Hepatitis B (ground-glass liver cells)",
-      scientific: "Ground-glass hepatocytes",
+      scientific: "Ground-glass hepatocytes",
+      about: "Hadziyannis and Popper's name for hepatocytes stuffed with HBsAg in chronic hepatitis B — a finely granular, pale-eosinophilic cytoplasm that looks like frosted glass. It is a marker of a long-standing infection, not of grade alone. Orcein or HBsAg IHC confirms. Oncocytes and Lafora bodies are the adult lookalikes; the serology is the referee."
     },
     hyperseg: {
       name: "B12 / folate deficiency (hypersegmented neutrophil)",
-      scientific: "Hypersegmented neutrophil",
+      scientific: "Hypersegmented neutrophil",
+      chart: "wbc",
+      about: "A neutrophil with six or more lobes, or many with five: the smear's oldest hint of megaloblastic anemia. DNA synthesis lags, so nuclear segmentation overshoots. B12 and folate deficiency are the classic causes; drugs that wreck DNA (methotrexate, hydroxyurea) copy it. Find the neutrophil, then find the oval macrocytes and the reason."
     },
     rouleaux: {
       name: "Paraprotein (stacked red cells)",
-      scientific: "Rouleaux",
+      scientific: "Rouleaux",
+      about: "Red cells stacked like coins when plasma protein — especially a myeloma or Waldenström paraprotein — dulls their surface charge. High fibrinogen in inflammation can do a milder version. True agglutination is a lumpy, disordered clump (cold agglutinin), not a neat stack. The smear edge always stacks a little; read the body of the film."
     },
     schistocytes: {
       name: "TTP (broken red cells)",
-      scientific: "Schistocytes (microangiopathic hemolysis)",
+      scientific: "Schistocytes (microangiopathic hemolysis)",
+      chart: "maha",
+      about: "Helmet cells and red-cell fragments from a fibrin or platelet mesh that shears them in small vessels. TTP is ADAMTS13 failure and a hematologic emergency (plasma exchange). HUS, DIC, malignant hypertension, and a mechanical valve tell the same smear story with different plots. One or two fragments are not a call; a field of them plus thrombocytopenia is."
     },
     neutrophil: {
       name: "Neutrophil (most common white cell)",
