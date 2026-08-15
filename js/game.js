@@ -1,6 +1,6 @@
 (function () {
   const EPOCH = Date.UTC(2026, 7, 13);
-  const STORAGE_KEY = "wit-microscope-med-v4";
+  const STORAGE_KEY = "wit-microscope-med-v5";
   const DAILY_COUNT = (window.GAME_CONFIG && window.GAME_CONFIG.dailyCount) || 6;
   const SHARE_URL = (window.GAME_CONFIG && window.GAME_CONFIG.shareUrl) || "";
   const MODES = {
@@ -133,6 +133,45 @@
     return shuffle(picked, rng);
   }
 
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[char]));
+  }
+
+  function choiceMarkup(label) {
+    const match = String(label).match(/^(.*) \((.+)\)$/);
+    if (!match) return escapeHtml(label);
+    return `${escapeHtml(match[1])} <em>(${escapeHtml(match[2])})</em>`;
+  }
+
+  function wbcChart(activeId) {
+    const rows = [
+      { id: "neutrophil", label: "Neutrophils", range: "40–70%" },
+      { id: "lymphocyte", label: "Lymphocytes", range: "20–40%" },
+      { id: "monocyte", label: "Monocytes", range: "2–8%" },
+      { id: "eosinophil", label: "Eosinophils", range: "1–4%" },
+      { id: "basophil", label: "Basophils", range: "0–1%" }
+    ];
+    const widths = { neutrophil: 86, lymphocyte: 48, monocyte: 14, eosinophil: 10, basophil: 6 };
+    const bars = rows
+      .map((row) => {
+        const on = row.id === activeId ? " is-on" : "";
+        return `<div class="wbc-row${on}"><span>${row.label}</span><span class="wbc-bar"><i style="width:${widths[row.id]}%"></i></span><span>${row.range}</span></div>`;
+      })
+      .join("");
+    return `<div class="wbc-chart"><p class="wbc-caption">Typical adult white-cell differential</p>${bars}</div>`;
+  }
+
+  function specimenChart(specimen) {
+    if (specimen.chart === "wbc") return wbcChart(specimen.id);
+    return "";
+  }
+
   function buildChoices(specimen, seed) {
     const rng = mulberry32(hash32(`${seed}|${specimen.id}|choices`));
     const options = [specimen.name, ...shuffle(specimen.lookalikes, rng).slice(0, 3)];
@@ -190,7 +229,10 @@
     choices: $("choices"),
     reveal: $("reveal"),
     verdict: $("verdict"),
+    call: $("reveal-call"),
+    sci: $("reveal-sci"),
     blurb: $("blurb"),
+    extra: $("reveal-extra"),
     credit: $("credit"),
     streak: $("stat-streak"),
     best: $("stat-best"),
@@ -334,7 +376,7 @@
       const button = document.createElement("button");
       button.className = "choice";
       button.type = "button";
-      button.innerHTML = `<span class="key">${keys[choiceIndex]}</span><span>${label}</span>`;
+      button.innerHTML = `<span class="key">${keys[choiceIndex]}</span><span>${choiceMarkup(label)}</span>`;
       if (locked) {
         button.disabled = true;
         if (label === correctName) button.classList.add(selected === label ? "is-right" : "is-missed");
@@ -351,7 +393,15 @@
     ui.reveal.classList.add("is-open");
     ui.verdict.className = `verdict ${correct ? "good" : "bad"}`;
     ui.verdict.textContent = correct ? "Correct." : "Not that.";
+    ui.call.innerHTML = choiceMarkup(specimen.name);
+    ui.sci.textContent = specimen.scientific || "";
+    ui.sci.hidden = !specimen.scientific || specimen.scientific === specimen.name;
     ui.blurb.textContent = specimen.blurb;
+    const parts = [];
+    const chart = specimenChart(specimen);
+    if (chart) parts.push(chart);
+    if (specimen.about) parts.push(`<p class="reveal-about">${escapeHtml(specimen.about)}</p>`);
+    ui.extra.innerHTML = parts.join("");
     ui.credit.innerHTML = `${specimen.credit}. <a href="${commonsPage(specimen.file)}" target="_blank" rel="noreferrer">Image source</a>`;
     if (finished()) {
       ui.next.hidden = !isLab;

@@ -402,6 +402,19 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success` if Pages deploys. Confirm the first live submission in Formspree email. Did not commit `.cursor/mcp.json`.
 
+## 2026-08-15 — Diagnosis names and richer morphology notes
+
+**User**
+- Use diagnoses (Malaria, TTP, Leukemia) with a simple English name in brackets. Put exact scientific names in the bottom information box. Make normal human morphology more informative — WBC distribution, function, classification history.
+
+**Actions**
+- Added `js/labels.js` so buttons show diagnosis + plain English; lookalikes use the same pattern.
+- Reveal box now shows the scientific name, the existing call note, and for morphology a teaching paragraph. White cells get a typical adult differential chart.
+- Bumped localStorage to `wit-microscope-med-v5` so old guesses do not mismatch new labels.
+
+**Outcome**
+- `success`. Pushed as its own commit. Streaks reset once because of the storage key bump.
+
 
 
 
