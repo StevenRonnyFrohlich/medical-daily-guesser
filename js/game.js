@@ -74,6 +74,12 @@
     return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${width}`;
   }
 
+  function imageUrl(file, width) {
+    if (!file) return "";
+    if (/^https?:\/\//i.test(file)) return file;
+    return commonsUrl(file, width);
+  }
+
   function commonsPage(file) {
     return `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file.replace(/ /g, "_"))}`;
   }
@@ -458,8 +464,8 @@
       ui.ocular.classList.remove("is-loading");
       ui.image.alt = "Image failed to load. Check your network connection.";
     };
-    ui.image.src = commonsUrl(file, 1100);
-    loupe.setSource(commonsUrl(file, 2000));
+    ui.image.src = imageUrl(file, 1100);
+    loupe.setSource(imageUrl(file, 2000));
   }
 
   function renderChoices(selected, correctName) {
@@ -649,7 +655,7 @@
 
   ui.ocular.addEventListener("dblclick", () => {
     ui.loupe.hidden = true;
-    $("lightbox-image").src = commonsUrl(current().file, 1600);
+    $("lightbox-image").src = imageUrl(current().file, 1600);
     $("lightbox").classList.add("is-open");
   });
   $("lightbox").addEventListener("click", () => $("lightbox").classList.remove("is-open"));
@@ -677,10 +683,42 @@
     if (buttons[choiceIndex]) buttons[choiceIndex].click();
   });
 
-  const requested = params.get("tray");
-  if (requested && MODES[requested]) {
-    startDaily(requested);
-  } else {
-    renderLobby();
+  function catalogBase() {
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") return "http://localhost:8787";
+    const cfg = window.GAME_CONFIG || {};
+    if (cfg.catalogUrl) return String(cfg.catalogUrl).replace(/\/$/, "");
+    return "";
   }
+
+  async function loadRemoteCatalog() {
+    const base = catalogBase();
+    if (!base) return;
+    try {
+      const res = await fetch(`${base}/catalog`);
+      if (!res.ok) return;
+      const data = await res.json();
+      (data.specimens || []).forEach((item) => {
+        if (!item || !item.id) return;
+        if (window.SPECIMENS.some((row) => row.id === item.id)) return;
+        window.SPECIMENS.push(item);
+      });
+      (data.trays || []).forEach((tray) => {
+        if (!tray || !tray.id || MODES[tray.id]) return;
+        MODES[tray.id] = {
+          id: tray.id,
+          label: tray.label || tray.id,
+          blurb: tray.blurb || ""
+        };
+      });
+    } catch {
+      /* official catalog still plays */
+    }
+  }
+
+  const requested = params.get("tray");
+
+  loadRemoteCatalog().then(() => {
+    if (requested && MODES[requested]) startDaily(requested);
+    else renderLobby();
+  });
 })();

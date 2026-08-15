@@ -1,0 +1,26 @@
+{
+  "name": "the-call-api",
+  "main": "worker/src/index.js",
+  "compatibility_date": "2026-08-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "workers_dev": true,
+  "vars": {
+    "APP_ORIGIN": "https://scopethecall.com"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "the-call",
+      "database_id": "2deee60e-ca93-4a82-880c-9ff97b42bba7"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "FIELDS",
+      "bucket_name": "the-call-fields"
+    }
+  ]
+}

@@ -451,6 +451,81 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success`.
 
+## 2026-08-15 — Diff-tab commit and push
+
+**User**
+- Stage the work, commit, and push this branch. Exclude unrelated files.
+
+**Actions**
+- Checked `cursor/medical-daily-guesser`: already matched origin at `d23e84e`. Only leftover was `.cursor/mcp.json`, which was not committed.
+
+**Outcome**
+- `success`. Nothing new to push.
+
+## 2026-08-15 — Cloudflare accounts and moderated submissions
+
+**User**
+- Implement the Cloudflare accounts / moderated UGC plan. Do not edit the plan file. Finish all todos.
+
+**Actions**
+- Worked on `cursor/accounts` (not Pages). Worker `the-call-api` + D1 schema `the-call` + R2 binding `the-call-fields`; `GET /catalog` returns extra trays + approved specimens only.
+- Magic-link auth (Resend when keyed, `devLink` locally), `account.html`, session cookie.
+- `submit.html` uploads (1–3 jpeg/png/webp, 8 MB, EXIF strip, attestations) to local R2; `admin.html` approve/reject.
+- Game fetches catalog, merges specimens and unofficial trays; lobby Log in / Submit a field; `catalogUrl` left empty until `api.scopethecall.com` is live.
+- Remote D1 exists; `wrangler deploy` failed until R2 is enabled in the dashboard (error 10042). Apex/`www` DNS left on GitHub Pages. Custom domain not put in `wrangler.jsonc` routes (that broke local magic-link hosts).
+
+**Outcome**
+- `semi-success`. Local pipeline verified (login → submit → approve → `/catalog` extra tray). Remote Worker/R2/`api.scopethecall.com` still need dashboard R2 + deploy + custom domain. Do not switch GitHub Pages to this branch yet. Not committed.
+
+## 2026-08-15 — Enable R2 and attach API domain
+
+**User**
+- I have activated R2.
+
+**Actions**
+- Created R2 bucket `the-call-fields`. Re-applied remote D1 schema. Deployed Worker `the-call-api`.
+- Set `SESSION_SECRET`. Attached custom domain `api.scopethecall.com` via `wrangler deploy --domain` (not wrangler.jsonc routes).
+- Confirmed `GET https://api.scopethecall.com/catalog` returns empty trays/specimens. Apex `scopethecall.com` still GitHub Pages.
+- Set `catalogUrl` to `https://api.scopethecall.com`. Localhost still uses `http://localhost:8787`.
+
+**Outcome**
+- `semi-success`. API is live. Still need `ADMIN_EMAIL` and `RESEND_API_KEY` secrets. GitHub Pages source unchanged (`cursor/accounts` not live). Not committed.
+
+## 2026-08-15 — Admin email and Resend key
+
+**User**
+- Asked what the Resend API key is; gave admin email for the Worker secret.
+
+**Actions**
+- Set production `ADMIN_EMAIL` via wrangler. Updated local `.dev.vars` the same way.
+- Did not create or invent a Resend key; that comes from the Resend dashboard.
+
+**Outcome**
+- `semi-success`. Admin secret is set. Magic-link mail still needs `RESEND_API_KEY` and a verified sending domain.
+
+## 2026-08-15 — Resend API key added
+
+**User**
+- Said RESEND_API_KEY has been added.
+
+**Actions**
+- Confirmed the Worker secrets list includes `RESEND_API_KEY`, `ADMIN_EMAIL`, and `SESSION_SECRET`. Did not send a test login email.
+
+**Outcome**
+- `success` for the secret being present. Login mail still needs `scopethecall.com` verified in Resend (Worker sends from `login@scopethecall.com`). GitHub Pages source unchanged.
+
+## 2026-08-15 — Switch GitHub Pages to accounts branch
+
+**User**
+- Lets switch to this branch now.
+
+**Actions**
+- Committed accounts work on `cursor/accounts` (no `.dev.vars`, no `.cursor/mcp.json`).
+- Pushed the branch and set GitHub Pages source to `cursor/accounts` `/`. Apex DNS left on GitHub Pages.
+
+**Outcome**
+- `success` if Pages build is `cursor/accounts`. Live site should show Log in / Submit; catalog from `api.scopethecall.com`.
+
 
 
 

@@ -31,9 +31,32 @@ This is a static site. **GitHub Pages is free** for a public repo and is the rig
 
 DNS is on Cloudflare. Apex and `www` are CNAME (flattened) to `stevenronnyfrohlich.github.io`, **DNS only** (grey cloud) so GitHub can issue HTTPS. Do not orange-cloud the records until GitHub shows the certificate as working, then use SSL mode **Full (strict)**.
 
-No server, no database, no build step. Streaks stay in each player's browser via `localStorage`.
+No server, no database, no build step for the daily game. Streaks stay in each player's browser via `localStorage`.
 
-Skip paid hosts (Vercel/Netlify/Render) until you need forms, accounts, or a real API. Cloudflare Pages is the free fallback if GitHub Pages ever gets in the way.
+Accounts and moderated uploads live on a **Cloudflare Worker** (`api.scopethecall.com` when DNS is attached). The GitHub Pages game stays on the apex. Do not orange-cloud `@` or `www`.
+
+## Accounts (this branch)
+
+Login is a magic link. People can submit fields; nothing is public until you approve it in `admin.html`.
+
+Local:
+
+```bash
+cp .dev.vars.example .dev.vars
+# set ADMIN_EMAIL to the inbox you will log in with
+npm install
+npm run db:local
+npm run dev:api
+```
+
+In another terminal: `npx --yes serve .` then open `http://localhost:3000/account.html`. Without `RESEND_API_KEY`, the login page shows the magic link.
+
+Remote (done on this account unless noted):
+
+1. D1 `the-call` and R2 `the-call-fields` exist. Worker: `https://the-call-api.frobro.workers.dev` and **https://api.scopethecall.com**.
+2. `catalogUrl` in `js/config.js` is `https://api.scopethecall.com`. Localhost still talks to `http://localhost:8787`.
+3. Apex and `www` stay grey-cloud GitHub Pages. Do not switch Pages to `cursor/accounts` until you ask.
+4. Still set production secrets: `npx wrangler secret put ADMIN_EMAIL` and `npx wrangler secret put RESEND_API_KEY`. Without Resend, magic links are not emailed. Without `ADMIN_EMAIL`, the review queue stays locked.
 
 ## Feedback
 

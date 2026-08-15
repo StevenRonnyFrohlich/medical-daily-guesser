@@ -1,0 +1,11 @@
+{
+  "name": "the-call",
+  "private": true,
+  "scripts": {
+    "dev:api": "wrangler dev --port 8787",
+    "db:local": "wrangler d1 execute the-call --local --file=worker/schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.28.0"
+  }
+}

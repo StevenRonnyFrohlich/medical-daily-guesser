@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account — The Call</title>
+  <meta name="description" content="Log in to submit microscope fields to The Call.">
+  <link rel="canonical" href="https://scopethecall.com/account.html">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;1,9..144,360&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="banner" href="index.html">Back to the scope</a>
+  <div class="app">
+    <header class="top">
+      <div class="mark">
+        <em>Submit a field</em>
+        <h1>Account<span>Log in.</span></h1>
+      </div>
+    </header>
+    <section class="about" id="login-panel">
+      <p class="about-lead">A link goes to your inbox. No password. Submissions stay private until they are reviewed.</p>
+      <p>This is a game, not a diagnostic tool. Do not upload identifiable patient photographs.</p>
+      <form id="login-form" class="account-form">
+        <label>Email
+          <input type="email" name="email" id="login-email" required maxlength="200" autocomplete="email">
+        </label>
+        <div class="actions">
+          <button class="btn" type="submit">Send login link</button>
+        </div>
+        <p class="feedback-status" id="login-status" role="status"></p>
+      </form>
+    </section>
+    <section class="about" id="home-panel" hidden>
+      <p class="about-lead">Signed in as <span id="user-email"></span></p>
+      <div class="actions">
+        <a class="btn" href="submit.html">Submit a field</a>
+        <a class="btn" id="admin-link" href="admin.html" hidden>Review queue</a>
+        <button class="btn" id="btn-logout" type="button">Log out</button>
+      </div>
+      <h2 class="queue-title">Your submissions</h2>
+      <ul class="queue" id="my-subs"></ul>
+    </section>
+    <footer class="foot">
+      <div><a href="index.html">The Call</a> · <a href="submit.html">Submit</a></div>
+      <div>not a diagnostic tool</div>
+    </footer>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

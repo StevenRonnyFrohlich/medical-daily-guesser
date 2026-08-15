@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submit a field — The Call</title>
+  <meta name="description" content="Propose a microscope field for The Call. Reviewed before it is public.">
+  <link rel="canonical" href="https://scopethecall.com/submit.html">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;1,9..144,360&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="banner" href="index.html">Back to the scope</a>
+  <div class="app">
+    <header class="top">
+      <div class="mark">
+        <em>Reviewed before it is public</em>
+        <h1>Submit<span>A field.</span></h1>
+      </div>
+    </header>
+    <section class="about">
+      <p>Upload 1–3 de-identified microscope photographs. Name the diagnosis the way the game does: a call, then a plain-English hint. Nothing goes live until it is approved. This is not a diagnostic service.</p>
+      <p>Do not include faces, names, hospital stickers, or dates of birth.</p>
+      <form id="submit-form" class="account-form">
+        <label>Diagnosis
+          <input type="text" name="diagnosis" required maxlength="80" placeholder="Malaria">
+        </label>
+        <label>Plain English <span>(shown in brackets)</span>
+          <input type="text" name="plain" required maxlength="80" placeholder="falciparum rings">
+        </label>
+        <label>Scientific name
+          <input type="text" name="scientific" required maxlength="160" placeholder="Plasmodium falciparum ring trophozoites">
+        </label>
+        <label>Lookalike 1
+          <input type="text" name="lookalike1" required maxlength="120" placeholder="Babesiosis (Maltese-cross rings)">
+        </label>
+        <label>Lookalike 2
+          <input type="text" name="lookalike2" required maxlength="120">
+        </label>
+        <label>Lookalike 3
+          <input type="text" name="lookalike3" required maxlength="120">
+        </label>
+        <label>Tray
+          <select name="track" id="track" required>
+            <option value="morphology">Human morphology</option>
+            <option value="organisms">Parasites &amp; organisms</option>
+            <option value="abnormal">Abnormal morphology</option>
+            <option value="cytology">Cytology</option>
+            <option value="new">Propose a new tray</option>
+          </select>
+        </label>
+        <label id="proposed-wrap" hidden>New tray name
+          <input type="text" name="proposed_label" id="proposed_label" maxlength="80" placeholder="Urine sediment">
+        </label>
+        <label>How to tell it on the smear
+          <textarea name="blurb" required rows="5" maxlength="2000"></textarea>
+        </label>
+        <label>Teaching note <span>(optional)</span>
+          <textarea name="about" rows="4" maxlength="2000"></textarea>
+        </label>
+        <label>Stain
+          <input type="text" name="stain" maxlength="80" placeholder="Wright–Giemsa">
+        </label>
+        <label>Objective / magnification
+          <input type="text" name="mag" maxlength="40" placeholder="1000× oil">
+        </label>
+        <label>Difficulty 1–5
+          <input type="number" name="difficulty" min="1" max="5" value="3">
+        </label>
+        <label>Credit line <span>(no email)</span>
+          <input type="text" name="credit" maxlength="80" placeholder="contributor">
+        </label>
+        <label>Photographs <span>(1–3, jpeg / png / webp, 8 MB each)</span>
+          <input type="file" name="files" accept="image/jpeg,image/png,image/webp" multiple required>
+        </label>
+        <label class="check"><input type="checkbox" name="rights" required> I have the right to upload these images.</label>
+        <label class="check"><input type="checkbox" name="no_phi" required> There is no identifiable patient (no face, name, sticker, or date of birth).</label>
+        <label class="check"><input type="checkbox" name="deidentified" required> The fields are de-identified.</label>
+        <label class="check"><input type="checkbox" name="not_advice" required> I understand this is a game, not medical advice or a diagnostic tool.</label>
+        <div class="actions">
+          <button class="btn" type="submit">Submit for review</button>
+          <a class="btn" href="account.html">Account</a>
+        </div>
+        <p class="feedback-status" id="submit-status" role="status"></p>
+      </form>
+    </section>
+    <footer class="foot">
+      <div><a href="index.html">The Call</a> · <a href="account.html">Account</a></div>
+      <div>not a diagnostic tool</div>
+    </footer>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/submit.js"></script>
+</body>
+</html>

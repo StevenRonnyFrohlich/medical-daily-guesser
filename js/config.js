@@ -3,5 +3,8 @@ window.GAME_CONFIG = {
   dailyCount: 6,
   linkedin: "https://www.linkedin.com/in/steven-frohlich-80150746",
   // Formspree inbox stays off the public page.
-  feedbackForm: "https://formspree.io/f/xeajzlpv"
+  feedbackForm: "https://formspree.io/f/xeajzlpv",
+  // Worker catalog. Empty on GitHub Pages until api.scopethecall.com is live.
+  // Local: js/api.js and game.js fall back to http://localhost:8787
+  catalogUrl: "https://api.scopethecall.com"
 };

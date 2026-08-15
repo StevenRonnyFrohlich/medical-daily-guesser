@@ -124,6 +124,98 @@ body {
   padding: 0;
 }
 
+.account-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.account-form label,
+.queue-card label {
+  display: grid;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.account-form label span {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-ui);
+}
+
+.account-form label.check {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.account-form input,
+.account-form textarea,
+.account-form select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  padding: 10px 12px;
+}
+
+.account-form textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.queue-title {
+  font-family: var(--font-display);
+  margin: 28px 0 10px;
+}
+
+.queue {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
+.queue-card {
+  background: var(--paper);
+  color: var(--paper-ink);
+  padding: 16px;
+  margin: 0 0 16px;
+}
+
+.queue-card select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #c9c0aa;
+  background: transparent;
+  color: var(--paper-ink);
+  font-family: var(--font-ui);
+  padding: 8px 10px;
+}
+
+.queue-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.queue-images img {
+  max-width: min(100%, 240px);
+  max-height: 180px;
+  object-fit: contain;
+}
+
 .modes {
   display: grid;
   gap: 12px;

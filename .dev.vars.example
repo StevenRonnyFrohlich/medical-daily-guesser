@@ -1,0 +1,5 @@
+APP_ORIGIN=http://localhost:3000
+ADMIN_EMAIL=you@example.com
+SESSION_SECRET=change-me-in-local-dev-only
+# Leave empty to skip sending mail; the magic link is returned in the JSON in local dev.
+RESEND_API_KEY=
