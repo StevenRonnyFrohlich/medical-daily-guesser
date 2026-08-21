@@ -538,8 +538,10 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 - Documented `wrangler d1 execute the-call --remote --file=worker/migrations/0001_field_calls.sql` and Worker deploy. Did not switch GitHub Pages. Did not commit secrets.
 
 **Outcome**
-- `semi-success` until remote D1 migrate + `wrangler deploy` run with existing Cloudflare auth.
-- Leftover: deploy Worker and apply the migration on `the-call`. GitHub Pages source stays `cursor/accounts`.
+- `semi-success`. Code is on `cursor/signups-crowd-a659`. Local `npm test` (8/8) and wrangler `--local` checks passed: unique votes, admin-only user list, magic-link session cookie, HEAD `/catalog`.
+- `wrangler whoami` is not authenticated here, so remote D1 migrate + Worker deploy were not run.
+- ManagePullRequest failed (`must be a collaborator`). Open from: https://github.com/StevenRonnyFrohlich/medical-daily-guesser/compare/cursor/accounts...cursor/signups-crowd-a659
+- Leftover: apply `worker/migrations/0001_field_calls.sql` remotely, `wrangler deploy`, merge to `cursor/accounts`. Do not switch GitHub Pages from this work.
 
 
 
