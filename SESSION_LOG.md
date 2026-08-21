@@ -537,7 +537,7 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 - Confirmed `robots.txt` still has `Sitemap: https://scopethecall.com/sitemap.xml`. No Worker, wrangler, or Pages source changes.
 
 **Outcome**
-- `success`. Sitemap-only change plus this log entry. PR against `cursor/accounts`.
+- `semi-success`. Sitemap is valid and pushed on `cursor/sitemap-the-call-d8a8` from `cursor/accounts` only. Could not open a PR (`must be a collaborator`). Compare: https://github.com/StevenRonnyFrohlich/medical-daily-guesser/compare/cursor/accounts...cursor/sitemap-the-call-d8a8
 
 
 
