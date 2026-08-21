@@ -526,7 +526,20 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success` if Pages build is `cursor/accounts`. Live site should show Log in / Submit; catalog from `api.scopethecall.com`.
 
+## 2026-08-21 — Signups list and crowd second-opinion
 
+**User**
+- Treat magic-link login as a real signup (emails visible to admin in D1 / admin.html). After each field call, show the crowd split (e.g. “62% said malaria”). No leaderboard. Fold in HEAD /catalog, Resend 502 errors, optional RESEND_FROM.
+
+**Actions**
+- Added D1 `field_calls` plus admin `GET /admin/users`.
+- Worker: unique vote per user or `call_anon` cookie, IP/cookie rate limits, HEAD `/catalog`, Resend 502 + `RESEND_FROM`.
+- Game reveal shows the crowd split after a call; lobby still plays anonymously and has a light Log in.
+- Documented `wrangler d1 execute the-call --remote --file=worker/migrations/0001_field_calls.sql` and Worker deploy. Did not switch GitHub Pages. Did not commit secrets.
+
+**Outcome**
+- `semi-success` until remote D1 migrate + `wrangler deploy` run with existing Cloudflare auth.
+- Leftover: deploy Worker and apply the migration on `the-call`. GitHub Pages source stays `cursor/accounts`.
 
 
 

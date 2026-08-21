@@ -37,7 +37,11 @@ Accounts and moderated uploads live on a **Cloudflare Worker** (`api.scopethecal
 
 ## Accounts (this branch)
 
-Login is a magic link. People can submit fields; nothing is public until you approve it in `admin.html`.
+Login is a magic link. Clicking it creates a row in D1 `users` and keeps a 30-day HttpOnly session cookie. People can play the daily trays without an account. Logged-in play is associated with that user (submissions and crowd calls).
+
+Admin (`ADMIN_EMAIL`) can open `admin.html` for the review queue and the signed-up email list. That list is not in the public game JS.
+
+After a player calls a field, the reveal asks `POST /calls` and shows how other players split on that same daily field. One counted vote per player per (day, tray, field). Anonymous players get a durable `call_anon` cookie. There is no leaderboard.
 
 Local:
 
@@ -45,18 +49,27 @@ Local:
 cp .dev.vars.example .dev.vars
 # set ADMIN_EMAIL to the inbox you will log in with
 npm install
+npm test
 npm run db:local
+npm run db:migrate
 npm run dev:api
 ```
 
-In another terminal: `npx --yes serve .` then open `http://localhost:3000/account.html`. Without `RESEND_API_KEY`, the login page shows the magic link.
+In another terminal: `npx --yes serve .` then open `http://localhost:3000/account.html`. Without `RESEND_API_KEY`, the login page shows the magic link. If Resend is configured and send fails, the API returns 502 with Resend’s error.
 
-Remote (done on this account unless noted):
+Remote:
 
 1. D1 `the-call` and R2 `the-call-fields` exist. Worker: `https://the-call-api.frobro.workers.dev` and **https://api.scopethecall.com**.
 2. `catalogUrl` in `js/config.js` is `https://api.scopethecall.com`. Localhost still talks to `http://localhost:8787`.
-3. Apex and `www` stay grey-cloud GitHub Pages. Do not switch Pages to `cursor/accounts` until you ask.
-4. Still set production secrets: `npx wrangler secret put ADMIN_EMAIL` and `npx wrangler secret put RESEND_API_KEY`. Without Resend, magic links are not emailed. Without `ADMIN_EMAIL`, the review queue stays locked.
+3. Apex and `www` stay grey-cloud GitHub Pages from `cursor/accounts`. Do not change the Pages source from this PR.
+4. Apply the new tables, then deploy the Worker:
+
+```bash
+npx wrangler d1 execute the-call --remote --file=worker/migrations/0001_field_calls.sql
+npx wrangler deploy
+```
+
+Optional Worker secret/var: `RESEND_FROM` (default `The Call <login@scopethecall.com>`). Existing secrets: `ADMIN_EMAIL`, `RESEND_API_KEY`, `SESSION_SECRET`.
 
 ## Feedback
 

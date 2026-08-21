@@ -62,10 +62,29 @@ CREATE TABLE IF NOT EXISTS rate_limits (
   window_start INTEGER NOT NULL
 );
 
+-- One counted call per player per daily field. Logged-in players use users.id;
+-- anonymous players use a hash of the HttpOnly call_anon cookie.
+CREATE TABLE IF NOT EXISTS field_calls (
+  id TEXT PRIMARY KEY,
+  day_key TEXT NOT NULL,
+  tray_id TEXT NOT NULL,
+  field_index INTEGER NOT NULL,
+  specimen_id TEXT NOT NULL DEFAULT '',
+  guess TEXT NOT NULL,
+  player_kind TEXT NOT NULL,
+  player_key TEXT NOT NULL,
+  created_at INTEGER NOT NULL
+);
+
 CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id);
 CREATE INDEX IF NOT EXISTS idx_submissions_status ON submissions(status);
 CREATE INDEX IF NOT EXISTS idx_submissions_user ON submissions(user_id);
 CREATE INDEX IF NOT EXISTS idx_files_submission ON submission_files(submission_id);
+CREATE INDEX IF NOT EXISTS idx_users_created ON users(created_at DESC);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_field_calls_player
+  ON field_calls(day_key, tray_id, field_index, player_kind, player_key);
+CREATE INDEX IF NOT EXISTS idx_field_calls_field
+  ON field_calls(day_key, tray_id, field_index);
 
 INSERT OR IGNORE INTO trays (id, label, blurb, official) VALUES
   ('morphology', 'Human morphology', 'Liver, skin, muscle, nerves, squamous sheets, and normal blood cells.', 1),

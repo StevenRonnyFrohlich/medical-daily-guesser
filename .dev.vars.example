@@ -3,3 +3,5 @@ ADMIN_EMAIL=you@example.com
 SESSION_SECRET=change-me-in-local-dev-only
 # Leave empty to skip sending mail; the magic link is returned in the JSON in local dev.
 RESEND_API_KEY=
+# Optional From header. Defaults to The Call <login@scopethecall.com>
+# RESEND_FROM=

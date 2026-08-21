@@ -1,8 +1,22 @@
+import {
+  aggregateSplit,
+  dayKeyInWindow,
+  parseDayKey,
+  parseFieldIndex,
+  parseGuess,
+  parseResendError,
+  parseSpecimenId,
+  parseTrayId,
+  resendFrom
+} from "./lib.js";
+
 const COOKIE = "call_session";
+const ANON_COOKIE = "call_anon";
 const MAX_FILES = 3;
 const MAX_BYTES = 8 * 1024 * 1024;
 const LINK_TTL_MS = 20 * 60 * 1000;
 const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+const ANON_TTL_MS = 400 * 24 * 60 * 60 * 1000;
 const CATALOG_CACHE = "public, max-age=60";
 const OFFICIAL_TRACKS = new Set(["morphology", "organisms", "abnormal", "cytology"]);
 
@@ -33,14 +47,17 @@ async function handle(request, env, ctx) {
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, "") || "/";
 
-  if (request.method === "GET" && path === "/catalog") return catalog(env, request);
+  if ((request.method === "GET" || request.method === "HEAD") && path === "/catalog") return catalog(env, request);
   if (request.method === "GET" && path.startsWith("/img/")) return serveImage(env, request, path.slice(5));
   if (request.method === "POST" && path === "/auth/magic-link") return magicLink(env, request);
   if (request.method === "GET" && path === "/auth/callback") return callback(env, request, url);
   if (request.method === "POST" && path === "/auth/logout") return logout(request);
   if (request.method === "GET" && path === "/me") return me(env, request);
+  if (request.method === "POST" && path === "/calls") return recordCall(env, request);
+  if (request.method === "GET" && path === "/calls") return readCall(env, request, url);
   if (request.method === "POST" && path === "/submissions") return createSubmission(env, request);
   if (request.method === "GET" && path === "/submissions") return mySubmissions(env, request);
+  if (request.method === "GET" && path === "/admin/users") return adminUsers(env, request);
   if (request.method === "GET" && path === "/admin/queue") return adminQueue(env, request);
   if (request.method === "POST" && path.startsWith("/admin/submissions/") && path.endsWith("/approve")) {
     return approve(env, request, path.split("/")[3]);
@@ -90,12 +107,15 @@ async function catalog(env, request) {
       blurb: row.blurb
     });
   }
-  return json(
-    { trays: extraTrays.results || [], specimens },
-    200,
-    request,
-    { "Cache-Control": CATALOG_CACHE }
-  );
+  const payload = { trays: extraTrays.results || [], specimens };
+  if (request.method === "HEAD") {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+      "Cache-Control": CATALOG_CACHE
+    });
+    return cors(new Response(null, { status: 200, headers }), request);
+  }
+  return json(payload, 200, request, { "Cache-Control": CATALOG_CACHE });
 }
 
 async function serveImage(env, request, fileId) {
@@ -145,8 +165,11 @@ async function magicLink(env, request) {
   ).run();
   const api = apiOrigin(request);
   const url = `${api}/auth/callback?token=${encodeURIComponent(raw)}`;
-  const sent = await sendMagicMail(env, email, url);
-  const payload = { ok: true, sent };
+  const mail = await sendMagicMail(env, email, url);
+  if (env.RESEND_API_KEY && !mail.sent) {
+    return json({ error: mail.error || "Mail could not be sent." }, 502, request);
+  }
+  const payload = { ok: true, sent: Boolean(mail.sent) };
   if (!env.RESEND_API_KEY) payload.devLink = url;
   return json(payload, 200, request);
 }
@@ -181,23 +204,26 @@ async function callback(env, request, url) {
   ).run();
   const headers = new Headers();
   headers.set("Location", `${app}/account.html`);
-  headers.append("Set-Cookie", sessionCookie(sessionRaw, request, SESSION_TTL_MS / 1000));
+  headers.append("Set-Cookie", namedCookie(COOKIE, sessionRaw, request, SESSION_TTL_MS / 1000));
   return cors(new Response(null, { status: 302, headers }), request);
 }
 
 function logout(request) {
   const headers = new Headers({ "Content-Type": "application/json" });
-  headers.append("Set-Cookie", sessionCookie("", request, 0));
+  headers.append("Set-Cookie", namedCookie(COOKIE, "", request, 0));
   return cors(new Response(JSON.stringify({ ok: true }), { status: 200, headers }), request);
 }
 
 async function me(env, request) {
   const user = await currentUser(env, request);
   if (!user) return json({ user: null }, 200, request);
+  const cookies = await refreshSession(env, request);
   return json(
     { user: { id: user.id, email: user.email, admin: isAdmin(env, user) } },
     200,
-    request
+    request,
+    null,
+    cookies
   );
 }
 
@@ -392,6 +418,123 @@ async function reject(env, request, id) {
   return json({ ok: true }, 200, request);
 }
 
+async function adminUsers(env, request) {
+  const user = await requireAdmin(env, request);
+  if (user instanceof Response) return user;
+  const rows = await env.DB.prepare(
+    "SELECT email, created_at FROM users ORDER BY created_at DESC LIMIT 1000"
+  ).all();
+  return json({ users: rows.results || [] }, 200, request);
+}
+
+async function recordCall(env, request) {
+  const body = await readJson(request);
+  const parsed = parseCallInput(body);
+  if (parsed.error) return json({ error: parsed.error }, 400, request);
+  const identity = await callIdentity(env, request, { issueAnon: true });
+  const existing = await existingCall(env, parsed, identity);
+  if (!existing) {
+    if (!(await rateLimit(env, request, "call", 30, 60 * 60 * 1000))) {
+      return json({ error: "Too many calls from this network. Try later." }, 429, request);
+    }
+    if (!(await rateLimitKey(env, `callp:${identity.kind}:${identity.key}`, 24, 60 * 60 * 1000))) {
+      return json({ error: "Too many calls from this browser. Try later." }, 429, request);
+    }
+    await env.DB.prepare(
+      `INSERT OR IGNORE INTO field_calls (
+        id, day_key, tray_id, field_index, specimen_id, guess, player_kind, player_key, created_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    )
+      .bind(
+        crypto.randomUUID(),
+        parsed.day,
+        parsed.tray,
+        parsed.field,
+        parsed.specimenId,
+        parsed.guess,
+        identity.kind,
+        identity.key,
+        Date.now()
+      )
+      .run();
+  }
+  const split = await fieldSplit(env, parsed);
+  return json({ ...split, counted: !existing }, 200, request, null, identity.cookies);
+}
+
+async function readCall(env, request, url) {
+  const parsed = parseCallInput({
+    day: url.searchParams.get("day"),
+    tray: url.searchParams.get("tray"),
+    field: url.searchParams.get("field")
+  }, { guessRequired: false });
+  if (parsed.error) return json({ error: parsed.error }, 400, request);
+  const identity = await callIdentity(env, request, { issueAnon: false });
+  const existing = await existingCall(env, parsed, identity);
+  if (!existing) return json({ error: "Call this field first." }, 404, request);
+  const split = await fieldSplit(env, parsed);
+  return json({ ...split, counted: false }, 200, request, null, identity.cookies);
+}
+
+function parseCallInput(body, options) {
+  const guessRequired = !options || options.guessRequired !== false;
+  const day = parseDayKey(body && body.day);
+  if (!day || !dayKeyInWindow(day)) return { error: "That date is not in play." };
+  const tray = parseTrayId(body && body.tray);
+  if (!tray) return { error: "Unknown tray." };
+  const field = parseFieldIndex(body && body.field);
+  if (field == null) return { error: "Unknown field." };
+  const guess = parseGuess(body && body.guess);
+  if (guessRequired && !guess) return { error: "Missing call." };
+  const specimenId = parseSpecimenId(body && (body.specimenId || body.specimen_id));
+  return { day, tray, field, guess, specimenId };
+}
+
+async function existingCall(env, parsed, identity) {
+  if (!identity.key) return null;
+  return env.DB.prepare(
+    `SELECT id FROM field_calls
+     WHERE day_key = ? AND tray_id = ? AND field_index = ? AND player_kind = ? AND player_key = ?`
+  )
+    .bind(parsed.day, parsed.tray, parsed.field, identity.kind, identity.key)
+    .first();
+}
+
+async function fieldSplit(env, parsed) {
+  const rows = await env.DB.prepare(
+    "SELECT guess FROM field_calls WHERE day_key = ? AND tray_id = ? AND field_index = ?"
+  )
+    .bind(parsed.day, parsed.tray, parsed.field)
+    .all();
+  return aggregateSplit(rows.results || []);
+}
+
+async function callIdentity(env, request, options) {
+  const cookies = [];
+  const user = await currentUser(env, request);
+  if (user) {
+    cookies.push(...(await refreshSession(env, request)));
+    return { kind: "user", key: user.id, cookies, user };
+  }
+  let raw = cookieValue(request, ANON_COOKIE);
+  if (!raw || raw.length < 16 || raw.length > 200) {
+    if (!options || !options.issueAnon) return { kind: "anon", key: "", cookies, user: null };
+    raw = randomToken();
+    cookies.push(namedCookie(ANON_COOKIE, raw, request, ANON_TTL_MS / 1000));
+  }
+  return { kind: "anon", key: await sha256(raw), cookies, user: null };
+}
+
+async function refreshSession(env, request) {
+  const token = cookieValue(request, COOKIE);
+  if (!token) return [];
+  const hash = await sha256(token);
+  await env.DB.prepare("UPDATE sessions SET expires_at = ? WHERE token_hash = ?")
+    .bind(Date.now() + SESSION_TTL_MS, hash)
+    .run();
+  return [namedCookie(COOKIE, token, request, SESSION_TTL_MS / 1000)];
+}
+
 async function requireAdmin(env, request) {
   const user = await currentUser(env, request);
   if (!user) return json({ error: "Log in." }, 401, request);
@@ -422,7 +565,10 @@ async function currentUser(env, request) {
 
 async function rateLimit(env, request, action, max, windowMs) {
   const ip = request.headers.get("CF-Connecting-IP") || "local";
-  const key = `${action}:${ip}`;
+  return rateLimitKey(env, `${action}:${ip}`, max, windowMs);
+}
+
+async function rateLimitKey(env, key, max, windowMs) {
   const now = Date.now();
   const row = await env.DB.prepare("SELECT count, window_start FROM rate_limits WHERE key = ?").bind(key).first();
   if (!row || now - row.window_start > windowMs) {
@@ -441,7 +587,7 @@ async function rateLimit(env, request, action, max, windowMs) {
 async function sendMagicMail(env, email, url) {
   if (!env.RESEND_API_KEY) {
     console.log(JSON.stringify({ magic_link: url, email }));
-    return false;
+    return { sent: false };
   }
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -450,13 +596,16 @@ async function sendMagicMail(env, email, url) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      from: "The Call <login@scopethecall.com>",
+      from: resendFrom(env.RESEND_FROM),
       to: [email],
       subject: "Log in to The Call",
       text: `Open this link to log in. It expires in 20 minutes.\n\n${url}\n\nIf you did not ask for this, ignore it.`
     })
   });
-  return res.ok;
+  if (res.ok) return { sent: true };
+  const detail = parseResendError(await res.text(), res.status);
+  console.error(JSON.stringify({ resend_error: detail, status: res.status }));
+  return { sent: false, error: detail };
 }
 
 function stripExif(bytes, type) {
@@ -511,10 +660,10 @@ function stripPngExif(bytes) {
   return new Uint8Array(out);
 }
 
-function sessionCookie(value, request, maxAge) {
+function namedCookie(name, value, request, maxAge) {
   const secure = new URL(request.url).protocol === "https:";
   const parts = [
-    `${COOKIE}=${value}`,
+    `${name}=${value}`,
     "Path=/",
     "HttpOnly",
     "SameSite=Lax",
@@ -542,7 +691,7 @@ function cors(response, request, extra) {
     headers.set("Access-Control-Allow-Credentials", "true");
     headers.set("Vary", "Origin");
   }
-  headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  headers.set("Access-Control-Allow-Methods", "GET, HEAD, POST, OPTIONS");
   headers.set("Access-Control-Allow-Headers", "Content-Type");
   headers.set("Access-Control-Max-Age", "86400");
   if (extra) {
@@ -554,9 +703,10 @@ function cors(response, request, extra) {
   return response;
 }
 
-function json(data, status, request, extraHeaders) {
+function json(data, status, request, extraHeaders, cookies) {
   const headers = new Headers({ "Content-Type": "application/json" });
   if (extraHeaders) Object.entries(extraHeaders).forEach(([key, value]) => headers.set(key, value));
+  (cookies || []).forEach((cookie) => headers.append("Set-Cookie", cookie));
   return cors(new Response(JSON.stringify(data), { status, headers }), request);
 }
 

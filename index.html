@@ -35,7 +35,8 @@
       <p class="lobby-lead">You're at the scope. Four trays. Make the call.</p>
       <p class="lobby-why">These are the kinds of fields technologists, pathologists, and other medical professionals look at every day to save lives. Try your hand. See if you have what it takes.</p>
       <div class="modes" id="modes"></div>
-      <p class="lobby-foot"><button id="btn-how-lobby" type="button">How to play</button> · <a href="about.html">About</a> · <a href="account.html">Log in</a> · <a href="submit.html">Submit a field</a> · <button type="button" data-feedback>Feedback</button></p>
+      <p class="lobby-account" id="lobby-account"><a href="account.html" data-account>Log in</a> to sign up. Playing without an account still works.</p>
+      <p class="lobby-foot"><button id="btn-how-lobby" type="button">How to play</button> · <a href="about.html">About</a> · <a href="account.html" data-account>Log in</a> · <a href="submit.html">Submit a field</a> · <button type="button" data-feedback>Feedback</button></p>
     </section>
 
     <div class="board" id="board" hidden>
@@ -74,6 +75,7 @@
       <p class="reveal-call" id="reveal-call"></p>
       <p class="reveal-sci" id="reveal-sci"></p>
       <p id="blurb"></p>
+      <div class="crowd" id="crowd" hidden></div>
       <div id="reveal-extra"></div>
       <p class="credit" id="credit"></p>
       <div class="actions">
@@ -99,7 +101,7 @@
         ·
         <a href="about.html">About</a>
         ·
-        <a href="account.html">Log in</a>
+        <a href="account.html" data-account>Log in</a>
         ·
         <a href="submit.html">Submit a field</a>
         ·
@@ -117,7 +119,7 @@
       <p>Spotting these fields is a highly technical skill. The world does not have enough people who can do it. This game trains the human call. The tools exist now to make that work more engaging, strip out most of the normal work, and leave specialists the truly difficult diagnoses — the ones that save lives.</p>
       <ul>
         <li>Human morphology is normal tissue and cells. Organisms are parasites, bacteria, and fungi. Abnormal is disease shapes: sickle cells, leukemia, TTP, and the like. Cytology is the Pap smear: NILM, SIL, infections, and artifacts.</li>
-        <li>The four names are diagnoses, with a plain-English hint in brackets. After you call it, the box below has the scientific name and a short note.</li>
+        <li>The four names are diagnoses, with a plain-English hint in brackets. After you call it, the box below has the scientific name, a short note, and how other players split on that field.</li>
         <li>Each tray is six fields, four diagnoses, one guess per field.</li>
         <li>The boxes track that tray: green is a hit, red is a miss.</li>
         <li>Each mode keeps its own streak. Stored in this browser.</li>
@@ -134,10 +136,12 @@
   <div class="toast" id="toast" role="status"></div>
 
   <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
   <script src="js/specimens.js"></script>
   <script src="js/labels.js"></script>
   <script src="js/loupe.js"></script>
   <script src="js/game.js"></script>
+  <script src="js/session.js"></script>
   <script src="js/feedback.js"></script>
 </body>
 </html>

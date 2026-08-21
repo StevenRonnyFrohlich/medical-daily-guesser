@@ -1,5 +1,7 @@
 (function () {
   const root = document.getElementById("queue");
+  const usersRoot = document.getElementById("users-list");
+  const usersPanel = document.getElementById("users-panel");
   const status = document.getElementById("admin-status");
 
   function escapeHtml(value) {
@@ -25,6 +27,8 @@
       }
       const data = await window.CallApi.request("/admin/queue");
       root.innerHTML = "";
+      if (usersPanel) usersPanel.hidden = false;
+      await renderUsers();
       if (!(data.items || []).length) {
         root.innerHTML = "<p>Nothing waiting.</p>";
         return;
@@ -59,6 +63,28 @@
     } catch (error) {
       status.textContent = error.message;
     }
+  }
+
+  function formatWhen(ms) {
+    const date = new Date(Number(ms));
+    if (Number.isNaN(date.getTime())) return "—";
+    return date.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+  }
+
+  async function renderUsers() {
+    if (!usersRoot) return;
+    const data = await window.CallApi.request("/admin/users");
+    const rows = data.users || [];
+    if (!rows.length) {
+      usersRoot.innerHTML = "<p>No signups yet.</p>";
+      return;
+    }
+    usersRoot.innerHTML = `<table class="users-table"><thead><tr><th>Email</th><th>Signed up</th></tr></thead><tbody>${rows
+      .map(
+        (row) =>
+          `<tr><td>${escapeHtml(row.email)}</td><td>${escapeHtml(formatWhen(row.created_at))}</td></tr>`
+      )
+      .join("")}</tbody></table>`;
   }
 
   root.addEventListener("click", async (event) => {

@@ -154,6 +154,81 @@
     }[char]));
   }
 
+  function shortCallLabel(label) {
+    const text = String(label || "").trim();
+    const match = text.match(/^(.*) \((.+)\)$/);
+    return match ? match[1] : text;
+  }
+
+  function renderCrowd(data) {
+    if (!ui.crowd) return;
+    if (!data || !data.split || !data.n) {
+      ui.crowd.hidden = true;
+      ui.crowd.innerHTML = "";
+      return;
+    }
+    const top = data.split[0];
+    const low = data.n < 8;
+    const lead = low
+      ? `${data.n} player${data.n === 1 ? "" : "s"} called this.`
+      : `${top.pct}% said ${shortCallLabel(top.label)}`;
+    const bits = data.split.map((row) => {
+      const name = escapeHtml(shortCallLabel(row.label));
+      return low ? `${row.count} said ${name}` : `${name} ${row.pct}%`;
+    });
+    const note = low ? "" : `<span class="crowd-note">${data.n} players called this</span>`;
+    ui.crowd.hidden = false;
+    ui.crowd.innerHTML = `<span class="crowd-lead">${escapeHtml(lead)}</span><span class="crowd-split">${bits.join(" · ")}</span>${note}`;
+  }
+
+  function hideCrowd() {
+    if (!ui.crowd) return;
+    ui.crowd.hidden = true;
+    ui.crowd.innerHTML = "";
+  }
+
+  function callPayload(specimen, label) {
+    return {
+      day: todayKey,
+      tray: mode.id,
+      field: index,
+      guess: label,
+      specimenId: specimen.id
+    };
+  }
+
+  async function postCrowd(specimen, label) {
+    return window.CallApi.request("/calls", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(callPayload(specimen, label))
+    });
+  }
+
+  async function loadCrowd(specimen, label, recordNow) {
+    hideCrowd();
+    if (isLab || !window.CallApi || !window.CallApi.base() || !mode || !specimen) return;
+    const query = new URLSearchParams({
+      day: todayKey,
+      tray: mode.id,
+      field: String(index)
+    });
+    try {
+      if (recordNow) {
+        renderCrowd(await postCrowd(specimen, label));
+        return;
+      }
+      try {
+        renderCrowd(await window.CallApi.request(`/calls?${query}`));
+        return;
+      } catch {
+        renderCrowd(await postCrowd(specimen, label));
+      }
+    } catch {
+      hideCrowd();
+    }
+  }
+
   function choiceMarkup(label) {
     const match = String(label).match(/^(.*) \((.+)\)$/);
     if (!match) return escapeHtml(label);
@@ -332,6 +407,7 @@
     sci: $("reveal-sci"),
     blurb: $("blurb"),
     extra: $("reveal-extra"),
+    crowd: $("crowd"),
     credit: $("credit"),
     streak: $("stat-streak"),
     best: $("stat-best"),
@@ -496,6 +572,7 @@
     ui.sci.textContent = specimen.scientific || "";
     ui.sci.hidden = !specimen.scientific || specimen.scientific === specimen.name;
     ui.blurb.textContent = specimen.blurb;
+    if (!locked) hideCrowd();
     const parts = [];
     const chart = specimenChart(specimen);
     if (chart) parts.push(chart);
@@ -548,6 +625,7 @@
     renderTray();
     openReveal(correct);
     persistDaily();
+    loadCrowd(specimen, label, true);
   }
 
   function showField(nextIndex) {
@@ -566,7 +644,9 @@
     if (answered) {
       renderChoices(answered.guess, specimen.name);
       openReveal(answered.correct);
+      loadCrowd(specimen, answered.guess);
     } else {
+      hideCrowd();
       ui.reveal.classList.remove("is-open");
       ui.summary.classList.remove("is-open");
       ui.share.hidden = true;

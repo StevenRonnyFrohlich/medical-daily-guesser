@@ -3,7 +3,10 @@
   "private": true,
   "scripts": {
     "dev:api": "wrangler dev --port 8787",
-    "db:local": "wrangler d1 execute the-call --local --file=worker/schema.sql"
+    "test": "node --test --experimental-default-type=module worker/src/lib.test.js",
+    "db:local": "wrangler d1 execute the-call --local --file=worker/schema.sql",
+    "db:migrate": "wrangler d1 execute the-call --local --file=worker/migrations/0001_field_calls.sql",
+    "db:migrate:remote": "wrangler d1 execute the-call --remote --file=worker/migrations/0001_field_calls.sql"
   },
   "devDependencies": {
     "wrangler": "^4.28.0"
