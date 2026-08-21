@@ -526,6 +526,19 @@ Append-only. One entry per request. See `.cursor/rules/session-log.mdc`.
 **Outcome**
 - `success` if Pages build is `cursor/accounts`. Live site should show Log in / Submit; catalog from `api.scopethecall.com`.
 
+## 2026-08-21 — Sitemap for The Call public pages
+
+**User**
+- Update only the sitemap on the personal `medical-daily-guesser` repo. Base `cursor/accounts`. Do not include parked signup/crowd work. List `/`, `/about.html`, and `/account.html` with lastmod 2026-08-21. Confirm robots.txt still points at the sitemap. PR against `cursor/accounts`.
+
+**Actions**
+- Branched `cursor/sitemap-the-call-d8a8` from `cursor/accounts` only.
+- Wrote valid sitemap 0.9 `urlset` in `sitemap.xml` for those three locs. Omitted `admin.html` (noindex) and `submit.html` (contributor form, not a public landing page).
+- Confirmed `robots.txt` still has `Sitemap: https://scopethecall.com/sitemap.xml`. No Worker, wrangler, or Pages source changes.
+
+**Outcome**
+- `success`. Sitemap-only change plus this log entry. PR against `cursor/accounts`.
+
 
 
 
